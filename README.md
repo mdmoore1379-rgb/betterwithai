@@ -6,6 +6,10 @@ While you were at breakfast/meeting (2026-06-30), the full agent system ran mult
 
 See PROGRESS_WHILE_YOU_WERE_GONE.md for the full log.
 
+**Autonomous Agent Files (for self-sufficiency):**
+- AGENT_CONTEXT.md, BRAND_GUIDELINES.md, MARKETING_AND_CONTENT_STYLE.md, SELF_SERVE_PRODUCT_SPEC.md, OPS_AND_AUTONOMY_PLAYBOOK.md, BUSINESS_VISION_AND_MILESTONES.md
+- All agents load these for context, style, direction, purpose. Run cycles independently.
+
 Every push to main → production on betterwithai.io via Vercel + GitHub.
 
 Run `python agents/run_telegram_bot.py` (after adding your token) to stay in the loop from your phone.

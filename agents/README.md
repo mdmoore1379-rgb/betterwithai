@@ -39,6 +39,11 @@ Create a payment link for the $2497 Roadmap
 - `agents/integrations.py` is the central hub.
 - For GitHub commits and Vercel deploys: Once the repo exists, tell me (Grok) and I handle directly via connected tools. No manual logins or pushes needed from you.
 
+**Autonomous Context Files (CRITICAL for self-operation):**
+- Load AGENT_CONTEXT.md, BRAND_GUIDELINES.md, etc. on agent init (see base_agent.py).
+- Full vision, branding (light premium, Holderness raw/fun), product spec, ops playbook.
+- Agents read these for clarity/purpose/direction without user input.
+
 **Telegram Ops Bot (NEW - critical for async 3h+ sessions)**
 
 First time setup:

@@ -26,6 +26,27 @@ class BaseAgent(ABC):
 
     def __init__(self):
         self.tools = {}
+        self.context = self._load_agent_context()
+
+    def _load_agent_context(self) -> Dict[str, str]:
+        """Load core context files so agent has clarity, purpose, direction, branding without external help."""
+        context = {}
+        files_to_load = [
+            "AGENT_CONTEXT.md",
+            "BRAND_GUIDELINES.md",
+            "MARKETING_AND_CONTENT_STYLE.md",
+            "SELF_SERVE_PRODUCT_SPEC.md",
+            "OPS_AND_AUTONOMY_PLAYBOOK.md",
+            "BUSINESS_VISION_AND_MILESTONES.md",
+            "playbook/growth/4-year-to-100m.md",
+        ]
+        for f in files_to_load:
+            try:
+                with open(f, "r") as fh:
+                    context[f] = fh.read()[:4000]  # truncate for token safety
+            except:
+                context[f] = f"[Context file {f} not found - using defaults from vision]"
+        return context
 
     @abstractmethod
     def can_handle(self, task: Task) -> float:

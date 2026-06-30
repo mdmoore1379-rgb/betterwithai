@@ -75,6 +75,9 @@ class RevenueEngineSuperAgent(BaseAgent):
 
     def execute(self, task: Task) -> AgentResponse:
         self.log(f"Revenue task: {task.description}")
+        # Use loaded context for branding/pricing decisions (e.g. $1497 hero, light premium)
+        if "context" in self.__dict__ and "AGENT_CONTEXT.md" in self.context:
+            self.log("Using full agent context for autonomous decisions.")
 
         if "price" in task.description.lower() or "tier" in task.description.lower():
             rec = self.recommend_pricing()

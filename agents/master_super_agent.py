@@ -78,6 +78,8 @@ class MasterSuperAgent:
     description = "The master builder. Constantly expands the agent army and coding team to hit $100M as fast as possible."
 
     def __init__(self):
+        # Load full context for autonomous operation (clarity, purpose, branding, vision)
+        self.full_context = self._load_full_context()
         self.agents: Dict[str, BaseAgent] = {
             "OpsLeader": None,  # Will be populated
             "GrowthAgent": GrowthAgent(),
@@ -298,6 +300,14 @@ class {agent_name}(BaseAgent):
         })
 
         print(f"  → Priority build logged: {priority[:80]}...")
+
+    def _load_full_context(self) -> str:
+        """Aggregate context for decision making."""
+        try:
+            with open("AGENT_CONTEXT.md", "r") as f:
+                return f.read()[:5000]
+        except:
+            return "Load from vision: self-serve AI Roadmap, light premium brand, agent leverage to $100M."
 
     def status(self):
         return {
