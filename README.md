@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# betterwithai.io
 
-## Getting Started
+Bold, funny, mascot-driven AI consulting marketing site.
 
-First, run the development server:
+Built as a **static Next.js site** so it can be edited conversationally and deployed directly from the terminal / via Git.
+
+## What this is
+
+A single-page landing site matching the detailed build brief (see `CLAUDE.md` or the original handover doc).
+
+- Custom cartoon AI Brain mascot (animated with Framer Motion)
+- Strong brand voice: irreverent but serious about results
+- Three clear offers: AI Planning → AI Projects → AI Consulting
+- All CTAs point to the existing Calendly link
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build (static)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+# output is in the `out/` folder
+```
 
-## Learn More
+## Deploy workflow (the important part)
 
-To learn more about Next.js, take a look at the following resources:
+**Goal:** You talk to me (Grok). I edit locally. I push the changes to Git + trigger a deploy to the cloud host.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Recommended setup (GitHub + Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a GitHub repo called `betterwithai` (public or private).
+2. Connect it as a project on Vercel (import repo → framework Next.js → Build command `npm run build`, Output directory `out`).
+3. Every push to `main` will auto-deploy.
 
-## Deploy on Vercel
+Alternative (direct):
+- `npx vercel` (first time) or use the Vercel integration tools here.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Cloudflare Pages (as specified in brief)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# one-time
+npm i -D wrangler
+
+# after build
+npx wrangler pages deploy out --project-name=betterwithai
+```
+
+Add custom domain `betterwithai.io` in the Cloudflare Pages dashboard.
+
+## Project structure
+
+- `app/page.tsx` — the full landing page
+- `app/components/BrainMascot.tsx` — the animated mascot (swappable for real art later)
+- Static export enabled (`output: 'export'`)
+
+## Next steps / open items (from brief)
+
+- Confirm exact pricing per tier (currently "Book a call for pricing")
+- Real mascot illustration (placeholder animated SVG is ready to be replaced)
+- Add social proof / testimonials when available
+- Booking link confirmation (currently using existing Calendly)
+
+## Talk to me
+
+Just tell me what to change. I'll edit the code, commit, and push the update to the host. That's the whole point of this setup.
