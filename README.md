@@ -67,6 +67,14 @@ Add custom domain `betterwithai.io` in the Cloudflare Pages dashboard.
 - Add social proof / testimonials when available
 - Booking link confirmation (currently using existing Calendly)
 
+## $100M Vision (Starting Full-Time Jan 2027)
+
+4-year goal: $100M ARR by end of 2030.
+
+See `playbook/growth/4-year-to-100m.md` for the detailed ramp, pillars, and strategy.
+
+The entire site, playbook, and agent system are built to support hyper-growth through productization, leverage, and agent-powered ops.
+
 ## Full-time business requirements (June 2026 update)
 
 - **Legal foundation**: Terms of Service, Privacy Policy live on site. Professional MSA + SOW templates generated in `/contracts`.
@@ -94,7 +102,7 @@ I've started building the agent team you described.
 See `agents/` folder:
 
 - `ops_leader.py` — The central brain
-- Specialist agents for **Coding**, **Calendar**, **Accounting**, **Client management**
+- Specialist agents for **Coding**, **Calendar**, **Accounting**, **Client management**, **Growth**, **Recruiting** (and more for scale)
 - `python agents/run_ops.py` to talk to the leader
 
 The CodingAgent is designed to hand detailed specs to me (Grok) so I can implement + deploy.
