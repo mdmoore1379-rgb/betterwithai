@@ -62,21 +62,17 @@ h2, h3 {
   background: var(--accent);
   color: #0A0A0C;
   font-weight: 600;
-  font-size: 0.9375rem;
-  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  padding: 14px 32px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.15s cubic-bezier(0.23, 1.0, 0.32, 1);
   letter-spacing: -0.01em;
 }
 
 .btn-primary:hover {
   background: var(--accent-dark);
   transform: translateY(-1px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
 }
 
 .btn-secondary {
@@ -86,17 +82,16 @@ h2, h3 {
   border: 1px solid var(--border);
   color: var(--text);
   font-weight: 500;
-  font-size: 0.9375rem;
-  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  padding: 14px 28px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.15s cubic-bezier(0.23, 1.0, 0.32, 1);
 }
 
 .btn-secondary:hover {
   background: var(--bg-elev);
   border-color: var(--accent);
-  color: var(--text);
 }
 
 /* Minimalist Cards */

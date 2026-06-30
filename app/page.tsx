@@ -116,55 +116,42 @@ export default function BetterWithAI() {
         )}
       </nav>
 
-      {/* HERO — Premium, confident, minimalist */}
-      <section className="relative min-h-[92vh] flex items-center pt-20 border-b border-[#222225]">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="mb-8 flex justify-center">
-            <BrainMascot state={mascotHeroState} size={180} />
+      {/* HERO — Bold. Minimal. Aspirational. */}
+      <section className="min-h-[90vh] flex items-center pt-16 border-b border-white/10">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <div className="mb-6 flex justify-center">
+            <BrainMascot state={mascotHeroState} size={160} />
           </div>
 
-          <h1 className="text-[64px] md:text-[80px] font-semibold tracking-[-4.5px] leading-[0.88] mb-6 text-balance">
+          <h1 className="text-7xl md:text-[88px] font-semibold tracking-[-5.5px] leading-[0.9] mb-5">
             AI runs the business.<br />
             <span className="text-[#C6FF3A]">We run the world.</span>
           </h1>
 
-          <p className="max-w-md mx-auto text-2xl text-[#A1A1AA] mb-10 leading-tight">
-            The systems handle the work.<br />We live the life.
+          <p className="max-w-lg mx-auto text-2xl text-[#A1A1AA] mb-10">
+            The systems handle the work so we don&apos;t have to.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#wizard" className="btn-primary text-lg px-10 py-4">
+          <div className="flex items-center justify-center gap-3">
+            <a href="#wizard" className="btn-primary text-lg px-8 py-3.5">
               Configure your Roadmap
             </a>
-            <a href="/portal" className="btn-secondary text-lg px-8 py-4">
-              View the portal
+            <a href="/portal" className="btn-secondary text-lg px-7 py-3.5">
+              See the portal
             </a>
-          </div>
-
-          <div className="mt-6 text-[10px] text-[#5A5A5F] tracking-[2px]">
-            2 MINUTES TO CONFIGURE • ONE CLICK TO BUY • INSTANT IN YOUR PORTAL
           </div>
         </div>
       </section>
 
-      {/* THE CONFIGURATOR — The heart of the experience. High-end, self-serve. */}
-      <section id="wizard" className="section border-t border-[#222225] py-24 bg-[#0A0A0C]">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1 text-xs tracking-[2px] text-[#C6FF3A] mb-4">
-              THE CONFIGURATOR
-            </div>
-            <h2 className="text-6xl md:text-7xl font-semibold tracking-[-3.2px] leading-none mb-6">
-              Build your plan.<br />Buy in minutes.
-            </h2>
-            <p className="text-2xl text-[#A1A1AA] max-w-lg mx-auto">
-              No forms. No calls. No back-and-forth.<br />Just a clear path to results.
-            </p>
+      {/* THE CONFIGURATOR */}
+      <section id="wizard" className="section border-t border-white/10 py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="mb-8 text-center">
+            <div className="text-[#C6FF3A] text-xs tracking-[3px] mb-2">THE EXPERIENCE</div>
+            <h2 className="text-6xl font-semibold tracking-[-2.5px]">Tell us what you need.<br />We&apos;ll handle the rest.</h2>
           </div>
 
-          <div className="mt-8">
-            <PlanningWizard />
-          </div>
+          <PlanningWizard />
         </div>
       </section>
 
