@@ -1,39 +1,33 @@
 """
 Telegram Bridge for Better With AI $100M Operations
 
-Bidirectional communication with Telegram so the agent army can:
-- Send real-time updates and "decision needed" pings after deep work blocks.
-- Receive your replies/commands and feed them into MasterSuperAgent / Ops cycles.
-- Allow you to drive from phone while away.
+Full conversational bridge between Telegram and Grok (this CLI) + the agent army:
 
-Setup (one time, ~3 minutes):
-1. Open Telegram → search @BotFather → /newbot
-2. Give it a name (e.g. "BetterWithAI Ops") and username (e.g. betterwithai_ops_bot)
-3. Copy the token it gives you.
-4. Start a chat with your new bot and send /start
-5. (Optional) Add the bot to a private channel as admin if you want channel broadcasts.
-6. Add to .env:
-   TELEGRAM_BOT_TOKEN=123456:ABC-DEF...
-   TELEGRAM_CHAT_ID=your_chat_id   (run the helper below or check @userinfobot or the first update)
-7. pip install requests python-dotenv (if not present)
+- Chat *naturally* with the bot on your phone (multi-turn conversations supported).
+- Your messages (with recent context) are relayed instantly to Grok/agents via structured inbox.
+- Grok can edit code, make changes, commit & push directly from here.
+- Results, commit links, and updates are pushed back into the *same* Telegram chat.
+- High-priority handling for edit/commit/push requests.
 
-Usage from code or CLI:
-    from agents.telegram import send_update, start_bot_polling
-    send_update("Master cycle complete. 3 new agents spawned. Key decision: pricing?")
+This replaces the old command-only mode. Free text is the primary interface now.
 
-Run standalone listener (recommended for you while away):
-    python agents/run_telegram_bot.py
+Setup (one time):
+1. @BotFather → /newbot
+2. Add TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to .env
+3. pip install requests python-dotenv
 
-Commands you can send the bot:
-  /status          - quick vision + progress snapshot
-  /decide <text>   - "decide on roadmap pricing at $1497 or $2997?"
-  /spawn <idea>    - spawn a new specialist agent
-  /research <q>    - trigger X + web research
-  /build <what>    - direct build priority (site, stripe, etc.)
-  /cycle           - run a full MasterSuperAgent strategic cycle
-  anything else    - treated as direct directive / feedback for the agents
+Run the listener:
+    python agents/run_telegram_bot.py   (keep running in tmux/screen)
 
-The bot writes your messages to agents/telegram_inbox.jsonl so future agent runs can consume them.
+Example conversation on Telegram:
+  You: fix the portal so real admin emails are not shown on login
+  Bot: ✅ Got it. Full request + context relayed to Grok. Grok will edit...
+  (You work here or Grok acts)
+  Bot: (later) ✅ Committed: https://github.com/...  Changes pushed.
+
+See agents/run_telegram_bot.py for the full conversational handler.
+
+The bot still supports classic commands (/status, /build, etc.) as shortcuts.
 """
 
 import os
@@ -150,7 +144,7 @@ def get_client() -> TelegramClient:
 
 
 def send_update(message: str, chat_id: Optional[str] = None) -> bool:
-    """Main function other agents / master use to push updates."""
+    """Main function other agents / master use to push updates (and commit results) back to Telegram."""
     client = get_client()
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     formatted = f"🤖 *BetterWithAI Ops Update* ({timestamp})\n\n{message}"
@@ -158,7 +152,7 @@ def send_update(message: str, chat_id: Optional[str] = None) -> bool:
 
 
 def log_user_message(update: Dict[str, Any]):
-    """Persist user messages so MasterSuperAgent / Ops can read them later."""
+    """Persist user messages (with context) so Grok / MasterSuperAgent can read and act."""
     try:
         os.makedirs("agents", exist_ok=True)
         msg = update.get("message", {})
@@ -170,6 +164,8 @@ def log_user_message(update: Dict[str, Any]):
             "username": user.get("username"),
             "first_name": user.get("first_name"),
             "text": text,
+            "context": msg.get("context", ""),
+            "intent": msg.get("intent", ""),
             "raw_update_id": update.get("update_id"),
         }
         with open(INBOX_PATH, "a") as f:
@@ -180,7 +176,7 @@ def log_user_message(update: Dict[str, Any]):
 
 
 def read_inbox() -> List[Dict]:
-    """Agents read this to consume your directives."""
+    """Agents / Grok read this to consume your directives (now with conversation context)."""
     items = []
     try:
         with open(INBOX_PATH, "r") as f:
