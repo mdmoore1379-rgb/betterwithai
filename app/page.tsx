@@ -78,7 +78,7 @@ export default function BetterWithAI() {
               href="/portal"
               className="btn-primary text-sm"
             >
-              Open portal demo
+              Open portal
             </a>
           </div>
 
@@ -110,7 +110,7 @@ export default function BetterWithAI() {
                 href="/portal"
                 className="btn-primary mt-2 w-full justify-center"
               >
-                Open portal demo
+                Open portal
               </a>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function BetterWithAI() {
               Configure &amp; Buy Roadmap
             </a>
             <a href="/portal" className="btn-secondary text-base px-8 py-4">
-              View demo portal
+              View portal
             </a>
           </div>
 
@@ -238,7 +238,7 @@ export default function BetterWithAI() {
             Google or Microsoft 365 login. Projects, invoices, signed contracts — everything appears instantly. Tesla app for your business.
           </p>
 
-          <Link href="/portal" className="btn-primary">Open the portal demo</Link>
+          <Link href="/portal" className="btn-primary">Open the portal</Link>
           <p className="mt-4 text-xs text-[#5A5A5F]">Finish the wizard → Buy → You land logged in with your new project. Zero calls.</p>
         </div>
       </section>

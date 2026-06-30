@@ -165,7 +165,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
                 {checkoutEmail ? 'Complete purchase' : 'Enter email to continue'}
               </button>
 
-              <p className="text-[10px] text-center text-white/40 mt-3">Demo checkout. You’ll land in the live portal with your project.</p>
+              <p className="text-[10px] text-center text-white/40 mt-3">Preview checkout. You’ll land in the portal with your project.</p>
             </motion.div>
           )}
 

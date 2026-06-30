@@ -189,7 +189,7 @@ export default function ClientPortal() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <span className="font-semibold">betterwithai</span>
-            <span className="text-white/50 ml-2">Client Portal</span>
+            <span className="text-white/50 ml-2">Portal</span>
           </div>
           <div className="flex items-center gap-4 text-sm">
             <span className="text-white/70">{userEmail}</span>

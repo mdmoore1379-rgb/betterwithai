@@ -57,7 +57,7 @@ export default function Resources() {
             <div className="mt-6">
               <h3 className="font-semibold text-sm">Client Portal (SSO with Google / Microsoft 365)</h3>
               <p className="text-xs text-white/70">After signup or project start, clients log in with work Google or Microsoft 365 credentials. Personalized view of projects, invoices, contracts (with e-sign), and status. No more email chains — everything in one place, specific to their org.</p>
-              <Link href="/portal" className="text-[#C6FF3A] text-xs underline">Visit demo portal →</Link>
+              <Link href="/portal" className="text-[#C6FF3A] text-xs underline">Visit portal →</Link>
             </div>
 
             <div className="mt-8 border-t border-white/10 pt-6">
