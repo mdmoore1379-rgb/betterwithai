@@ -65,7 +65,7 @@ export default function Resources() {
               <ul className="text-xs space-y-1 text-white/70">
                 <li>• Forms: Tally.so (embed, auto-deliver lead magnets + trigger sequences)</li>
                 <li>• Email Nurture: Resend (auto sequences from GrowthAgent)</li>
-                <li>• Payments &amp; Contracts: Stripe Checkout + HelloSign/PandaDoc (auto links post-purchase)</li>
+                <li>• Payments &amp; Contracts: Secure checkout + e-sign (auto links post-purchase)</li>
                 <li>• Orchestration: Ops Leader + Zapier/Make (form → CRM → email → contract)</li>
                 <li>• CRM: Airtable/Supabase (agent-managed, simple at first)</li>
               </ul>

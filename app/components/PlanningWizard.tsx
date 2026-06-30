@@ -119,7 +119,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
                 </button>
                 <button onClick={reset} className="btn-secondary text-lg py-5">Change answers</button>
               </div>
-              <p className="mt-4 text-center text-sm text-white/70">One click. Stripe. Contract auto-created. Live in your portal immediately. <span className="text-[#C6FF3A]">No call required.</span></p>
+              <p className="mt-4 text-center text-sm text-white/70">One click. Contract auto-created. Live in your portal immediately. <span className="text-[#C6FF3A]">No call required.</span></p>
             </motion.div>
           )}
 
@@ -154,7 +154,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
 
               <button 
                 onClick={() => {
-                  // Simulate Stripe checkout processing like Tesla order
+                  // Simulate secure checkout processing like Tesla order
                   setTimeout(() => {
                     setCheckoutStep('success');
                   }, 1200);
@@ -162,7 +162,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
                 disabled={!checkoutEmail.includes('@')}
                 className="btn-primary w-full mt-6 py-4 text-lg disabled:opacity-60"
               >
-                {checkoutEmail ? 'Complete purchase with Stripe' : 'Enter email to continue'}
+                {checkoutEmail ? 'Complete purchase' : 'Enter email to continue'}
               </button>
 
               <p className="text-[10px] text-center text-white/40 mt-3">Demo checkout. No card charged. You’ll land in the live portal with your project.</p>

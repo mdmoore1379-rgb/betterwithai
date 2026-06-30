@@ -28,7 +28,7 @@ export const offers: Offer[] = [
       'Full operations + tech + marketing audit',
       'Prioritized roadmap with ROI estimates',
       'Written deliverable ready to execute',
-      'Instant signup, auto contract + Stripe payment',
+      'Instant signup, auto contract + secure payment',
       'Live in your portal immediately — no call needed',
     ],
     cta: 'Buy Roadmap Now →',

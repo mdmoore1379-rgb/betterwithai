@@ -143,7 +143,7 @@ export default function BetterWithAI() {
           </div>
 
           <div className="mt-8 text-xs text-[#5A5A5F] tracking-[1.5px]">
-            2 MINUTES • PAY WITH STRIPE • INSTANT PORTAL ACCESS • NO CALL NEEDED
+            2 MINUTES • PAY SECURELY • INSTANT PORTAL ACCESS • NO CALL NEEDED
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ export default function BetterWithAI() {
           </div>
 
           <p className="text-center text-xs text-[#5A5A5F] mt-10 tracking-wide">
-            ROADMAP IS 100% SELF-SERVE • PAY WITH STRIPE • CONTRACTS + PORTAL INSTANT
+            ROADMAP IS 100% SELF-SERVE • PAY SECURELY • INSTANT PORTAL ACCESS
           </p>
         </div>
       </section>
@@ -214,7 +214,7 @@ export default function BetterWithAI() {
           <div className="grid md:grid-cols-3 gap-x-12 gap-y-14 text-sm">
             {[
               { num: "01", title: "Configure", text: "Four questions in the wizard. Tailored plan generated instantly." },
-              { num: "02", title: "Buy", text: "Pay with Stripe. Contract auto-generated. No call, no back-and-forth." },
+              { num: "02", title: "Buy", text: "Pay securely. Contract auto-generated. No call, no back-and-forth." },
               { num: "03", title: "Portal", text: "Google/Microsoft SSO. Project live immediately. Tesla-simple." },
             ].map((item) => (
               <div key={item.num}>

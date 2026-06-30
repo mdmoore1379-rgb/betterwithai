@@ -115,7 +115,7 @@ export default function ClientPortal() {
   }, []);
 
   // Real implementation later:
-  // Supabase + Google/Microsoft Entra SSO. Stripe webhooks update projects/invoices/contracts.
+  // Supabase + Google/Microsoft Entra SSO. Payment webhooks update projects/invoices/contracts.
   const handleSSOLogin = (provider: 'google' | 'microsoft') => {
     const mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     setUserEmail(mockEmail);
@@ -320,12 +320,12 @@ export default function ClientPortal() {
                         Pay Now
                       </button>
                     )}
-                    <a href={invoice.link} className="text-sm text-[#C6FF3A] hover:underline">View in Stripe →</a>
+                    <a href={invoice.link} className="text-sm text-[#C6FF3A] hover:underline">View payment details →</a>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-xs text-white/50">All payments processed securely via Stripe. Receipts and history available in your Stripe portal.</p>
+            <p className="mt-6 text-xs text-white/50">Payments processed securely. Receipts and history available in your account.</p>
           </div>
         )}
 
