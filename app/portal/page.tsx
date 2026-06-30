@@ -1,122 +1,99 @@
-  const roles = [
-    { key: 'client' as const, label: 'Client / Prospect', icon: '👤' },
-    { key: 'team_member' as const, label: 'Team Member (Employee)', icon: '👷' },
-    { key: 'owner' as const, label: 'Owner (Michael)', icon: '👑' },
-    { key: 'pm' as const, label: 'Project Manager', icon: '📋' },
-    { key: 'dev' as const, label: 'AI Developer', icon: '💻' },
-    { key: 'auditor' as const, label: 'Sales Tax Auditor', icon: '🔍' },
-    { key: 'accountant' as const, label: 'Accountant', icon: '📊' },
-    { key: 'lawyer' as const, label: 'Lawyer', icon: '⚖️' },
-    { key: 'internal' as const, label: 'Internal / Support', icon: '🛠️' },
-  ];
+        {/* Universal top clarity bar - always visible */}
+        <div className="mb-6 p-4 bg-[#0A66C2] text-white rounded-2xl flex items-center justify-between text-sm">
+          <div>
+            <span className="font-semibold">Your personal clarity score:</span> 94/100 — You're in the top 8% of team members this month.
+          </div>
+          <button onClick={() => setActionMessage('Full personal clarity report opened')} className="bg-white text-[#0A66C2] px-4 py-1 rounded-full text-xs font-medium">View full clarity report</button>
+        </div>
 
-  // ... inside the main return, after role header ...
+        {/* Team Member View - ultra clear */}
+        {currentRole === 'team_member' && (
+          <div className="space-y-8 max-w-4xl">
+            <div>
+              <div className="flex items-end gap-4 mb-2">
+                <h2 className="text-4xl font-semibold tracking-tight">Hi Sarah. Here's exactly where you stand.</h2>
+              </div>
+              <p className="text-[#666]">No hunting. No confusion. Everything you need to know and do, right here.</p>
+            </div>
 
-        {/* Team Member / Employee Clarity View - Core request */}
-        {(currentRole === 'team_member' || currentRole === 'pm' || currentRole === 'dev') && (
-          <div className="space-y-8">
-            <div className="bg-white border border-[#E5E5E3] rounded-3xl p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <div className="text-[#0A66C2] text-xs tracking-[2px] font-semibold">YOUR EMPLOYMENT AT A GLANCE</div>
-                  <h2 className="text-3xl font-semibold tracking-tight">Everything you need to know. Zero confusion.</h2>
+            {/* Big OTE visual */}
+            <div className="bg-white border-2 border-[#0A66C2] rounded-3xl p-8 text-center">
+              <div className="text-sm uppercase tracking-[2px] text-[#0A66C2] mb-1">Your On-Target Earnings this quarter</div>
+              <div className="text-7xl font-semibold tracking-[-3px] my-2">$41,250 <span className="text-3xl text-[#666]">/ $48,000</span></div>
+              <div className="w-full bg-[#E5E5E3] h-4 rounded-full overflow-hidden mt-4">
+                <div className="bg-[#0A66C2] h-4 rounded-full" style={{width: '86%'}}></div>
+              </div>
+              <div className="text-[#0A66C2] font-medium mt-2">86% to target — only 3 moves left this month</div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Pay clarity */}
+              <div className="border rounded-2xl p-6">
+                <div className="font-semibold mb-3 text-xl">How you actually get paid</div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between py-1 border-b"><span>Base</span><span className="font-mono">$10,000 / mo</span></div>
+                  <div className="flex justify-between py-1 border-b"><span>Commission (8% of influenced revenue)</span><span className="font-mono">$6,800 so far</span></div>
+                  <div className="flex justify-between py-1 border-b"><span>Quarterly OTE bonus (if 100%+ goals)</span><span className="font-mono">$5,000 potential</span></div>
                 </div>
-                <div className="text-right">
-                  <div className="text-2xl font-semibold text-green-600">On track for 112% OTE</div>
-                  <div className="text-sm text-[#666]">This quarter</div>
-                </div>
+                <div className="mt-4 text-xs text-[#0A66C2]">Next payout: July 1st — estimated $16,400</div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* How You Get Paid */}
-                <div className="border border-[#E5E5E3] rounded-2xl p-6">
-                  <div className="font-semibold text-xl mb-4 flex items-center gap-2">💰 How You Get Paid</div>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between"><span>Base Salary</span><span className="font-medium">$120,000 / yr</span></div>
-                    <div className="flex justify-between"><span>OTE (On-Target Earnings)</span><span className="font-medium">$165,000 / yr</span></div>
-                    <div className="flex justify-between"><span>Current Progress to OTE</span><span className="font-medium text-green-600">68%</span></div>
-                    <div className="pt-2 border-t">
-                      <div className="text-xs text-[#666] mb-1">Breakdown</div>
-                      <div className="text-xs">• Base: $10k/month<br/>• Commission: 8% on revenue you influence<br/>• Quarterly Bonus: up to 15% if goals hit</div>
-                    </div>
-                  </div>
-                  <button onClick={() => setActionMessage('Compensation simulator opened (mock)')} className="mt-4 text-sm text-[#0A66C2] hover:underline">Simulate this month’s payout →</button>
-                </div>
+              {/* Benefits */}
+              <div className="border rounded-2xl p-6">
+                <div className="font-semibold mb-3 text-xl">Your benefits (current)</div>
+                <ul className="text-sm space-y-1.5">
+                  <li>✓ Health + Dental (United) — $180/mo employee cost</li>
+                  <li>✓ 401k 4% match (you are at 3%)</li>
+                  <li>✓ Unlimited PTO (used 7 days YTD)</li>
+                  <li>✓ $2k annual learning + wellness stipend (used $420)</li>
+                </ul>
+                <button className="mt-4 text-xs underline" onClick={() => setActionMessage('Benefits management opened')}>Change coverage or add dependent</button>
+              </div>
+            </div>
 
-                {/* Benefits */}
-                <div className="border border-[#E5E5E3] rounded-2xl p-6">
-                  <div className="font-semibold text-xl mb-4 flex items-center gap-2">🏥 Your Benefits</div>
-                  <div className="space-y-2 text-sm">
-                    <div>• Health: UnitedHealthcare PPO (you pay $180/mo)</div>
-                    <div>• Dental + Vision: Included</div>
-                    <div>• 401k: 4% match (you’re at 3% contribution)</div>
-                    <div>• Unlimited PTO (use it)</div>
-                    <div>• $2,000 annual learning & wellness budget</div>
-                  </div>
-                  <button onClick={() => setActionMessage('Benefits portal link would open here')} className="mt-4 text-sm text-[#0A66C2] hover:underline">Manage benefits or enroll dependents →</button>
-                </div>
-
-                {/* Responsibilities */}
-                <div className="border border-[#E5E5E3] rounded-2xl p-6">
-                  <div className="font-semibold text-xl mb-4 flex items-center gap-2">🎯 What You’re Responsible For</div>
-                  <div className="text-sm space-y-1">
-                    <div>1. Deliver high-quality AI implementations on time</div>
-                    <div>2. Maintain 90%+ client satisfaction on your projects</div>
-                    <div>3. Help improve internal agents and playbooks</div>
-                    <div>4. Mentor 1 junior dev per quarter</div>
-                  </div>
-                </div>
-
-                {/* Action Items to hit goals + OTE */}
-                <div className="border border-[#E5E5E3] rounded-2xl p-6 bg-[#FAFAF8]">
-                  <div className="font-semibold text-xl mb-4 flex items-center gap-2">✅ Action Items That Move Your OTE</div>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-start gap-3">
-                      <input type="checkbox" className="mt-1" />
-                      <div>
-                        <div className="font-medium">Finish Lead Funnel MVP for Acme (this week)</div>
-                        <div className="text-[#666] text-xs">Directly impacts 18% of your Q3 OTE</div>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <input type="checkbox" className="mt-1" />
-                      <div>
-                        <div className="font-medium">Ship 2 agent improvements documented</div>
-                        <div className="text-[#666] text-xs">Unlocks $4,200 quarterly bonus</div>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <input type="checkbox" className="mt-1" />
-                      <div>
-                        <div className="font-medium">Update your project progress in portal by Friday</div>
-                        <div className="text-[#666] text-xs">Required for commission calculation</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4 text-xs text-green-600 font-medium">Hit these 3 → You’re at 94% OTE this month</div>
-                </div>
+            {/* Responsibilities + Action items - the most important */}
+            <div className="border-2 border-green-600 rounded-3xl p-6 bg-white">
+              <div className="font-semibold text-xl mb-4">What you are responsible for + exactly what to do</div>
+              
+              <div className="mb-6">
+                <div className="uppercase text-xs tracking-widest text-green-600 mb-1">Your 3 core responsibilities</div>
+                <ol className="list-decimal list-inside text-sm space-y-0.5 pl-1">
+                  <li>Deliver client AI projects on time and above expectation</li>
+                  <li>Improve at least one internal agent or playbook per month</li>
+                  <li>Support and mentor newer team members</li>
+                </ol>
               </div>
 
-              <div className="mt-6 text-xs text-[#666]">This view is generated live by EmployeeClarityAgent + CompensationClarityAgent + PersonalGoalsAgent. Updates automatically.</div>
+              <div>
+                <div className="uppercase text-xs tracking-widest text-green-600 mb-2">This week's 3 highest-impact action items (these move your OTE the most)</div>
+                <div className="space-y-3">
+                  {[ 
+                    {title: "Finish Acme lead-qualification agent MVP and demo to client", ote: "+12% this quarter", done: false},
+                    {title: "Document the new email agent pattern you built last week", ote: "+4% bonus trigger", done: false},
+                    {title: "1:1 with new dev (Jordan) — share your scoping process", ote: "Mentorship goal", done: true}
+                  ].map((item, i) => (
+                    <div key={i} className={`flex items-start gap-3 p-3 rounded-xl border ${item.done ? 'bg-green-50 border-green-200 line-through opacity-60' : 'bg-white'}`}>
+                      <input type="checkbox" checked={item.done} className="mt-1" onChange={() => setActionMessage('Action item marked complete. Agents notified.')} />
+                      <div className="flex-1">
+                        <div>{item.title}</div>
+                        <div className="text-xs text-[#0A66C2]">{item.ote}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}
 
-        {/* Client Clarity reinforcement */}
+        {/* Keep strong client next-steps clarity */}
         {currentRole === 'client' && (
-          <div className="mt-8">
-            <div className="border border-[#E5E5E3] rounded-2xl p-6 bg-white">
-              <div className="font-semibold mb-2">What you’re paying for + what you need to do next</div>
-              <div className="text-sm text-[#666]">Clarity is everything. Here’s exactly where your investment is going and the 2-3 moves that will have the biggest impact this month.</div>
-              <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div className="p-3 bg-[#FAFAF8] rounded">AI Lead Qualification Agent — 42% complete</div>
-                <div className="p-3 bg-[#FAFAF8] rounded">Your next action: Review prototype by Thursday</div>
-                <div className="p-3 bg-[#FAFAF8] rounded">Expected ROI this quarter: +$47k</div>
-              </div>
-            </div>
+          <div className="mt-4 p-6 border border-[#0A66C2] rounded-2xl">
+            <div className="font-semibold">What you need to do this week (we'll handle the rest)</div>
+            <ul className="mt-3 text-sm space-y-1 list-disc list-inside">
+              <li>Review and approve the lead qualification prototype (due Thursday)</li>
+              <li>Connect your Zoom so meeting notes flow automatically</li>
+            </ul>
+            <div className="mt-2 text-xs text-[#666]">Doing these two things = we hit the next milestone on time.</div>
           </div>
         )}
-
-        {/* Keep other role sections as before, or simplify */}
-
-        {/* ... existing role sections for owner/pm/dev etc can stay or be reduced ... */}
