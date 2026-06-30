@@ -27,12 +27,18 @@ export async function POST(request: NextRequest) {
   // return NextResponse.json({ url: session.url });
 
   // For now (works immediately): return a Stripe test payment link style
-  // User: go to Stripe dashboard → Products → create price → copy the buy.stripe.com/test_ link
+  // User: go to Stripe dashboard → Products → create price for "AI Roadmap" at 1497 → copy the buy.stripe.com/test_ link
+  // Recommended: create prices for roadmap, sprint, retainer.
   const testCheckoutUrl = `https://buy.stripe.com/test_14k8wN2iL5iQ9cQ000?prefilled_email=${encodeURIComponent(email || '')}`;
 
   return NextResponse.json({
     url: testCheckoutUrl,
-    note: "Replace with real Stripe Checkout Session URL once prices are live. Payment success should redirect to /portal and trigger onboarding agents.",
+    note: "Replace with real Stripe Checkout Session URL once prices are live (use RevenueEngineSuperAgent price_ids). Success should redirect to /portal?success=true and trigger LaunchOperator + Onboarding flows.",
     simulated: true,
+    recommended_price_ids: {
+      roadmap: "price_1497_roadmap",
+      sprint: "price_7497_sprint",
+      retainer: "price_retainer_monthly"
+    }
   });
 }
