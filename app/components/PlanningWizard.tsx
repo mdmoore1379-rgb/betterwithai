@@ -117,17 +117,26 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
             />
 
             <button
-              onClick={() => {
-                const emailParam = checkoutEmail ? `?prefilled_email=${encodeURIComponent(checkoutEmail)}` : '';
-                // REAL: Replace this with your live Stripe payment link or call /api/checkout
-                // Example test link (create a price in Stripe dashboard and paste here)
-                const stripeTestLink = `https://buy.stripe.com/test_14k8wN2iL5iQ9cQ000${emailParam}`;
-                window.open(stripeTestLink, '_blank');
-                
-                // After payment success, user will be redirected or we email them portal access
-                setTimeout(() => {
-                  setCheckoutStep('success');
-                }, 800);
+              onClick={async () => {
+                try {
+                  const res = await fetch('/api/checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      offerId: 'roadmap',
+                      email: checkoutEmail,
+                      answers,
+                    }),
+                  });
+                  const data = await res.json();
+                  if (data.url) {
+                    window.open(data.url, '_blank');
+                  }
+                } catch (e) {
+                  // Fallback
+                  window.open(`https://buy.stripe.com/test_14k8wN2iL5iQ9cQ000?prefilled_email=${encodeURIComponent(checkoutEmail || '')}`, '_blank');
+                }
+                setTimeout(() => setCheckoutStep('success'), 900);
               }}
               className="btn-primary w-full text-lg py-4"
             >
