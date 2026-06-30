@@ -62,6 +62,11 @@ try:
 except:
     SocialMediaPosterAgent = None
 
+try:
+    from agents.specialists.lawyer_agent import LawyerAgent
+except:
+    LawyerAgent = None
+
 # Also keep the older ones that were auto-spawned
 try:
     from agents.specialists.automatedleadgenerationengineagent import AutomatedLeadGenerationEngineAgent
@@ -84,6 +89,7 @@ class MasterSuperAgent:
             "OpsLeader": None,  # Will be populated
             "GrowthAgent": GrowthAgent(),
             "CodingAgent": CodingAgent(),
+            "LawyerAgent": LawyerAgent() if LawyerAgent else None,
             # Newly invented super agents for the full 100M machine
             "RevenueEngineSuperAgent": RevenueEngineSuperAgent() if RevenueEngineSuperAgent else None,
             "ContentMachineSuperAgent": ContentMachineSuperAgent() if ContentMachineSuperAgent else None,
