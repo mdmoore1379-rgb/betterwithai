@@ -57,6 +57,11 @@ try:
 except:
     FinancialForecasterAgent = None
 
+try:
+    from agents.specialists.social_media_poster_agent import SocialMediaPosterAgent
+except:
+    SocialMediaPosterAgent = None
+
 # Also keep the older ones that were auto-spawned
 try:
     from agents.specialists.automatedleadgenerationengineagent import AutomatedLeadGenerationEngineAgent
@@ -83,6 +88,7 @@ class MasterSuperAgent:
             "AcquisitionFlywheelAgent": AcquisitionFlywheelAgent() if AcquisitionFlywheelAgent else None,
             "LaunchOperatorSuperAgent": LaunchOperatorSuperAgent() if LaunchOperatorSuperAgent else None,
             "FinancialForecasterAgent": FinancialForecasterAgent() if FinancialForecasterAgent else None,
+            "SocialMediaPosterAgent": SocialMediaPosterAgent() if SocialMediaPosterAgent else None,
         }
         # Register any legacy spawned agents if they loaded
         if AutomatedLeadGenerationEngineAgent:
