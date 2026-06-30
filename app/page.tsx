@@ -47,8 +47,8 @@ export default function BetterWithAI() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#E5E5E3] bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="flex items-center gap-2.5 text-xl font-semibold tracking-[-0.6px]">
-            <span className="inline-block w-5 h-5 rounded-full border border-[#111] flex items-center justify-center">
-              <span className="w-2 h-2 bg-[#111] rounded-full"></span>
+            <span className="inline-block w-6 h-[1px] bg-[#111] relative">
+              <span className="absolute -top-[3px] left-1/2 w-[5px] h-[5px] -translate-x-1/2 bg-[#111] rounded-full"></span>
             </span>
             betterwithai
           </a>
