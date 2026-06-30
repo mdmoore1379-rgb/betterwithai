@@ -67,6 +67,15 @@ Add custom domain `betterwithai.io` in the Cloudflare Pages dashboard.
 - Add social proof / testimonials when available
 - Booking link confirmation (currently using existing Calendly)
 
+## Full-time business requirements (June 2026 update)
+
+- **Legal foundation**: Terms of Service, Privacy Policy live on site. Professional MSA + SOW templates generated in `/contracts`.
+- **Self-serve conversion**: Pricing section added with a productized AI Roadmap tier that can be purchased directly (Stripe placeholder ready). Goal is to minimize live sales calls for smaller engagements.
+- **Payments & Agreements**: All work will require clear written agreements + online payment (Stripe Checkout preferred). Planning tier should be nearly frictionless.
+- **Entity & Operations**: Form "Better With AI, LLC", set up business Stripe account, professional liability insurance recommended. Use the generated contracts as starting point (have an attorney review).
+
+Replace the Stripe test links with real product links once created in the Stripe dashboard.
+
 ## Talk to me
 
 Just tell me what to change. I'll edit the code, commit, and push the update to the host. That's the whole point of this setup.

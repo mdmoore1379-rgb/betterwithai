@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import BrainMascot from "./components/BrainMascot";
 
@@ -25,6 +26,7 @@ export default function BetterWithAI() {
 
   const navItems = [
     { label: "Solutions", href: "#solutions" },
+    { label: "Pricing", href: "#pricing" },
     { label: "How it works", href: "#how-it-works" },
     { label: "About", href: "#about" },
     { label: "FAQ", href: "#faq" },
@@ -234,6 +236,99 @@ export default function BetterWithAI() {
         </div>
       </section>
 
+      {/* PRICING & SELF-SERVE PATHS (new for full-time business) */}
+      <section id="pricing" className="section mx-auto max-w-6xl px-6 py-16 md:py-20 border-t border-white/10">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">CLEAR PRICING. EASY START.</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Simple ways to get started — with or without a call.</h2>
+          <p className="mt-4 text-xl text-white/70">
+            We built this for people who want to move fast. The Planning tier is designed to be nearly self-serve.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {/* Planning - Self Serve */}
+          <div className="card p-8 flex flex-col border-2 border-[#C6FF3A]">
+            <div className="uppercase text-xs tracking-[2px] text-[#C6FF3A]">PRODUCTIZED • SELF-SERVE</div>
+            <h3 className="mt-4 text-2xl font-semibold">AI Roadmap</h3>
+            <div className="mt-2 text-4xl font-bold">$2,497</div>
+            <div className="text-sm text-white/60">one-time</div>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
+              <li>• Full operations + tech + marketing audit</li>
+              <li>• Prioritized roadmap with ROI estimates</li>
+              <li>• 60-minute review + Q&amp;A call</li>
+              <li>• Written deliverable you can execute yourself or with us</li>
+            </ul>
+
+            <a 
+              href="https://buy.stripe.com/test_YOUR_PLANNING_LINK" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-primary mt-8 w-full justify-center text-center"
+            >
+              Buy AI Roadmap Now →
+            </a>
+            <p className="mt-3 text-center text-[10px] text-white/50">Secure checkout with Stripe. Start immediately.</p>
+          </div>
+
+          {/* Projects */}
+          <div className="card p-8 flex flex-col">
+            <div className="uppercase text-xs tracking-[2px] text-white/60">DONE-FOR-YOU</div>
+            <h3 className="mt-4 text-2xl font-semibold">AI Projects</h3>
+            <div className="mt-2 text-4xl font-bold">From $7,500</div>
+            <div className="text-sm text-white/60">project-based</div>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
+              <li>• Lead funnels, automations, agents, internal tools</li>
+              <li>• Fixed scope + timeline proposals</li>
+              <li>• Full build, testing, handoff + training</li>
+              <li>• 30-day support included</li>
+            </ul>
+
+            <a 
+              href={BOOKING_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-primary mt-8 w-full justify-center text-center"
+            >
+              Get a scoped proposal
+            </a>
+            <p className="mt-3 text-center text-[10px] text-white/50">Most clients start here after a short call or form.</p>
+          </div>
+
+          {/* Retainer */}
+          <div className="card p-8 flex flex-col">
+            <div className="uppercase text-xs tracking-[2px] text-white/60">ONGOING PARTNERSHIP</div>
+            <h3 className="mt-4 text-2xl font-semibold">AI Retainer</h3>
+            <div className="mt-2 text-4xl font-bold">$3,500–$6,000</div>
+            <div className="text-sm text-white/60">per month</div>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
+              <li>• Monthly strategy + hands-on execution</li>
+              <li>• New AI opportunities as they emerge</li>
+              <li>• Team training &amp; enablement</li>
+              <li>• Priority support &amp; optimization</li>
+            </ul>
+
+            <a 
+              href={BOOKING_URL} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-primary mt-8 w-full justify-center text-center"
+            >
+              Become a partner
+            </a>
+            <p className="mt-3 text-center text-[10px] text-white/50">Best for companies that want to stay ahead continuously.</p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center text-sm text-white/60 max-w-md mx-auto">
+          All engagements include a clear written agreement (see our <Link href="/terms" className="underline">Master Services Agreement</Link> and sample SOW). 
+          Payment is handled securely online via Stripe. Minimal back-and-forth required for the Roadmap tier.
+        </div>
+      </section>
+
       {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
       <section className="border-y border-white/10 bg-[#121217] py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
@@ -390,7 +485,13 @@ export default function BetterWithAI() {
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">Book a call</a>
           </div>
 
-          <div>© {new Date().getFullYear()} betterwithai. hello@betterwithai.io</div>
+          <div className="flex flex-wrap gap-x-4 text-xs">
+            <Link href="/terms" className="hover:text-white">Terms</Link>
+            <Link href="/privacy" className="hover:text-white">Privacy</Link>
+            <a href="mailto:hello@betterwithai.io" className="hover:text-white">hello@betterwithai.io</a>
+          </div>
+
+          <div>© {new Date().getFullYear()} Better With AI, LLC. All rights reserved.</div>
         </div>
       </footer>
     </div>
