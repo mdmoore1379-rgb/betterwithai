@@ -134,7 +134,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                      offerId: 'roadmap',
+                      offerId: 'readiness', // or 'coaching' / 'implementation' based on upsell choice
                       email: checkoutEmail,
                       answers,
                     }),
