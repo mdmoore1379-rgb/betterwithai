@@ -38,15 +38,16 @@ export default function Resources() {
           {/* For Michael / Ops */}
           <div className="card p-8">
             <h2 className="text-2xl font-semibold">Internal Operating System</h2>
-            <p className="mt-2 text-white/70">Tools &amp; processes Michael uses to deliver at a high level with minimal overhead.</p>
+            <p className="mt-2 text-white/70">Tools &amp; processes to run at a high level and scale to $100M by 2030.</p>
             <ul className="mt-6 space-y-3 text-sm">
-              <li>→ <strong>Ops Leader Agent</strong>: python agents/run_ops.py</li>
-              <li>→ Full Playbook: <code>playbook/README.md</code></li>
+              <li>→ <strong>Ops Leader Agent</strong>: python agents/run_ops.py (grows with the business)</li>
+              <li>→ Full Playbook: <code>playbook/README.md</code> + <code>growth/4-year-to-100m.md</code></li>
               <li>→ Contracts: <code>/contracts</code> (MSA + SOW templates)</li>
               <li>→ Client checklists &amp; email templates: <code>playbook/</code></li>
               <li>→ Pricing &amp; self-serve flows on this site</li>
+              <li>→ Growth &amp; recruiting agents for scaling team and leads</li>
             </ul>
-            <p className="mt-6 text-xs text-white/50">Everything is designed so one person can run this business extremely well.</p>
+            <p className="mt-6 text-xs text-white/50">Built to let one founder + leveraged systems produce at $100M scale.</p>
           </div>
         </div>
 

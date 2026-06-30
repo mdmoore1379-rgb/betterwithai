@@ -387,8 +387,8 @@ export default function BetterWithAI() {
           {[
             { num: "01", title: "Discovery call", body: "A free, hype-free conversation about your business and where you&apos;re stuck." },
             { num: "02", title: "The plan", body: "We map the highest-impact AI opportunities and what each is worth." },
-            { num: "03", title: "We build", body: "Our team plans and delivers every detail. You set direction; we handle the rest." },
-            { num: "04", title: "We keep you ahead", body: "Optimize, train, and evolve as AI does." },
+            { num: "03", title: "We build", body: "Our team + agent systems plan and deliver every detail at scale. You set direction; we handle the rest." },
+            { num: "04", title: "We keep you ahead", body: "Optimize, train, evolve, and scale as AI and your business do." },
           ].map((step, idx) => (
             <div key={idx} className="bg-[#0B0B0F] p-8">
               <div className="font-mono text-sm text-[#C6FF3A]">{step.num}</div>
@@ -410,7 +410,7 @@ export default function BetterWithAI() {
           <div className="mt-10 mx-auto max-w-3xl text-lg leading-relaxed text-white/80 text-left md:text-center">
             <strong className="text-white">Michael Moore</strong> leads betterwithai as the visionary — the one who sits with you, understands your business, and maps where AI actually moves the needle. That&apos;s the relationship you keep.
             <br /><br />
-            Behind that vision is a <strong className="text-white">full delivery team</strong> that plans and executes every detail — like a wedding planner and crew. You set the direction; we handle the invitations, the timeline, the coordination, the day-of execution.
+            Behind that vision is a growing <strong className="text-white">delivery team + agent-powered systems</strong> that plan and execute every detail at scale — like a wedding planner and crew. We're building toward a $100M business by 2030 with leveraged teams and technology. You set the direction; we handle the rest.
           </div>
 
           <div className="mt-9 inline-block rounded-full bg-white/5 px-5 py-2 text-sm border border-white/10">

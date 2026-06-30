@@ -24,6 +24,7 @@ This is the complete operating system for running betterwithai as a full-time, h
 8. **Marketing & Content**
 9. **Metrics & Review**
 10. **Agent Team** (Ops Leader + specialists)
+11. **Growth to $100M** (4-year plan starting Jan 2027) — see `growth/4-year-to-100m.md`
 
 ## Quick Start for Daily Ops
 
@@ -39,4 +40,11 @@ PYTHONPATH=. python3 agents/run_ops.py
 
 All templates live in `playbook/templates/` and `contracts/`.
 
-Update this playbook as we learn what works.
+## Growth to $100M (Starting Jan 2027)
+
+See `growth/4-year-to-100m.md` for the full revenue ramp, strategy, and pillars.
+
+Supporting:
+- `growth/scaling-checklist.md` — quarterly milestones.
+
+Update this playbook as we learn what works. Grok maintains it conversationally.

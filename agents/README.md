@@ -14,6 +14,10 @@ This allows scaling operations without hiring a bunch of people early on.
 - **CalendarAgent** — Scheduling calls, time blocking
 - **AccountingAgent** — Stripe, invoicing, retainers, pricing
 - **ClientAgent** — Onboarding, proposals, relationship tracking
+- **ProposalAgent** — Customized proposals and SOWs
+- **OnboardingAgent** — Post-sale welcome, intake, kickoff prep
+- **GrowthAgent** — Lead gen, content, partnerships for $100M scale
+- **RecruitingAgent** — Talent pipeline and hiring at scale
 
 ## How to use
 
@@ -33,10 +37,11 @@ Create a payment link for the $2497 Roadmap
 ## Future Expansion
 
 We can easily add more agents:
-- MarketingAgent
-- ResearchAgent (competitive intel, AI trends)
-- ProposalAgent (auto-generates customized proposals)
-- DeliveryAgent (project status tracking)
+- DeliveryScaleAgent (project pods at scale)
+- FinanceScaleAgent (forecasting, unit economics at $100M)
+- ProductAgent (building the platform/tools)
+- ResearchAgent (AI trends, competitive intel)
+- MarketingAgent (paid + advanced content)
 
 ## Integration with Grok
 

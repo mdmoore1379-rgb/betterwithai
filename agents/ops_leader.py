@@ -44,7 +44,9 @@ class OpsLeader:
             ClientAgent(),
             ProposalAgent(),
             OnboardingAgent(),
-            # More coming: MarketingAgent, ResearchAgent, DeliveryAgent, FinanceAgent
+            GrowthAgent(),
+            RecruitingAgent(),
+            # Scale additions: DeliveryScaleAgent, FinanceScaleAgent, ProductAgent, ResearchAgent
         ]
         self.task_history = []
 
