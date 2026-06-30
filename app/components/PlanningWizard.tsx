@@ -102,17 +102,18 @@ Or let the system escalate: We'll auto-generate a scoped proposal.
         
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <a 
-            href="https://buy.stripe.com/test_YOUR_PLANNING_LINK" 
-            target="_blank" 
+            href="/portal?demoLogin=acme&newProject=true" 
             className="btn-primary flex-1 justify-center text-lg py-4"
-            onClick={() => alert('Tesla mode: Stripe opens with your exact plan pre-filled + terms accepted. One tap and you\'re done.')}
           >
             Order Now — $2,497
           </a>
           <button onClick={reset} className="btn-secondary flex-1 justify-center">Adjust</button>
         </div>
         <p className="mt-4 text-xs text-center text-white/50">
-          Configure here → Pay once → Your AI is live in the portal instantly.<br />No sales calls. No paperwork. No waiting.
+          Configure here → Pay once → Instantly live in <strong>your</strong> portal (login with Google or Microsoft 365).<br />Tesla-simple. No sales calls. No paperwork.
+        </p>
+        <p className="mt-2 text-[10px] text-center text-white/40">
+          (Demo: Click Order to go straight to portal logged in as demo client with your new project added)
         </p>
       </div>
     );

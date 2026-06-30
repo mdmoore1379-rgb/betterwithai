@@ -1,12 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 // Mock authenticated client data - in real: fetched from Supabase or DB after SSO
 // Personalized per user email from Microsoft 365 or Google
 
-const mockClientData = {
+interface ClientContract {
+  id: string;
+  title: string;
+  status: string;
+  signedDate: string | null;
+  download?: string;
+  signLink?: string;
+}
+
+const defaultClientData = {
   name: "Acme Corp",
   email: "client@acme.com",
   projects: [
@@ -34,7 +43,7 @@ const mockClientData = {
       description: "AI Roadmap - Acme Corp",
       status: "Paid",
       due: "2026-09-01",
-      link: "https://checkout.stripe.com/pay/..." // Real Stripe invoice link
+      link: "https://checkout.stripe.com/pay/..."
     },
     {
       id: "inv-102",
@@ -58,16 +67,81 @@ const mockClientData = {
       title: "Statement of Work - Lead Funnel",
       status: "Pending Signature",
       signedDate: null,
-      download: null,
-      signLink: "https://app.hellosign.com/sign/..." // e.g. HelloSign/DocuSign link
+      signLink: "https://app.hellosign.com/sign/..."
     }
-  ]
+  ] as ClientContract[]
 };
 
 export default function ClientPortal() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [activeTab, setActiveTab] = useState<'projects' | 'invoices' | 'contracts'>('projects');
+  const [clientData, setClientData] = useState(defaultClientData);
+
+  // Demo: handle ?demoLogin=acme&newProject=true from wizard for seamless Tesla-simple flow
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const login = params.get('demoLogin');
+    const newProj = params.get('newProject');
+
+    if (login) {
+      const email = login === 'acme' ? 'client@acme.com' : 'ops@acme-corp.com';
+      setUserEmail(email);
+      setIsAuthenticated(true);
+    }
+
+    if (newProj === 'true') {
+      setClientData(prev => ({
+        ...prev,
+        projects: [
+          ...prev.projects,
+          {
+            id: `proj-${Date.now()}`,
+            title: "AI Project from Website Wizard",
+            status: "In Progress",
+            progress: 15,
+            nextMilestone: "Kickoff scheduled via agent system",
+            documents: ["Wizard Plan.pdf"]
+          }
+        ]
+      }));
+      setActiveTab('projects');
+    }
+  }, []);
+
+  // Demo: support wizard "Order Now" flow for Tesla-simple experience
+  // e.g. coming from /portal?demoLogin=acme&newProject=true
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const login = params.get('demoLogin');
+    const newProj = params.get('newProject');
+
+    if (login) {
+      const email = login === 'acme' ? 'client@acme.com' : 'ops@acme-corp.com';
+      setUserEmail(email);
+      setIsAuthenticated(true);
+    }
+
+    if (newProj === 'true') {
+      setClientData(prev => ({
+        ...prev,
+        projects: [
+          ...prev.projects,
+          {
+            id: `proj-${Date.now()}`,
+            title: "AI Project from Website Wizard",
+            status: "In Progress",
+            progress: 15,
+            nextMilestone: "Kickoff scheduled via agent system",
+            documents: ["Wizard Plan.pdf"]
+          }
+        ]
+      }));
+      setActiveTab('projects');
+    }
+  }, []);
 
   // Real implementation:
   // - Use @supabase/ssr or Auth.js (next-auth) with Google and Microsoft Entra ID providers.
@@ -82,17 +156,33 @@ export default function ClientPortal() {
     setUserEmail(mockEmail);
     setIsAuthenticated(true);
     // After real login, fetch personalized data from DB based on email
+    // For demo, we use the default data but could load different clients
     alert(`Logged in via ${provider} as ${mockEmail}. In production this would use real SSO and load your data.`);
   };
 
   const handleSignContract = (contractId: string) => {
-    alert(`Signing contract ${contractId} via e-sign provider (HelloSign/DocuSign). This would open the signing flow and update status via webhook.`);
-    // Real: Call API to create envelope, redirect to sign URL
+    setClientData(prev => ({
+      ...prev,
+      contracts: prev.contracts.map((c: ClientContract) => 
+        c.id === contractId 
+          ? { ...c, status: "Signed", signedDate: new Date().toISOString().split('T')[0], signLink: undefined } 
+          : c
+      )
+    }));
+    // In real: Call e-sign API, then webhook updates DB and UI
   };
 
   const handlePayInvoice = (invoiceId: string) => {
-    alert(`Redirecting to Stripe checkout for ${invoiceId}. After payment, webhook updates status and triggers Ops Leader agent.`);
-    // Real: Link to Stripe or open portal
+    setClientData(prev => ({
+      ...prev,
+      invoices: prev.invoices.map(i => 
+        i.id === invoiceId 
+          ? { ...i, status: "Paid" } 
+          : i
+      )
+    }));
+    // In real: Redirect to Stripe, webhook on success updates status + triggers agent
+    alert('Payment successful (simulated). In real flow this would redirect to Stripe Checkout.');
   };
 
   if (!isAuthenticated) {
@@ -126,7 +216,7 @@ export default function ClientPortal() {
     );
   }
 
-  const client = mockClientData; // In real: fetch based on authenticated user
+  const client = clientData; // In real: fetch based on authenticated user
 
   return (
     <div className="min-h-screen bg-[#0B0B0F] text-white">
