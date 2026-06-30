@@ -12,7 +12,7 @@
   --text-muted: #4A4A4A;
   --text-subtle: #737373;
   --accent: #111111;           /* Sophisticated near-black for premium feel */
-  --accent-emphasis: #3B82F6;  /* Modern blue for CTAs */
+  --accent-emphasis: #0A66C2;  /* Modern blue for CTAs and highlights */
   --card: #FFFFFF;
   --border: #E5E5E3;
   --success: #10B981;
@@ -61,19 +61,19 @@ h2, h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
+  background: var(--accent-emphasis);
   color: white;
   font-weight: 600;
   font-size: 0.9375rem;
   padding: 16px 36px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.15s cubic-bezier(0.23, 1.0, 0.32, 1);
-  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  letter-spacing: -0.02em;
 }
 
 .btn-primary:hover {
-  background: #000000;
+  background: #084C8C;
   transform: translateY(-1px);
 }
 
