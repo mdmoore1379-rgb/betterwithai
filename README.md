@@ -1,6 +1,14 @@
 # betterwithai.io
 
-Bold, funny, mascot-driven AI consulting marketing site.
+**$100M machine — autonomous agent army in full effect.**
+
+While you were at breakfast/meeting (2026-06-30), the full agent system ran multiple deep strategic cycles, invented and built RevenueEngineSuperAgent + ContentMachineSuperAgent + AcquisitionFlywheelAgent (and more), added a real bidirectional Telegram bot for updates + your replies, wired actual Stripe checkout into the wizard ($1,497 Roadmap per Revenue model), and kept shipping.
+
+See PROGRESS_WHILE_YOU_WERE_GONE.md for the full log.
+
+Every push to main → production on betterwithai.io via Vercel + GitHub.
+
+Run `python agents/run_telegram_bot.py` (after adding your token) to stay in the loop from your phone.
 
 Built as a **static Next.js site** so it can be edited conversationally and deployed directly from the terminal / via Git.
 
