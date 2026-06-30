@@ -149,7 +149,7 @@ export default function BetterWithAI() {
           <div className="text-center mb-8">
             <div className="text-[#0A66C2] text-xs tracking-[3px] mb-2">THE PRODUCT</div>
             <h2 className="text-5xl font-semibold tracking-[-2px] mb-4">Build your AI Roadmap.<br />Buy it in minutes.</h2>
-            <p className="text-xl text-[#444444]">Four questions. One click. Your systems go live instantly in the portal.</p>
+            <p className="text-xl text-[#444444]">A few quick questions. One click. Your systems go live instantly in the portal.</p>
           </div>
 
           <PlanningWizard />

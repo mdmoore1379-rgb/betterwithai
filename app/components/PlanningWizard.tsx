@@ -12,7 +12,7 @@ interface Step {
 
 const steps: Step[] = [
   { id: 1, question: "What's your industry or main business area?", type: 'text' },
-  { id: 2, question: "Rough company size (revenue or team)?", options: ["Under $2M / <10 people", "$2M–$10M / 10-50 people", "$10M+ / 50+ people"], type: 'select' },
+  { id: 2, question: "Rough company scale?", type: 'select' }, // special cased below for separate revenue + team
   { id: 3, question: "Biggest AI-related pain right now?", options: ["Too many tools, no clear wins", "Operations are manual and slow", "Marketing/leads not scaling", "Team overwhelmed by hype vs. results"], type: 'multi' },
   { id: 4, question: "Timeline for seeing real impact?", options: ["Next 30-60 days", "Next quarter", "6+ months"], type: 'select' },
 ];
@@ -40,6 +40,16 @@ export default function PlanningWizard() {
     });
   };
 
+  const handleAnswerForScale = (field: 'revenue' | 'team', value: string, prevScale: any) => {
+    setAnswers(prev => ({
+      ...prev,
+      [current.id]: {
+        ...prevScale,
+        [field]: value
+      }
+    }));
+  };
+
   const next = () => {
     if (currentStep < steps.length) {
       setCurrentStep(currentStep + 1);
@@ -57,7 +67,8 @@ export default function PlanningWizard() {
     
     setTimeout(() => {
       const industry = answers[1] || 'your business';
-      const size = answers[2] || 'your size';
+      const scale = answers[2] as any;
+      const size = scale ? `${scale.revenue || ''} revenue, ${scale.team || ''} team` : 'your size';
       const pains = (answers[3] as string[] || []).join(' + ') || 'core inefficiencies';
       const timeline = answers[4] || 'soon';
 
@@ -163,9 +174,12 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
   }
 
   const currentAnswer = answers[current.id];
-  const hasAnswer = current.type === 'multi' 
-    ? (currentAnswer as string[] || []).length > 0 
-    : !!currentAnswer;
+  const isScaleStep = current.id === 2;
+  const hasAnswer = isScaleStep 
+    ? !!( (currentAnswer as any)?.revenue && (currentAnswer as any)?.team )
+    : current.type === 'multi' 
+      ? (currentAnswer as string[] || []).length > 0 
+      : !!currentAnswer;
 
   return (
     <div className="max-w-[620px] mx-auto bg-white border border-[#E5E5E3] p-8 rounded-3xl">
@@ -186,7 +200,57 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
           />
         )}
 
-        {(current.type === 'select' || current.type === 'multi') && current.options?.map(option => {
+        {current.id === 2 && (
+          <div className="space-y-6">
+            {/* Revenue */}
+            <div>
+              <div className="text-sm text-[#666] mb-2">Annual revenue</div>
+              {["Under $2M", "$2M–$10M", "$10M+"].map(option => {
+                const selected = (currentAnswer as any)?.revenue === option;
+                return (
+                  <button
+                    key={option}
+                    onClick={() => {
+                      const prev = (answers[2] as any) || {};
+                      handleAnswerForScale('revenue', option, prev);
+                    }}
+                    className={`w-full text-left p-4 mb-2 rounded-2xl border text-base transition-all ${selected 
+                      ? 'border-[#0A66C2] bg-[#F0F7FF] text-[#111]' 
+                      : 'border-[#E5E5E3] hover:border-[#CCC] bg-white'}`}
+                  >
+                    {option}
+                    {selected && ' ✓'}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Team size */}
+            <div>
+              <div className="text-sm text-[#666] mb-2">Team size</div>
+              {["<10 people", "10-50 people", "50+ people"].map(option => {
+                const selected = (currentAnswer as any)?.team === option;
+                return (
+                  <button
+                    key={option}
+                    onClick={() => {
+                      const prev = (answers[2] as any) || {};
+                      handleAnswerForScale('team', option, prev);
+                    }}
+                    className={`w-full text-left p-4 mb-2 rounded-2xl border text-base transition-all ${selected 
+                      ? 'border-[#0A66C2] bg-[#F0F7FF] text-[#111]' 
+                      : 'border-[#E5E5E3] hover:border-[#CCC] bg-white'}`}
+                  >
+                    {option}
+                    {selected && ' ✓'}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {(current.type === 'select' || current.type === 'multi') && current.id !== 2 && current.options?.map(option => {
           const isSelected = current.type === 'multi' 
             ? (currentAnswer as string[] || []).includes(option)
             : currentAnswer === option;
