@@ -76,6 +76,29 @@ Add custom domain `betterwithai.io` in the Cloudflare Pages dashboard.
 
 Replace the Stripe test links with real product links once created in the Stripe dashboard.
 
-## Talk to me
+## Talk to me — I handle the rest
 
-Just tell me what to change. I'll edit the code, commit, and push the update to the host. That's the whole point of this setup.
+This is the core workflow you asked for:
+
+1. You message me in natural language.
+2. I make changes locally.
+3. I commit + push to GitHub using the tools.
+4. Hosting auto-deploys (Vercel or Cloudflare).
+
+Once the GitHub repo is connected, I can do almost everything end-to-end.
+
+## Operations Leader + Multi-Agent System
+
+I've started building the agent team you described.
+
+See `agents/` folder:
+
+- `ops_leader.py` — The central brain
+- Specialist agents for **Coding**, **Calendar**, **Accounting**, **Client management**
+- `python agents/run_ops.py` to talk to the leader
+
+The CodingAgent is designed to hand detailed specs to me (Grok) so I can implement + deploy.
+
+We'll keep expanding this into a full autonomous operations team (proposals, onboarding, billing, research, etc.).
+
+Run `python agents/run_ops.py` and try giving it tasks.
