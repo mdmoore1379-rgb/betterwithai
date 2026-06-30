@@ -191,20 +191,21 @@ export default function ClientPortal() {
     }
   }, []);
 
-  const handleSSOLogin = (provider: 'google' | 'microsoft', role?: 'internal' | 'client') => {
+  // NOTE: No real admin emails are ever exposed in the UI or client code.
+  // Dev master testing is done via ?devmaster=1 (does not render any privileged emails).
+  const handleSSOLogin = (provider: 'google' | 'microsoft') => {
     let mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     
-    // IMPORTANT: Real admin emails are NEVER rendered in the UI.
-    // Master access is only granted here for local/dev testing via hidden flag.
-    const isDevMaster = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('devmaster') === '1';
-    if (isDevMaster && provider === 'google') {
-      mockEmail = 'dev-master@betterwithai.test'; // placeholder, never a real address
+    const urlParams = (typeof window !== 'undefined') ? new URLSearchParams(window.location.search) : null;
+    const isDevMaster = urlParams?.get('devmaster') === '1';
+    
+    if (isDevMaster) {
+      mockEmail = 'dev-master@localhost'; // completely fake, never a real address
     }
     
     setUserEmail(mockEmail);
-    const isMaster = isDevMaster;
-    setIsMasterSuperAdmin(isMaster);
-    setIsInternal(isMaster || role === 'internal' || mockEmail.includes('ops@'));
+    setIsMasterSuperAdmin(isDevMaster);
+    setIsInternal(isDevMaster || mockEmail.includes('ops@'));
     setIsAuthenticated(true);
 
     const stored = localStorage.getItem('lawyerConsents_' + mockEmail);
@@ -215,8 +216,8 @@ export default function ClientPortal() {
       setShowLawyerConsent(true);
     }
     
-    if (isMaster) {
-      setActionMessage("Dev Master access (via ?devmaster=1). Full control enabled for testing only.");
+    if (isDevMaster) {
+      setActionMessage("Dev master mode active (via ?devmaster=1 only). This is not exposed publicly.");
       setTimeout(() => setActionMessage(null), 4000);
     }
   };
@@ -331,22 +332,11 @@ export default function ClientPortal() {
             </button>
             
             {/* 
-              DEV ONLY: Master super admin testing is now hidden behind ?devmaster=1
-              Real admin emails are NEVER shown in the UI or committed to client bundles.
-              This section does not render the actual privileged account addresses.
+              DEV ACCESS ONLY
+              To test as master, append ?devmaster=1 to the URL.
+              This does NOT display any real email addresses.
+              Never ship with visible master login buttons containing real privileged accounts.
             */}
-            {typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('devmaster') === '1' && (
-              <div className="pt-3 border-t border-[#E5E5E3]">
-                <div className="text-xs text-[#666] mb-2 font-semibold">DEV MASTER (local testing only)</div>
-                <button 
-                  onClick={() => handleSSOLogin('google', 'internal')}
-                  className="w-full border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white py-3 text-sm rounded-full mb-2 font-medium"
-                >
-                  Sign in as Dev Master
-                </button>
-                <p className="text-[10px] text-[#888] mt-1">Add ?devmaster=1 to the URL to see this. Never visible in normal traffic.</p>
-              </div>
-            )}
           </div>
 
           <p className="mt-9 text-sm text-[#666] leading-snug">
@@ -430,29 +420,17 @@ export default function ClientPortal() {
         </div>
 
         {isInternal && (
-          <div className="mb-4 text-xs px-3 py-1 bg-amber-100 text-amber-800 inline-block rounded">INTERNAL / DEV VIEW</div>
+          <div className="mb-4 text-xs px-3 py-1 bg-amber-100 text-amber-800 inline-block rounded">DEV / INTERNAL VIEW</div>
         )}
 
         {isMasterSuperAdmin && (
           <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm">
-            <div className="font-semibold text-amber-700 mb-2">DEV MASTER CONTROLS (testing only)</div>
-            <div className="flex flex-wrap gap-3 items-center">
-              <button 
-                onClick={() => {
-                  const pkg = window.prompt("Select package...") || "Implementation";
-                  const clientName = window.prompt("Client name?") || "New Client";
-                  // ... rest of the dev tools (kept for internal use)
-                }}
-                className="px-4 py-1 bg-white border border-amber-600 text-amber-700 rounded-full text-xs font-medium hover:bg-amber-600 hover:text-white"
-              >
-                + Create Project (Dev)
-              </button>
-              <span className="text-xs text-[#666]">These controls are only reachable via ?devmaster=1 and should never be reachable in normal traffic.</span>
-            </div>
+            <div className="font-semibold text-amber-700 mb-2">DEV MASTER MODE (only via ?devmaster=1)</div>
+            <div className="text-xs text-[#666]">This UI is only reachable with the secret dev flag. Never exposed to normal visitors.</div>
           </div>
         )}
 
-        {/* Dashboard - 3 Key Company Goals */}
+        {/* Dashboard */}
         {activeTab === 'dashboard' && (
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
