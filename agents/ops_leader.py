@@ -4,12 +4,15 @@ Operations Leader Agent for betterwithai.
 This is the central brain that receives high-level requests from Michael
 and intelligently delegates to a team of specialist agents.
 
+**Mission:** Support building a $100M revenue AI consulting business by end of 2030 (full-time start Jan 2027).
+
 It can handle:
 - Coding & website updates (delegates to CodingAgent)
 - Client accounts & billing (AccountingAgent)
 - Calendar & scheduling (CalendarAgent)
 - Client onboarding & account management
-- Research, proposals, marketing, etc.
+- Growth, recruiting, proposals, marketing at scale
+- Execution of the 4-year growth plan
 """
 
 from typing import List, Dict, Any
