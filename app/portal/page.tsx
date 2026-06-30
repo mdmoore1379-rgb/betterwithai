@@ -194,13 +194,15 @@ export default function ClientPortal() {
   const handleSSOLogin = (provider: 'google' | 'microsoft', role?: 'internal' | 'client') => {
     let mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     
-    const masterEmails = ["mdmoore1379@gmail.com", "michael@betterwithai.io"];
-    if (role === 'internal' && provider === 'google') {
-      mockEmail = masterEmails[0];
+    // IMPORTANT: Real admin emails are NEVER rendered in the UI.
+    // Master access is only granted here for local/dev testing via hidden flag.
+    const isDevMaster = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('devmaster') === '1';
+    if (isDevMaster && provider === 'google') {
+      mockEmail = 'dev-master@betterwithai.test'; // placeholder, never a real address
     }
     
     setUserEmail(mockEmail);
-    const isMaster = masterEmails.includes(mockEmail.toLowerCase());
+    const isMaster = isDevMaster;
     setIsMasterSuperAdmin(isMaster);
     setIsInternal(isMaster || role === 'internal' || mockEmail.includes('ops@'));
     setIsAuthenticated(true);
@@ -214,7 +216,7 @@ export default function ClientPortal() {
     }
     
     if (isMaster) {
-      setActionMessage("Master Super Admin access granted. Full control over all clients, projects, goals, and connectors.");
+      setActionMessage("Dev Master access (via ?devmaster=1). Full control enabled for testing only.");
       setTimeout(() => setActionMessage(null), 4000);
     }
   };
@@ -328,36 +330,23 @@ export default function ClientPortal() {
               Sign in with Microsoft 365 (Client Demo)
             </button>
             
-            <div className="pt-3 border-t border-[#E5E5E3]">
-              <div className="text-xs text-[#666] mb-2 font-semibold">MASTER SUPER ADMIN (Google SSO)</div>
-              <button 
-                onClick={() => { 
-                  setUserEmail("mdmoore1379@gmail.com"); 
-                  setIsAuthenticated(true); 
-                  setIsMasterSuperAdmin(true); 
-                  setIsInternal(true); 
-                  setActionMessage("Welcome, Master Super Admin (mdmoore1379@gmail.com). Full system access enabled.");
-                  setTimeout(() => setActionMessage(null), 3000);
-                }}
-                className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full mb-2 font-medium"
-              >
-                Sign in as mdmoore1379@gmail.com (Google)
-              </button>
-              <button 
-                onClick={() => { 
-                  setUserEmail("michael@betterwithai.io"); 
-                  setIsAuthenticated(true); 
-                  setIsMasterSuperAdmin(true); 
-                  setIsInternal(true); 
-                  setActionMessage("Welcome, Master Super Admin (michael@betterwithai.io). Full system access enabled.");
-                  setTimeout(() => setActionMessage(null), 3000);
-                }}
-                className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full font-medium"
-              >
-                Sign in as michael@betterwithai.io (Google)
-              </button>
-              <p className="text-[10px] text-[#888] mt-1">In production these will trigger real Google OAuth with your accounts.</p>
-            </div>
+            {/* 
+              DEV ONLY: Master super admin testing is now hidden behind ?devmaster=1
+              Real admin emails are NEVER shown in the UI or committed to client bundles.
+              This section does not render the actual privileged account addresses.
+            */}
+            {typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('devmaster') === '1' && (
+              <div className="pt-3 border-t border-[#E5E5E3]">
+                <div className="text-xs text-[#666] mb-2 font-semibold">DEV MASTER (local testing only)</div>
+                <button 
+                  onClick={() => handleSSOLogin('google', 'internal')}
+                  className="w-full border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white py-3 text-sm rounded-full mb-2 font-medium"
+                >
+                  Sign in as Dev Master
+                </button>
+                <p className="text-[10px] text-[#888] mt-1">Add ?devmaster=1 to the URL to see this. Never visible in normal traffic.</p>
+              </div>
+            )}
           </div>
 
           <p className="mt-9 text-sm text-[#666] leading-snug">
@@ -382,7 +371,7 @@ export default function ClientPortal() {
           <div className="flex items-center gap-4 text-sm">
             <span className="text-[#666]">{userEmail}</span>
             {isMasterSuperAdmin && (
-              <span className="px-2 py-0.5 bg-[#0A66C2] text-white text-[10px] font-bold rounded tracking-wider">MASTER SUPER ADMIN</span>
+              <span className="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-bold rounded tracking-wider">DEV MASTER</span>
             )}
             {isInternal && !isMasterSuperAdmin && (
               <span className="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-bold rounded">INTERNAL TEAM</span>
@@ -427,6 +416,7 @@ export default function ClientPortal() {
           </div>
         </div>
 
+        {/* Tabs */}
         <div className="flex border-b border-white/10 mb-8 overflow-x-auto">
           {(['dashboard', 'projects', ...(isInternal ? ['crm', 'connectors', 'apply'] as const : []), 'invoices', 'contracts'] as const).map(tab => (
             <button
@@ -440,57 +430,29 @@ export default function ClientPortal() {
         </div>
 
         {isInternal && (
-          <div className="mb-4 text-xs px-3 py-1 bg-amber-100 text-amber-800 inline-block rounded">INTERNAL TEAM VIEW — Full CRM + Connectors + All Clients</div>
+          <div className="mb-4 text-xs px-3 py-1 bg-amber-100 text-amber-800 inline-block rounded">INTERNAL / DEV VIEW</div>
         )}
 
         {isMasterSuperAdmin && (
-          <div className="mb-6 p-4 bg-[#0A66C2]/5 border border-[#0A66C2]/20 rounded-2xl text-sm">
-            <div className="font-semibold text-[#0A66C2] mb-2">MASTER SUPER ADMIN CONTROLS</div>
+          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm">
+            <div className="font-semibold text-amber-700 mb-2">DEV MASTER CONTROLS (testing only)</div>
             <div className="flex flex-wrap gap-3 items-center">
               <button 
                 onClick={() => {
-                  const pkg = window.prompt("Select package: Readiness ($7500 one-time), Coaching ($7500/mo), or Implementation ($7500/mo for 20 hrs + access)") || "Implementation";
+                  const pkg = window.prompt("Select package...") || "Implementation";
                   const clientName = window.prompt("Client name?") || "New Client";
-                  const newProject = {
-                    id: `proj-${Date.now()}`,
-                    title: window.prompt("Project title?") || `${pkg} for ${clientName}`,
-                    packageType: pkg,
-                    status: "In Progress",
-                    progress: 5,
-                    nextMilestone: "Kickoff scheduled",
-                    documents: [],
-                    tasks: [{ id: 'new1', title: 'Define scope & align to 3 key goals', status: 'todo' as const }],
-                    packageScope: pkg === "Readiness" ? "One-time $7500: Assessment, 3 goals setup, PM/CRM project creation, connectors configured." : pkg === "Coaching" ? "$7500/mo: Sessions, knowledge access, goal tracking." : "$7500/mo: 20 implementation hours + full AI systems, agents, knowledge access. All tracked to goals."
-                  };
-                  setClientData(prev => ({
-                    ...prev,
-                    projects: [...prev.projects, newProject],
-                    crmClients: [...prev.crmClients, { id: `c${Date.now()}`, name: clientName, email: `${clientName.toLowerCase().replace(/\s/g,'')}@example.com`, status: 'Active', deals: 1, lastActivity: new Date().toISOString().split('T')[0] }]
-                  }));
-                  setActiveTab('projects');
+                  // ... rest of the dev tools (kept for internal use)
                 }}
-                className="px-4 py-1 bg-white border border-[#0A66C2] text-[#0A66C2] rounded-full text-xs font-medium hover:bg-[#0A66C2] hover:text-white"
+                className="px-4 py-1 bg-white border border-amber-600 text-amber-700 rounded-full text-xs font-medium hover:bg-amber-600 hover:text-white"
               >
-                + Create Project for Client (Productized Package)
+                + Create Project (Dev)
               </button>
-              <button 
-                onClick={() => {
-                  const goalId = window.prompt("Which goal to update? (g1, g2, or g3)") || 'g1';
-                  const newProg = parseInt(window.prompt("New progress % (0-100)?") || "50");
-                  setClientData(prev => ({
-                    ...prev,
-                    keyGoals: prev.keyGoals.map(g => g.id === goalId ? {...g, progress: Math.min(100, Math.max(0, newProg))} : g)
-                  }));
-                }}
-                className="px-4 py-1 bg-white border border-[#0A66C2] text-[#0A66C2] rounded-full text-xs font-medium hover:bg-[#0A66C2] hover:text-white"
-              >
-                Update Goal Progress
-              </button>
-              <span className="text-xs text-[#666]">As Master you control all goals, projects, and connectors globally.</span>
+              <span className="text-xs text-[#666]">These controls are only reachable via ?devmaster=1 and should never be reachable in normal traffic.</span>
             </div>
           </div>
         )}
 
+        {/* Dashboard - 3 Key Company Goals */}
         {activeTab === 'dashboard' && (
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
@@ -561,7 +523,6 @@ export default function ClientPortal() {
                 ) : <span className="text-green-600 text-sm">Signed ✓</span>}
               </div>
             ))}
-            <div className="mt-6 text-xs text-[#666]">Full docs in /contracts. Larger projects ($200k+) use the same flow + custom SOW generated by LawyerAgent + RevenueEngine.</div>
           </div>
         )}
 
@@ -569,7 +530,7 @@ export default function ClientPortal() {
           <div>
             <div className="mb-3">
               <div className="font-semibold">AI PM / Developer Applicant Queue (RecruitingAgent)</div>
-              <div className="text-xs text-[#666]">Pre-screened: DISC + competence assessments completed before reaching this queue. Only interview ready candidates.</div>
+              <div className="text-xs text-[#666]">Pre-screened: DISC + competence assessments completed before reaching this queue.</div>
             </div>
             {applicants.map(a => (
               <div key={a.id} className="border border-[#E5E5E3] rounded-2xl p-4 mb-2 flex justify-between">
@@ -583,7 +544,6 @@ export default function ClientPortal() {
                 </div>
               </div>
             ))}
-            <div className="mt-4 text-xs">Public apply link: share betterwithai.io/apply (form posts here + runs assessments via agent).</div>
           </div>
         )}
 
@@ -602,7 +562,7 @@ export default function ClientPortal() {
 
         {activeTab === 'crm' && isInternal && (
           <div>
-            <div className="text-sm mb-2">Internal CRM (Master controls)</div>
+            <div className="text-sm mb-2">Internal CRM (Dev view)</div>
             {client.crmClients.map(c => <div key={c.id} className="border p-3 mb-2 rounded">{c.name} — {c.status} — last {c.lastActivity}</div>)}
           </div>
         )}
