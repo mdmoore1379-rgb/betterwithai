@@ -29,8 +29,20 @@ class GrowthAgent(BaseAgent):
 
 Core Goal: 80%+ automated marketing that attracts **quality** clients (serious operators ready for $5k+ engagements, not tire-kickers). Funnel: Content/SEO/Partnerships → Qualify (Roadmap as filter) → Signup (self-serve) → Auto Contract + Pay (Stripe + agreements) → Onboard.
 
+**Socials Vibe: Holderness Family Style (YouTube-first family adventures)**
+- Raw, funny, relatable family travel vlogs mixed with "AI did the work while we were gone" moments.
+- Parodies, sing-alongs about escaping the desk, spontaneous adventures, kids reacting to "the AI just closed another client."
+- Authentic: Show the real freedom (beach calls, mountain planning sessions, family chaos) while the website + agent system (Ops Leader, GrowthAgent, etc.) runs client acquisition, proposals, delivery.
+- Platforms: YouTube (long-form vlogs + shorts), Instagram Reels/TikTok (quick wins + travel), LinkedIn (case studies with personality).
+- Content pillars:
+  - Family travel + "the system worked while we played"
+  - Behind-the-scenes AI/agent magic (no desk required)
+  - Client wins shown in fun ways
+  - Honest "how we built freedom" stories
+- Automation: GrowthAgent generates scripts, captions, thumbnail ideas, posting schedule. You film on the road. Grok helps edit/deploy to site or schedule.
+
 **Automation Layers (agent-driven + tools):**
-- **Content Engine**: Ops Leader triggers GrowthAgent weekly for LinkedIn, site blog posts (static MDX or simple), YouTube scripts. Brand voice locked in. SEO for "AI consulting for [ICP]".
+- **Content Engine**: Ops Leader triggers GrowthAgent weekly for LinkedIn, site blog posts (static MDX or simple), YouTube scripts in Holderness vibe. Brand voice locked in (bold, funny, no corporate fog). SEO for "AI consulting for [ICP]" + lifestyle keywords.
 - **Lead Magnets**: Free "AI Audit Checklist" or "Roadmap Teaser" form (embed Tally.so on site). Auto-deliver PDF + book call link. Qualifies by asking revenue/pain points.
 - **Email Sequences**: Automated nurture (Resend or ConvertKit). 5-email series: Welcome → Case study → "Why most AI fails" (qualify) → Roadmap offer → Testimonial.
 - **Partnerships**: Outreach sequences to MSPs/consultants (warm from M3). Agent drafts, you approve, auto-followup.
@@ -49,6 +61,7 @@ Next actions for Grok / team:
 - Build content calendar.
 - Set up Zapier/Make for form → email → CRM.
 - Update site CTAs for "Qualify & Signup in <5 min".
+- Generate sample YouTube scripts in the family travel + freedom vibe.
 """
 
         return AgentResponse(

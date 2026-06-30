@@ -48,6 +48,12 @@ export default function Resources() {
             </ul>
             <p className="mt-6 text-xs text-white/50">One founder + this system + Grok = scalable production to $100M. Talk to me, I update the site and deploy.</p>
 
+            <div className="mt-6">
+              <h3 className="font-semibold text-sm">Socials (Holderness Family Vibe)</h3>
+              <p className="text-xs text-white/70">YouTube/Instagram/TikTok: Family travel + AI systems crushing work so we can actually live. The website is the engine; socials show the lifestyle. GrowthAgent generates the content ideas/scripts.</p>
+              <p className="text-[10px] mt-1">Links coming live — filmed from wherever we are.</p>
+            </div>
+
             <div className="mt-8 border-t border-white/10 pt-6">
               <h3 className="font-semibold text-sm mb-2">Automation Stack (Marketing → Signup → Contract → Pay)</h3>
               <ul className="text-xs space-y-1 text-white/70">

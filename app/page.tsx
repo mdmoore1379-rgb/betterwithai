@@ -30,6 +30,7 @@ export default function BetterWithAI() {
     { label: "Solutions", href: "#solutions" },
     { label: "Pricing", href: "#pricing" },
     { label: "How it works", href: "#how-it-works" },
+    { label: "Lifestyle", href: "#lifestyle" },
     { label: "Resources", href: "/resources" },
     { label: "About", href: "#about" },
     { label: "FAQ", href: "#faq" },
@@ -383,6 +384,38 @@ export default function BetterWithAI() {
         </p>
       </section>
 
+      {/* LIFESTYLE — The Real Goal (Holderness Family Vibe) */}
+      <section id="lifestyle" className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="text-center">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">THE FREEDOM LIFESTYLE</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">AI runs the business.<br />We run around the world.</h2>
+          <p className="mt-4 max-w-3xl mx-auto text-xl text-white/70">
+            This isn't about building another desk job. It's about building systems (the website, the agent team, automated marketing, self-serve Roadmap) so we can be out there living — family adventures, travel, real life — while the AI does the heavy lifting.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Family First, Systems Second</h3>
+            <p className="mt-3 text-white/80">Picture the Holderness family vibe: hilarious travel vlogs, kids' adventures, spontaneous moments, but with a business that actually scales without me glued to a laptop. The Ops Leader + specialists handle client work, proposals, follow-ups, and growth while we're exploring.</p>
+          </div>
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Content That Shows the Dream</h3>
+            <p className="mt-3 text-white/80">YouTube, Instagram, TikTok: raw family travel, behind-the-scenes of AI doing the work (e.g., "The agent just booked 3 clients while we were on a beach in Thailand"), honest takes on freedom vs. the old 9-5. Funny parodies, real wins, zero corporate speak.</p>
+            <p className="mt-4 text-sm text-[#C6FF3A]">The website is the engine. Socials are the megaphone showing what’s possible.</p>
+          </div>
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Proof It Works</h3>
+            <p className="mt-3 text-white/80">Clients see the lifestyle and think: "If they can do this with AI systems, so can I." It attracts the exact quality people who value time and results over hustle porn. Automated funnels + agent team = we live it, they join it.</p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-white/70">Follow the journey: YouTube / Instagram coming soon (filmed on the road). The site and agents make it sustainable.</p>
+          <a href="#pricing" className="btn-primary mt-6 inline-flex">Start Your Own Freedom Roadmap →</a>
+        </div>
+      </section>
+
       {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
       <section className="border-y border-white/10 bg-[#121217] py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
@@ -461,7 +494,7 @@ export default function BetterWithAI() {
           </div>
 
           <div className="mt-10 mx-auto max-w-3xl text-lg leading-relaxed text-white/80 text-left md:text-center">
-            <strong className="text-white">Michael Moore</strong> leads betterwithai as the visionary — the one who sits with you, understands your business, and maps where AI actually moves the needle. That&apos;s the relationship you keep.
+            <strong className="text-white">Michael Moore</strong> leads betterwithai as the visionary — the one who sits with you, understands your business, and maps where AI actually moves the needle. That&apos;s the relationship you keep. (You&apos;ll mostly see me and the family on the road in our socials — AI + the agent team handle the desk work.)
             <br /><br />
             Behind that vision is a <strong className="text-white">growing team + agent-powered operating system</strong> (visible right here on this site) that plans and executes at scale — like a wedding planner and crew. The website is the core strategic asset: it productizes our approach, houses the playbook, and powers client journeys to $100M without constant redesigns. You set the direction; we handle the rest.
           </div>

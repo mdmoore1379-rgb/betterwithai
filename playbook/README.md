@@ -59,6 +59,12 @@ Supporting:
 - Funnel: Content → Lead magnet (Tally) → Qualify (Roadmap) → Auto Stripe + contract → Agent onboarding.
 - Quality focus: ICP baked into copy and forms (serious businesses ready for $5k+ work).
 
+**Socials Vibe: Holderness Family Style**
+- See `growth/social-strategy.md`
+- YouTube-first family travel adventures + "the AI systems ran the business while we were off-grid."
+- Funny, relatable, freedom-focused. Attracts clients who want the same lifestyle.
+- GrowthAgent generates scripts/captions. Film on the road. Site drives the funnel.
+
 **The Website as the Skilled Wedding Planner System**
 - See `planning-system.md`
 - The site (Planning Wizard) + agents do a huge amount of the planning and discussion that traditionally requires a highly skilled person.
