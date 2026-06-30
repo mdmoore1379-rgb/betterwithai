@@ -154,15 +154,15 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
 
               <button 
                 onClick={() => {
-                  // Simulate successful Stripe payment + contract creation
+                  // Simulate Stripe checkout processing like Tesla order
                   setTimeout(() => {
                     setCheckoutStep('success');
-                  }, 650);
+                  }, 1200);
                 }}
                 disabled={!checkoutEmail.includes('@')}
                 className="btn-primary w-full mt-6 py-4 text-lg disabled:opacity-60"
               >
-                Pay $2,497 with Stripe →
+                {checkoutEmail ? 'Complete purchase with Stripe' : 'Enter email to continue'}
               </button>
 
               <p className="text-[10px] text-center text-white/40 mt-3">Demo checkout. No card charged. You’ll land in the live portal with your project.</p>
