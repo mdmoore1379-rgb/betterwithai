@@ -144,10 +144,13 @@ export default function ClientPortal() {
         const newProject = {
           id: `proj-${Date.now()}`,
           title: "AI Project from Website Wizard",
+          packageType: "Readiness",
           status: "In Progress",
           progress: 18,
           nextMilestone: "Kickoff scheduled by Ops Leader • Check back in portal",
-          documents: ["Wizard Plan.pdf"]
+          documents: ["Wizard Plan.pdf"],
+          tasks: [] as ProjectTask[],
+          packageScope: "Self-serve entry from website wizard. Initial project created in portal PM/CRM system with 3 key goals."
         };
         setClientData(prev => ({
           ...prev,
