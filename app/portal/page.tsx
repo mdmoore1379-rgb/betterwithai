@@ -116,7 +116,7 @@ const defaultClientData = {
   ] as MeetingActivity[]
 };
 
-// LawyerAgent documents (checkbox style like bank disclosures)
+// Lawyer Agent documents (checkbox style like bank disclosures)
 const lawyerDocs = [
   { id: 'msa', label: 'Master Services Agreement (MSA)', desc: 'Governs all services, payments, IP ownership, confidentiality.' },
   { id: 'ai_policy', label: 'AI Usage & Data Policy', desc: 'How AI agents and tools use your data. Full confidentiality maintained.' },
@@ -129,7 +129,7 @@ export default function ClientPortal() {
   const [userEmail, setUserEmail] = useState("");
   const [isInternal, setIsInternal] = useState(false);
   const [isMasterSuperAdmin, setIsMasterSuperAdmin] = useState(false);
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'projects' | 'crm' | 'connectors' | 'invoices' | 'contracts'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'projects' | 'crm' | 'connectors' | 'invoices' | 'contracts' | 'apply'>('dashboard');
   const [clientData, setClientData] = useState(defaultClientData);
   const [showWelcome, setShowWelcome] = useState(false);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
@@ -143,6 +143,12 @@ export default function ClientPortal() {
   // Check if all required consents given
   const allConsented = lawyerDocs.every(d => consents[d.id]);
 
+  // Mock applicant queue (pre-assessed by RecruitingAgent)
+  const [applicants, setApplicants] = useState([
+    { id: 'app1', name: 'Alex Rivera', role: 'AI PM', disc: 'High D/I', competence: '92%', status: 'Ready for interview', applied: '2026-06-28' },
+    { id: 'app2', name: 'Sam Patel', role: 'AI Developer', disc: 'High C', competence: '87%', status: 'Queue', applied: '2026-06-29' },
+  ]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
@@ -154,7 +160,6 @@ export default function ClientPortal() {
       setUserEmail(email);
       setIsAuthenticated(true);
 
-      // After login, show LawyerAgent disclosures (unless already consented in this demo session)
       const stored = localStorage.getItem('lawyerConsents_' + email);
       if (stored) {
         setConsents(JSON.parse(stored));
@@ -186,8 +191,6 @@ export default function ClientPortal() {
     }
   }, []);
 
-  // Real implementation later:
-  // Supabase + Google/Microsoft Entra SSO. Payment webhooks update projects/invoices/contracts.
   const handleSSOLogin = (provider: 'google' | 'microsoft', role?: 'internal' | 'client') => {
     let mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     
@@ -202,7 +205,6 @@ export default function ClientPortal() {
     setIsInternal(isMaster || role === 'internal' || mockEmail.includes('ops@'));
     setIsAuthenticated(true);
 
-    // LawyerAgent step on login (like bank disclosures)
     const stored = localStorage.getItem('lawyerConsents_' + mockEmail);
     if (stored) {
       setConsents(JSON.parse(stored));
@@ -395,7 +397,6 @@ export default function ClientPortal() {
           <div className="mb-4 text-xs text-[#666]">LawyerAgent consents recorded {new Date(consentTimestamp).toLocaleString()}</div>
         )}
 
-        {/* Premium Tesla-like welcome + handoff banner */}
         {showWelcome && (
           <div className="mb-6 rounded-2xl border border-[#C6FF3A]/60 bg-[#C6FF3A]/10 px-6 py-4 text-[#C6FF3A] flex items-start gap-3">
             <span className="text-xl mt-0.5">🚀</span>
@@ -419,7 +420,6 @@ export default function ClientPortal() {
           </div>
           <p className="text-[#555] max-w-xl">Your AI is running the work. Track projects, sign contracts, pay invoices. No email chains. No desk required.</p>
           
-          {/* Tesla-style live status */}
           <div className="mt-4 p-5 bg-white/5 rounded-2xl border border-white/10 text-sm">
             <div className="uppercase tracking-[2px] text-[#C6FF3A] text-xs mb-1">LIVE FROM THE AGENT SYSTEM</div>
             <div className="font-semibold text-lg text-[#111]">Roadmap delivered • New wizard project queued • Agents handling delivery</div>
@@ -427,15 +427,14 @@ export default function ClientPortal() {
           </div>
         </div>
 
-        {/* Tabs */}
         <div className="flex border-b border-white/10 mb-8 overflow-x-auto">
-          {(['dashboard', 'projects', ...(isInternal ? ['crm', 'connectors'] as const : []), 'invoices', 'contracts'] as const).map(tab => (
+          {(['dashboard', 'projects', ...(isInternal ? ['crm', 'connectors', 'apply'] as const : []), 'invoices', 'contracts'] as const).map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${activeTab === tab ? 'border-[#0A66C2] text-[#0A66C2]' : 'border-transparent text-[#666] hover:text-[#111]'}`}
             >
-              {tab === 'crm' ? 'CRM' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === 'crm' ? 'CRM' : tab === 'apply' ? 'Join Team (Apply)' : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
@@ -492,7 +491,6 @@ export default function ClientPortal() {
           </div>
         )}
 
-        {/* Dashboard - 3 Key Company Goals (AI heavily enabled) */}
         {activeTab === 'dashboard' && (
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
@@ -516,7 +514,6 @@ export default function ClientPortal() {
           </div>
         )}
 
-        {/* Projects */}
         {activeTab === 'projects' && (
           <div className="space-y-6">
             {client.projects.map(p => (
@@ -550,7 +547,6 @@ export default function ClientPortal() {
           </div>
         )}
 
-        {/* Contracts tab shows LawyerAgent history too */}
         {activeTab === 'contracts' && (
           <div>
             <div className="mb-4 text-sm text-[#666]">Managed by LawyerAgent. All agreements timestamped on login.</div>
@@ -569,7 +565,28 @@ export default function ClientPortal() {
           </div>
         )}
 
-        {/* Other tabs abbreviated for brevity in this edit (invoices, crm etc remain functional) */}
+        {activeTab === 'apply' && isInternal && (
+          <div>
+            <div className="mb-3">
+              <div className="font-semibold">AI PM / Developer Applicant Queue (RecruitingAgent)</div>
+              <div className="text-xs text-[#666]">Pre-screened: DISC + competence assessments completed before reaching this queue. Only interview ready candidates.</div>
+            </div>
+            {applicants.map(a => (
+              <div key={a.id} className="border border-[#E5E5E3] rounded-2xl p-4 mb-2 flex justify-between">
+                <div>
+                  <span className="font-medium">{a.name}</span> — {a.role}<br />
+                  <span className="text-xs">DISC: {a.disc} • Competence: {a.competence}</span>
+                </div>
+                <div className="text-right text-sm">
+                  {a.status} <span className="text-[#888]">• applied {a.applied}</span>
+                  <div><button onClick={() => setActionMessage('Interview scheduled for ' + a.name + ' (simulated)')} className="text-xs underline">Schedule human interview</button></div>
+                </div>
+              </div>
+            ))}
+            <div className="mt-4 text-xs">Public apply link: share betterwithai.io/apply (form posts here + runs assessments via agent).</div>
+          </div>
+        )}
+
         {activeTab === 'invoices' && (
           <div className="space-y-3">
             {client.invoices.map(inv => (
