@@ -1,10 +1,68 @@
-  // When logging in as any team role (pm, dev, team_member), default to the employee clarity experience
-  if (isMaster) {
-    setCurrentRole('owner');
-  } else if (mockEmail.includes('ops')) {
-    setCurrentRole('internal');
-  } else if (['pm', 'dev', 'team_member'].includes(currentRole) || !currentRole) {
-    setCurrentRole('team_member');
-  } else {
-    setCurrentRole('client');
-  }
+        {/* Team Member View - the ultimate in clarity */}
+        {(currentRole === 'team_member' || currentRole === 'pm' || currentRole === 'dev') && (
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 text-center">
+              <div className="inline-block px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold tracking-wider mb-3">YOUR PERSONAL OPERATING SYSTEM</div>
+              <h1 className="text-4xl font-semibold tracking-tight">Everything you need to know. Nothing you don't.</h1>
+              <p className="text-[#666] mt-2">Pay. Benefits. Responsibilities. The exact moves that grow your OTE. Updated live by your agents.</p>
+            </div>
+
+            {/* Hero OTE */}
+            <div className="bg-white border border-[#0A66C2] rounded-3xl p-8 mb-8 text-center">
+              <div className="text-sm text-[#0A66C2] tracking-[2px] font-semibold mb-1">Q3 ON-TARGET EARNINGS</div>
+              <div className="text-7xl font-semibold tracking-[-4px] tabular-nums">$41,250 <span className="text-4xl text-[#666]">/ $48,000</span></div>
+              <div className="mt-2 text-[#0A66C2] font-medium">86% to target — 3 high-leverage moves left</div>
+              <div className="mt-4 h-2.5 bg-[#F0F0EE] rounded-full overflow-hidden max-w-sm mx-auto">
+                <div className="h-2.5 bg-[#0A66C2]" style={{width:'86%'}}></div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              {/* Pay */}
+              <div className="border border-[#E5E5E3] rounded-2xl p-5">
+                <div className="text-xs uppercase tracking-widest text-[#666] mb-2">How you get paid</div>
+                <div className="text-2xl font-semibold tracking-tight">$10k base + 8% commission + quarterly bonus</div>
+                <div className="text-sm mt-3 text-[#666]">Current month projection: $16.4k</div>
+              </div>
+              {/* Benefits */}
+              <div className="border border-[#E5E5E3] rounded-2xl p-5">
+                <div className="text-xs uppercase tracking-widest text-[#666] mb-2">Your benefits</div>
+                <div className="text-sm leading-snug">Health (you pay $180/mo) • 4% 401k match • Unlimited PTO • $2k learning budget</div>
+              </div>
+              {/* Responsibilities */}
+              <div className="border border-[#E5E5E3] rounded-2xl p-5">
+                <div className="text-xs uppercase tracking-widest text-[#666] mb-2">You own</div>
+                <div className="text-sm leading-snug">• Client project delivery<br/>• 1 agent/playbook improvement/mo<br/>• Mentoring newer teammates</div>
+              </div>
+            </div>
+
+            {/* Action Items - the most important part */}
+            <div className="border-2 border-[#0A66C2] rounded-3xl p-6 bg-white">
+              <div className="font-semibold text-xl mb-1">This week’s moves that actually grow your OTE</div>
+              <div className="text-sm text-[#666] mb-4">Do these → you hit 94% pace this month</div>
+
+              <div className="space-y-3">
+                {[
+                  { id:1, text: "Finish Acme lead-qualification MVP and run client demo", impact: "+12% to Q3 OTE", done:false },
+                  { id:2, text: "Document the new agent pattern you built last week", impact: "Unlocks $4.2k quarterly bonus", done:false },
+                  { id:3, text: "1:1 with Jordan — share your scoping process", impact: "Mentorship goal", done:true }
+                ].map(item => (
+                  <div key={item.id} className={`flex gap-4 items-start p-4 rounded-2xl border ${item.done ? 'bg-green-50 border-green-200 opacity-70' : 'bg-white'}`}>
+                    <input type="checkbox" checked={item.done} className="mt-1" onChange={() => setActionMessage('Marked complete. Agents updated your progress and notified your lead.')} />
+                    <div className="flex-1">
+                      <div className={item.done ? 'line-through' : ''}>{item.text}</div>
+                      <div className="text-xs text-[#0A66C2] mt-0.5 font-medium">{item.impact}</div>
+                    </div>
+                    <button onClick={() => setActionMessage('Opening agent chat for help on this item...')} className="text-xs px-3 py-1 border rounded-full hover:bg-[#F8F8F6]">Ask agents</button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 text-center">
+              <button onClick={() => setActionMessage('Fresh personalized action plan generated by your clarity agents')} className="btn-primary px-8 py-2.5 text-base">Generate this week’s plan</button>
+            </div>
+
+            <div className="mt-8 text-[10px] text-[#888] text-center">New team members land here automatically on first login. Everything is live from the clarity agents.</div>
+          </div>
+        )}
