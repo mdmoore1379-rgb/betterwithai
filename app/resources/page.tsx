@@ -35,19 +35,19 @@ export default function Resources() {
             <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" className="btn-primary mt-8 inline-block">Book a Discovery Call</a>
           </div>
 
-          {/* For Michael / Ops */}
+          {/* Strategic Hub — Core to $100M Strategy */}
           <div className="card p-8">
-            <h2 className="text-2xl font-semibold">Internal Operating System</h2>
-            <p className="mt-2 text-white/70">Tools &amp; processes to run at a high level and scale to $100M by 2030.</p>
+            <h2 className="text-2xl font-semibold">The Site is the Core Strategy Hub</h2>
+            <p className="mt-2 text-white/70">This website isn&apos;t a brochure. It&apos;s the enduring front-end of our operating system, growth plan, and product ladder — designed so we evolve offers (Roadmap → Platform → Academy) without starting over.</p>
             <ul className="mt-6 space-y-3 text-sm">
               <li>→ <strong>Ops Leader Agent</strong>: python agents/run_ops.py (grows with the business)</li>
-              <li>→ Full Playbook: <code>playbook/README.md</code> + <code>growth/4-year-to-100m.md</code></li>
-              <li>→ Contracts: <code>/contracts</code> (MSA + SOW templates)</li>
-              <li>→ Client checklists &amp; email templates: <code>playbook/</code></li>
-              <li>→ Pricing &amp; self-serve flows on this site</li>
-              <li>→ Growth &amp; recruiting agents for scaling team and leads</li>
+              <li>→ Full Playbook + $100M Plan: <code>playbook/README.md</code> + <code>growth/4-year-to-100m.md</code></li>
+              <li>→ Contracts &amp; Templates: <code>/contracts</code> + <code>playbook/</code></li>
+              <li>→ Self-serve Pricing &amp; Resources: All client journeys start here</li>
+              <li>→ Agent-powered everything: Growth, recruiting, delivery, finance</li>
             </ul>
-            <p className="mt-6 text-xs text-white/50">Built to let one founder + leveraged systems produce at $100M scale.</p>
+            <p className="mt-6 text-xs text-white/50">One founder + this system + Grok = scalable production to $100M. Talk to me, I update the site and deploy.</p>
+            <Link href="/resources" className="btn-primary mt-4 inline-block text-sm">Dive into the full hub →</Link>
           </div>
         </div>
 

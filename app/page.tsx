@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import BrainMascot from "./components/BrainMascot";
+import { offers, coreBeliefPillars } from "./data/offers";
 
 const BOOKING_URL = "https://calendly.com/michaeldmoore/30-virtual-call?back=1";
 
@@ -169,12 +170,7 @@ export default function BetterWithAI() {
           </p>
 
           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[
-              { icon: "⏱️", label: "Less time", desc: "hours of work done in minutes" },
-              { icon: "💸", label: "Less money", desc: "leverage that used to cost a whole team" },
-              { icon: "🔋", label: "Less energy", desc: "the busywork handled, so you&apos;re not running on empty" },
-              { icon: "🎯", label: "Way more focus", desc: "your attention on the few things that actually matter" },
-            ].map((item, i) => (
+            {coreBeliefPillars.map((item, i) => (
               <div key={i} className="card p-6 text-left">
                 <div className="text-3xl mb-3">{item.icon}</div>
                 <div className="text-lg font-semibold">{item.label}</div>
@@ -237,97 +233,87 @@ export default function BetterWithAI() {
         </div>
       </section>
 
-      {/* PRICING & SELF-SERVE PATHS (new for full-time business) */}
+      {/* PRICING & SELF-SERVE PATHS — Strategic Core of Growth Plan */}
       <section id="pricing" className="section mx-auto max-w-6xl px-6 py-16 md:py-20 border-t border-white/10">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">CLEAR PRICING. EASY START.</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Simple ways to get started — with or without a call.</h2>
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">PRODUCTIZED LADDER. SCALES WITH YOU.</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Clear offers designed for 4-year growth to $100M.</h2>
           <p className="mt-4 text-xl text-white/70">
-            We built this for people who want to move fast. The Planning tier is designed to be nearly self-serve.
+            We productize the "how" so you get results fast now — and the system compounds as your business grows. Roadmap is the self-serve entry. Everything evolves from there.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {/* Planning - Self Serve */}
-          <div className="card p-8 flex flex-col border-2 border-[#C6FF3A]">
-            <div className="uppercase text-xs tracking-[2px] text-[#C6FF3A]">PRODUCTIZED • SELF-SERVE</div>
-            <h3 className="mt-4 text-2xl font-semibold">AI Roadmap</h3>
-            <div className="mt-2 text-4xl font-bold">$2,497</div>
-            <div className="text-sm text-white/60">one-time</div>
-
-            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
-              <li>• Full operations + tech + marketing audit</li>
-              <li>• Prioritized roadmap with ROI estimates</li>
-              <li>• 60-minute review + Q&amp;A call</li>
-              <li>• Written deliverable you can execute yourself or with us</li>
-            </ul>
-
-            <a 
-              href="https://buy.stripe.com/test_YOUR_PLANNING_LINK" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn-primary mt-8 w-full justify-center text-center"
+        <div className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+          {offers.map((offer) => (
+            <div 
+              key={offer.id} 
+              className={`card p-8 flex flex-col ${offer.highlight ? 'border-2 border-[#C6FF3A]' : ''} ${offer.stage === 'future' ? 'opacity-75' : ''}`}
             >
-              Buy AI Roadmap Now →
-            </a>
-            <p className="mt-3 text-center text-[10px] text-white/50">Secure checkout with Stripe. Start immediately.</p>
-          </div>
+              <div className="uppercase text-xs tracking-[2px] text-[#C6FF3A]">{offer.tier}</div>
+              <h3 className="mt-4 text-2xl font-semibold">{offer.title}</h3>
+              <div className="mt-2 text-4xl font-bold">{offer.price}</div>
+              {offer.period && <div className="text-sm text-white/60">{offer.period}</div>}
 
-          {/* Projects */}
-          <div className="card p-8 flex flex-col">
-            <div className="uppercase text-xs tracking-[2px] text-white/60">DONE-FOR-YOU</div>
-            <h3 className="mt-4 text-2xl font-semibold">AI Projects</h3>
-            <div className="mt-2 text-4xl font-bold">From $7,500</div>
-            <div className="text-sm text-white/60">project-based</div>
+              <p className="mt-4 text-white/80 text-sm flex-1">{offer.description}</p>
 
-            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
-              <li>• Lead funnels, automations, agents, internal tools</li>
-              <li>• Fixed scope + timeline proposals</li>
-              <li>• Full build, testing, handoff + training</li>
-              <li>• 30-day support included</li>
-            </ul>
+              <ul className="mt-4 space-y-2 text-sm text-white/85">
+                {offer.features.map((f, i) => (
+                  <li key={i}>• {f}</li>
+                ))}
+              </ul>
 
-            <a 
-              href={BOOKING_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn-primary mt-8 w-full justify-center text-center"
-            >
-              Get a scoped proposal
-            </a>
-            <p className="mt-3 text-center text-[10px] text-white/50">Most clients start here after a short call or form.</p>
-          </div>
-
-          {/* Retainer */}
-          <div className="card p-8 flex flex-col">
-            <div className="uppercase text-xs tracking-[2px] text-white/60">ONGOING PARTNERSHIP</div>
-            <h3 className="mt-4 text-2xl font-semibold">AI Retainer</h3>
-            <div className="mt-2 text-4xl font-bold">$3,500–$6,000</div>
-            <div className="text-sm text-white/60">per month</div>
-
-            <ul className="mt-6 space-y-2 text-sm text-white/85 flex-1">
-              <li>• Monthly strategy + hands-on execution</li>
-              <li>• New AI opportunities as they emerge</li>
-              <li>• Team training &amp; enablement</li>
-              <li>• Priority support &amp; optimization</li>
-            </ul>
-
-            <a 
-              href={BOOKING_URL} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn-primary mt-8 w-full justify-center text-center"
-            >
-              Become a partner
-            </a>
-            <p className="mt-3 text-center text-[10px] text-white/50">Best for companies that want to stay ahead continuously.</p>
-          </div>
+              <a 
+                href={offer.ctaLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-primary mt-8 w-full justify-center text-center"
+              >
+                {offer.cta}
+              </a>
+              {offer.stage === 'future' && (
+                <p className="mt-3 text-center text-[10px] text-white/50">Part of the 2028+ platform layer in our growth plan.</p>
+              )}
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 text-center text-sm text-white/60 max-w-md mx-auto">
           All engagements include a clear written agreement (see our <Link href="/terms" className="underline">Master Services Agreement</Link> and sample SOW). 
-          Payment is handled securely online via Stripe. Minimal back-and-forth required for the Roadmap tier.
+          Payment is handled securely online via Stripe. The site + our agent systems are built as the core of how we scale to $100M — no constant redesigns needed.
         </div>
+      </section>
+
+      {/* OUR SYSTEMS — The Core Differentiator (strategic hub for $100M scale) */}
+      <section className="section mx-auto max-w-5xl px-6 py-16 md:py-24 border-t border-white/10 bg-[#121217]">
+        <div className="text-center">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">BUILT TO SCALE</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">We don&apos;t just advise. We run on the same systems we deliver.</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-white/70">
+            The website is the front door. Behind it is an agent-powered operating system (Ops Leader + specialists for growth, recruiting, delivery, finance) + living playbook. This is how we productize at scale and hit $100M without chaos.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Ops Leader + Agent Team</h3>
+            <p className="mt-3 text-white/80">Natural language delegation to specialists for coding, client work, scheduling, proposals, growth, and recruiting. Grok handles execution and deploys.</p>
+            <Link href="/resources" className="text-[#C6FF3A] mt-4 inline-block text-sm">Explore the system →</Link>
+          </div>
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Living Playbook &amp; Templates</h3>
+            <p className="mt-3 text-white/80">Full operating manual: growth plan to $100M, checklists, proposal templates, onboarding flows. Everything versioned and improved continuously.</p>
+            <Link href="/resources" className="text-[#C6FF3A] mt-4 inline-block text-sm">See the playbook →</Link>
+          </div>
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Productized Delivery</h3>
+            <p className="mt-3 text-white/80">Standardized playbooks + pods mean high leverage. Same quality at 10x volume. Roadmap today, Platform + Academy tomorrow.</p>
+            <Link href="#pricing" className="text-[#C6FF3A] mt-4 inline-block text-sm">See the ladder →</Link>
+          </div>
+        </div>
+
+        <p className="mt-8 text-center text-sm text-white/60 max-w-lg mx-auto">
+          This isn&apos;t a consulting firm that happens to use AI. It&apos;s a scaled system that happens to consult on AI. The site is the enduring core — we evolve offers and content here without starting over.
+        </p>
       </section>
 
       {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
@@ -410,7 +396,7 @@ export default function BetterWithAI() {
           <div className="mt-10 mx-auto max-w-3xl text-lg leading-relaxed text-white/80 text-left md:text-center">
             <strong className="text-white">Michael Moore</strong> leads betterwithai as the visionary — the one who sits with you, understands your business, and maps where AI actually moves the needle. That&apos;s the relationship you keep.
             <br /><br />
-            Behind that vision is a growing <strong className="text-white">delivery team + agent-powered systems</strong> that plan and execute every detail at scale — like a wedding planner and crew. We're building toward a $100M business by 2030 with leveraged teams and technology. You set the direction; we handle the rest.
+            Behind that vision is a <strong className="text-white">growing team + agent-powered operating system</strong> (visible right here on this site) that plans and executes at scale — like a wedding planner and crew. The website is the core strategic asset: it productizes our approach, houses the playbook, and powers client journeys to $100M without constant redesigns. You set the direction; we handle the rest.
           </div>
 
           <div className="mt-9 inline-block rounded-full bg-white/5 px-5 py-2 text-sm border border-white/10">
