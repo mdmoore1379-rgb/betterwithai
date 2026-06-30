@@ -29,6 +29,13 @@ npm run build
 # output is in the `out/` folder
 ```
 
+## Deployment
+
+- GitHub: mdmoore1379-rgb/betterwithai
+- Vercel: Imported and connected (as of 2026-06-30)
+- Full Tesla-simple self-serve flow live: Wizard → simulated checkout → portal demo
+- Reauthorized connectors for seamless updates.
+
 ## Deploy workflow (the important part)
 
 **Goal:** You talk to me (Grok). I edit locally. I push the changes to Git + trigger a deploy to the cloud host.
