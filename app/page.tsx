@@ -128,6 +128,7 @@ export default function BetterWithAI() {
           <p className="max-w-lg mx-auto text-2xl text-[#333333] mb-10">
             A modern self-serve AI operating system. Get your custom Roadmap in minutes. Pay once. Everything runs while you&apos;re actually living.
           </p>
+          <p className="text-sm text-[#0A66C2] mb-4">Starting at $1,497 • 3 concrete moves guaranteed or full refund</p>
 
           <div className="flex items-center justify-center gap-4">
             <a href="#wizard" className="btn-primary text-lg px-9 py-4">
@@ -152,6 +153,17 @@ export default function BetterWithAI() {
           </div>
 
           <PlanningWizard />
+        </div>
+      </section>
+
+      {/* LEAD MAGNET — Free entry point (ContentMachine output) */}
+      <section className="section py-16 bg-[#FAFAF8] border-b border-[#E5E5E3]">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <div className="text-[#0A66C2] text-xs tracking-[3px] mb-2">FREE START</div>
+          <h3 className="text-4xl font-semibold tracking-tight mb-3">Get the 15-Minute AI Freedom Audit</h3>
+          <p className="text-lg text-[#444] mb-6">Instant score + prioritized 3 moves. No email wall. Then upgrade to the full paid Roadmap when you're ready.</p>
+          <a href="#wizard" className="btn-primary">Start free audit → (then configurator)</a>
+          <p className="mt-3 text-xs text-[#666]">This is the top of the Content + Acquisition flywheel.</p>
         </div>
       </section>
 

@@ -47,6 +47,16 @@ try:
 except:
     AcquisitionFlywheelAgent = None
 
+try:
+    from agents.specialists.launch_operator_super_agent import LaunchOperatorSuperAgent
+except:
+    LaunchOperatorSuperAgent = None
+
+try:
+    from agents.specialists.financial_forecaster_agent import FinancialForecasterAgent
+except:
+    FinancialForecasterAgent = None
+
 # Also keep the older ones that were auto-spawned
 try:
     from agents.specialists.automatedleadgenerationengineagent import AutomatedLeadGenerationEngineAgent
@@ -71,6 +81,8 @@ class MasterSuperAgent:
             "RevenueEngineSuperAgent": RevenueEngineSuperAgent() if RevenueEngineSuperAgent else None,
             "ContentMachineSuperAgent": ContentMachineSuperAgent() if ContentMachineSuperAgent else None,
             "AcquisitionFlywheelAgent": AcquisitionFlywheelAgent() if AcquisitionFlywheelAgent else None,
+            "LaunchOperatorSuperAgent": LaunchOperatorSuperAgent() if LaunchOperatorSuperAgent else None,
+            "FinancialForecasterAgent": FinancialForecasterAgent() if FinancialForecasterAgent else None,
         }
         # Register any legacy spawned agents if they loaded
         if AutomatedLeadGenerationEngineAgent:
