@@ -42,11 +42,14 @@ export default function BetterWithAI() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-white selection:bg-[#C6FF3A] selection:text-[#0B0B0F]">
+    <div className="min-h-screen bg-white text-[#111] selection:bg-black selection:text-white">
       {/* Sticky Nav - Premium, minimal */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0B0B0F]/95 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#E5E5E3] bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.5px]">
+          <a href="#" className="flex items-center gap-2.5 text-xl font-semibold tracking-[-0.6px]">
+            <span className="inline-block w-5 h-5 rounded-full border border-[#111] flex items-center justify-center">
+              <span className="w-2 h-2 bg-[#111] rounded-full"></span>
+            </span>
             betterwithai
           </a>
 
@@ -56,7 +59,7 @@ export default function BetterWithAI() {
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.href)}
-                className="nav-link text-white/90 hover:text-white"
+                className="nav-link text-[#555] hover:text-[#111]"
               >
                 {item.label}
               </button>
@@ -90,13 +93,13 @@ export default function BetterWithAI() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden border-t border-white/10 bg-[#0B0B0F] px-6 py-6">
+          <div className="md:hidden border-t border-[#E5E5E3] bg-white px-6 py-6">
             <div className="flex flex-col gap-4 text-lg">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollTo(item.href)}
-                  className="text-left py-1 text-white/90 active:text-white"
+                  className="text-left py-1 text-[#555] active:text-[#111]"
                 >
                   {item.label}
                 </button>

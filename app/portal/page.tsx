@@ -151,7 +151,7 @@ export default function ClientPortal() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0B0B0F] text-white flex items-center justify-center p-6">
+      <div className="min-h-screen bg-white text-[#111] flex items-center justify-center p-6">
         <div className="max-w-md w-full card p-9 text-center">
           <div className="mx-auto mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#C6FF3A] text-[#0B0B0F] text-3xl">🧠</div>
           <h1 className="text-4xl font-bold tracking-[-1px] mb-3">Client Portal</h1>
@@ -184,8 +184,8 @@ export default function ClientPortal() {
   const client = clientData; // In real: fetch based on authenticated user
 
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-white">
-      <div className="border-b border-white/10 bg-[#0B0B0F]/95 backdrop-blur-md sticky top-0 z-50">
+    <div className="min-h-screen bg-white text-[#111]">
+      <div className="border-b border-[#E5E5E3] bg-white/95 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <span className="font-semibold">betterwithai</span>

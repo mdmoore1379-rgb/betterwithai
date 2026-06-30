@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-[#0B0B0F] text-white">
+    <div className="min-h-screen bg-white text-[#111]">
       <div className="mx-auto max-w-3xl px-6 py-12">
         <Link href="/" className="text-[#C6FF3A] hover:underline text-sm">← Back to betterwithai</Link>
 
