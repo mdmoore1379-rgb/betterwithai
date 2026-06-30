@@ -59,4 +59,9 @@ Supporting:
 - Funnel: Content → Lead magnet (Tally) → Qualify (Roadmap) → Auto Stripe + contract → Agent onboarding.
 - Quality focus: ICP baked into copy and forms (serious businesses ready for $5k+ work).
 
+**The Website as the Skilled Wedding Planner System**
+- See `planning-system.md`
+- The site (Planning Wizard) + agents do a huge amount of the planning and discussion that traditionally requires a highly skilled person.
+- "You bring the vision. The system asks the questions, discusses options, and delivers the plan."
+
 Grok maintains both the playbook and the site via chat.

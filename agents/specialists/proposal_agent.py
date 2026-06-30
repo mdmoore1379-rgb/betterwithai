@@ -26,15 +26,23 @@ class ProposalAgent(BaseAgent):
 
         # In reality, this would pull from client context, discovery notes, etc.
         proposal_outline = """
-**Proposal Outline (AI-Generated from your request)**
+**Skilled Planner Output: Customized Proposal + Discussion Points**
+
+The website's Planning Wizard + this agent acts as the experienced wedding planner who has already asked the hard questions and surfaced trade-offs.
 
 Client: [Extract or ask for name/company]
-Objective: [From task or discovery]
-Recommended Solution: [e.g. AI Roadmap or specific Project]
+Objective: [From task or discovery inputs]
+Recommended Solution: [e.g. AI Roadmap or specific Project — with why this over alternatives]
 
-Scope:
-- [Bullet 1]
-- [Bullet 2]
+**The Plan (prioritized, ROI-ranked):**
+- [Detailed deliverable 1 with estimated impact]
+- [Detailed deliverable 2 with estimated impact]
+
+**Discussion Points a Skilled Planner Would Raise:**
+- What does success look like in 90 days? (Not just "use AI")
+- Budget realities and decision process?
+- Must-integrate tools or constraints?
+- Risk appetite: quick experiments vs polished builds?
 
 Investment: See pricing section or calculate
 Timeline: 
@@ -43,13 +51,13 @@ Timeline:
 - Final: +Y days
 
 Next Steps:
-1. Review this proposal
+1. Review this (the system already did 70-80% of the planning)
 2. Sign MSA + this SOW (use /contracts templates)
 3. Pay deposit via Stripe link (AccountingAgent can generate)
-4. Kickoff call scheduled (CalendarAgent)
+4. Kickoff call scheduled (CalendarAgent) — we'll already be aligned
 
 Use the SOW template in contracts/BetterWithAI_Statement_of_Work_Template.docx
-Customize with specifics from the discovery call.
+This output can be auto-triggered from the website wizard or intake form.
 """
 
         return AgentResponse(

@@ -12,6 +12,7 @@ It can handle:
 - Calendar & scheduling (CalendarAgent)
 - Client onboarding & account management
 - Growth, recruiting, proposals, marketing at scale
+- **Skilled planning & discussion** for AI projects (the "wedding planner" system starts on the website, escalates here)
 - Execution of the 4-year growth plan
 """
 
