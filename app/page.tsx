@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import BrainMascot from "./components/BrainMascot";
+import PlanningWizard from "./components/PlanningWizard";
 import { offers, coreBeliefPillars } from "./data/offers";
 
 const BOOKING_URL = "https://calendly.com/michaeldmoore/30-virtual-call?back=1";
@@ -362,6 +363,26 @@ export default function BetterWithAI() {
         </div>
       </section>
 
+      {/* THE PLANNING SYSTEM — Website as the Skilled Wedding Planner */}
+      <section className="section mx-auto max-w-6xl px-6 py-16 md:py-24 border-t border-white/10 bg-[#121217]">
+        <div className="text-center mb-12">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">LIKE PLANNING A WEDDING</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">AI projects need a skilled planner.<br />The website + our system is that planner.</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-white/70">
+            You bring the vision (the bride, the date, the budget). Our system asks the right questions, surfaces options, discusses trade-offs, and hands you a clear plan — starting right here on the site. For bigger work, it escalates to the full team + agents who already know your details.
+          </p>
+        </div>
+
+        {/* Interactive Planning Starter — the website does a lot of the skilled planning and discussion */}
+        <div className="max-w-4xl mx-auto">
+          <PlanningWizard />
+        </div>
+
+        <p className="mt-8 text-center text-sm text-white/60 max-w-lg mx-auto">
+          This is the system in action. Complete the questions and it generates your initial plan with discussion points — exactly like a skilled planner would. Real Roadmap includes your full data + live follow-up.
+        </p>
+      </section>
+
       {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
       <section className="border-y border-white/10 bg-[#121217] py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6">
@@ -403,7 +424,7 @@ export default function BetterWithAI() {
           </div>
 
           <p className="mt-8 text-center text-lg text-white/80">
-            That&apos;s exactly what <span className="text-white font-semibold">AI Planning</span> is for. We do the heavy lifting — but we ask the right questions first, so what we build fits <span className="text-[#C6FF3A]">your</span> business instead of a generic template. No wasted spend, no guessing, no “AI for the sake of AI.”
+            That&apos;s exactly what <span className="text-white font-semibold">AI Planning</span> is for — and our website + agent system does a huge amount of the skilled planning and discussion upfront. We do the heavy lifting and ask the right questions first, so what we build fits <span className="text-[#C6FF3A]">your</span> business instead of a generic template. No wasted spend, no guessing, no “AI for the sake of AI.”
           </p>
         </div>
       </section>
@@ -469,7 +490,7 @@ export default function BetterWithAI() {
             ["Will this actually work for my business?", "That&apos;s literally what the Planning step answers. If AI isn&apos;t worth it for you, we&apos;ll tell you — we&apos;d rather lose a sale than sell you hype."],
             ["Do I need to be technical?", "No. That&apos;s the entire point. You bring the vision; we handle the tech."],
             ["How long until I see results?", "Planning is fast (days to a couple of weeks). Projects depend on scope, but we move quick and you&apos;ll know the timeline up front."],
-            ["Is this just ChatGPT stuff I could do myself?", "You *could* — the same way you *could* plan your own wedding. Most people would rather hand it to a team that does it every day and gets it right."],
+            ["Is this just ChatGPT stuff I could do myself?", "You *could* — the same way you *could* plan your own wedding. Our website + agent system does a lot of the skilled planning and discussion for you. Most people would rather hand it to a system (starting right here) + team that does it every day and gets it right."],
           ].map(([q, a], i) => (
             <div key={i} className="border-b border-white/10 pb-6">
               <div className="font-semibold text-lg">{q}</div>
