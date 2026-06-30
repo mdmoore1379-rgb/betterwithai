@@ -92,6 +92,25 @@ export const offers: Offer[] = [
     ctaLink: '#wizard',
     stage: 'core',
   },
+  {
+    id: 'enterprise',
+    tier: '04 — STRATEGIC / 200K+',
+    title: 'Strategic AI Partnership (Custom)',
+    price: '$200,000+',
+    period: 'project or retainer',
+    description: 'Large-scale transformation. Full agent army deployment, custom AI products, team augmentation (PMs + devs), change management. Easy scoping wizard + LawyerAgent contracts.',
+    features: [
+      'Unlimited scoping calls + custom value-based pricing',
+      'Dedicated Master + full specialist agent team',
+      'Custom AI systems + full portal + integrations',
+      'AI PM + developer bench (pre-assessed DISC + skills)',
+      'Quarterly business reviews + 100M roadmap alignment',
+      'Equity / success-share options available'
+    ],
+    cta: 'Scope Large Project →',
+    ctaLink: '#wizard',
+    stage: 'future',
+  },
 ];
 
 export const coreBeliefPillars = [
