@@ -47,7 +47,7 @@ export default function BetterWithAI() {
 
   return (
     <div className="min-h-screen bg-[#0B0B0F] text-white selection:bg-[#C6FF3A] selection:text-[#0B0B0F]">
-      {/* Sticky Nav */}
+      {/* Sticky Nav - Premium, minimal */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0B0B0F]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="flex items-center gap-3 text-xl font-semibold tracking-[-0.5px]">
@@ -72,12 +72,18 @@ export default function BetterWithAI() {
 
           <div className="hidden items-center gap-3 md:flex">
             <a
+              href="#wizard"
+              className="btn-secondary text-sm"
+            >
+              Configure plan
+            </a>
+            <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm"
             >
-              Book a Discovery Call <ArrowRight className="ml-1.5 h-4 w-4" />
+              Book a Call <ArrowRight className="ml-1.5 h-4 w-4" />
             </a>
           </div>
 
@@ -104,6 +110,7 @@ export default function BetterWithAI() {
                   {item.label}
                 </button>
               ))}
+              <a href="#wizard" className="btn-secondary mt-1 w-full justify-center">Configure plan</a>
               <a
                 href={BOOKING_URL}
                 target="_blank"
@@ -117,453 +124,229 @@ export default function BetterWithAI() {
         )}
       </nav>
 
-      {/* HERO */}
-      <section className="pt-20 pb-12 md:pt-24 md:pb-16">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <div className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-semibold tracking-[2px] text-[#C6FF3A]">
-            AI CONSULTING FOR PEOPLE WHO ARE OVER THE HYPE
+      {/* PREMIUM HERO — Lifestyle + Bold Hook. Tesla-simple promise front and center. */}
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-16 bg-[#0B0B0F]">
+        {/* Subtle premium grid + gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(#C6FF3A_0.6px,transparent_1px)] bg-[length:5px_5px] opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#0B0B0F] to-[#0B0B0F]"></div>
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+          <div className="mb-8 flex justify-center">
+            <BrainMascot state={mascotHeroState} size={220} />
           </div>
 
-          <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-[1.05] tracking-[-2.5px] md:text-7xl">
-            Everyone&apos;s talking about AI.<br />
-            Nobody tells you what to <span className="accent">do</span> with it.
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-1 text-xs tracking-[3px] text-[#C6FF3A] mb-6">
+            THE AI FREEDOM OS
+          </div>
+
+          <h1 className="text-[56px] md:text-[84px] font-bold tracking-[-5.5px] leading-[.88] mb-6">
+            AI runs the business.<br />
+            <span className="text-[#C6FF3A]">We run the world.</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-xl text-white/80 md:text-2xl">
-            You don&apos;t need 50 tools, a prompt course, or another 3am doom-scroll through AI Twitter.
-            You need one team to look at your business and go: <span className="text-white font-medium">&ldquo;Here&apos;s what to do. We&apos;ll build it. Done.&rdquo;</span>
+          <p className="mx-auto max-w-2xl text-2xl md:text-[28px] text-white/75 tracking-[-0.2px] leading-tight">
+            While the systems close deals, onboard clients, and deliver — we're in Patagonia with the kids. No desk. Real life.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-base">
-              Book a Discovery Call <span className="ml-1 text-xs opacity-75">→</span>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#wizard" className="btn-primary text-xl px-12 py-5 tracking-[-0.2px]">
+              Configure your AI Roadmap — 2 minutes →
             </a>
-            <button
-              onClick={() => scrollTo("#solutions")}
-              className="btn-secondary text-base"
+            <a 
+              href="/portal" 
+              className="btn-secondary text-xl px-10 py-5"
             >
-              See how we bridge the gap ↓
+              See the client portal
+            </a>
+          </div>
+
+          <p className="mt-5 text-sm text-white/50 tracking-[2px]">AS SIMPLE AS A TESLA CONFIGURATOR. INSTANT ACCESS AFTER YOU ORDER.</p>
+
+          <div className="mt-16 flex justify-center">
+            <button 
+              onClick={() => { window.scrollTo({ top: window.innerHeight * 0.85, behavior: 'smooth' }); }}
+              className="text-xs tracking-[3px] text-white/40 hover:text-white/70 flex flex-col items-center gap-1"
+            >
+              SCROLL TO BUILD YOUR PLAN <span>↓</span>
             </button>
           </div>
-          <p className="mt-3 text-xs text-white/50">Free. Refreshingly hype-free.</p>
-
-          {/* Hero mascot - interactive: hover or click to calm down */}
-          <div 
-            className="mt-8 flex justify-center cursor-pointer"
-            onMouseEnter={() => setMascotHeroState("calm")}
-            onMouseLeave={() => setMascotHeroState("frazzled")}
-            onClick={() => setMascotHeroState(mascotHeroState === "frazzled" ? "calm" : "frazzled")}
-            title="Hover or tap to calm the brain"
-          >
-            <BrainMascot state={mascotHeroState} size={240} />
-          </div>
-          <p className="mt-1 text-[11px] text-white/40">hover or tap the brain</p>
         </div>
       </section>
 
-      {/* THE BELIEF / MANIFESTO */}
-      <section className="border-t border-white/10 bg-[#121217] py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">
-            AI is the ultimate business superpower.
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-xl text-white/80">
-            Running a business is really just one thing — making choices. The best businesses just make better choices, faster.
-            That&apos;s what AI unlocks: the superpower to hit your goals with —
-          </p>
+      {/* TESLA-SIMPLE CONFIGURATOR — Front and center right after hero. This IS the amazing part. */}
+      <section id="wizard" className="section mx-auto max-w-5xl px-6 pt-14 pb-24">
+        <div className="text-center mb-10">
+          <div className="uppercase tracking-[3px] text-xs text-[#C6FF3A] mb-3">NO SALES CALL REQUIRED</div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-[-2.5px] leading-none">Configure your AI Roadmap.<br />Like ordering a Tesla.</h2>
+          <p className="mt-4 text-xl text-white/70 max-w-lg mx-auto">Answer 4 questions. Get a tailored initial plan. One click → pay with Stripe → your project appears live in the portal with Google or Microsoft 365.</p>
+        </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {coreBeliefPillars.map((item, i) => (
-              <div key={i} className="card p-6 text-left">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <div className="text-lg font-semibold">{item.label}</div>
-                <div className="mt-1 text-sm text-white/70">{item.desc}</div>
+        <div className="max-w-[820px] mx-auto">
+          <PlanningWizard />
+        </div>
+
+        <div className="mt-6 text-center text-xs text-white/50 max-w-md mx-auto">
+          This is the website + Ops Leader doing 80% of the skilled planning for you. Real Roadmap includes full audit + 60-min call.
+        </div>
+      </section>
+
+      {/* THE LADDER — Clean, bold, productized */}
+      <section id="pricing" className="border-t border-white/10 bg-[#121217] py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col items-center text-center mb-12">
+            <div className="text-[#C6FF3A] uppercase text-xs tracking-[3px] mb-2">START HERE. SCALE FOREVER.</div>
+            <h3 className="text-5xl font-bold tracking-[-2px]">Clear. Productized. Built to get you freedom.</h3>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {offers.filter(o => o.stage !== 'future').map((offer, idx) => (
+              <div key={offer.id} className={`card p-8 flex flex-col ${idx === 0 ? 'border-[#C6FF3A] border-2' : ''}`}>
+                <div className="text-[#C6FF3A] text-xs tracking-[2.5px] font-mono mb-2">{offer.tier}</div>
+                <div className="text-3xl font-semibold mb-1">{offer.title}</div>
+                <div className="text-5xl font-bold tracking-[-1px] mt-1 mb-1">{offer.price}</div>
+                {offer.period && <div className="text-sm text-white/50 mb-4">{offer.period}</div>}
+
+                <p className="text-white/80 mb-5 text-[15px] flex-1">{offer.description}</p>
+
+                <ul className="text-sm space-y-1.5 mb-7 text-white/85">
+                  {offer.features.map((f,i) => <li key={i}>→ {f}</li>)}
+                </ul>
+
+                <a href={offer.ctaLink} target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center">
+                  {offer.cta}
+                </a>
               </div>
             ))}
           </div>
 
-          <p className="mt-10 text-lg text-white/80">
-            We&apos;re not here to sell you &ldquo;AI.&rdquo; We&apos;re here to hand you that superpower — aimed exactly where it moves <span className="text-white">your</span> business forward.
+          <p className="text-center text-xs text-white/50 mt-8 max-w-md mx-auto">
+            All via Stripe. Contracts auto-generated. Everything shows up in your private portal instantly.
+            <Link href="/terms" className="underline ml-1 hover:text-white">See MSA + sample SOW</Link>.
           </p>
         </div>
       </section>
 
-      {/* SOLUTIONS / THE BRIDGE */}
-      <section id="solutions" className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
+      {/* LIFESTYLE — THE WHOLE DAMN POINT. Holderness energy, raw and premium. */}
+      <section id="lifestyle" className="section mx-auto max-w-5xl px-6 py-20 md:py-24 text-center">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-[#C6FF3A] text-xs tracking-[4px] mb-3">THE ENTIRE REASON WE EXIST</div>
+          <h2 className="text-6xl md:text-7xl font-bold tracking-[-3.5px] leading-[.9]">AI does the work.<br />We live the life.</h2>
+          <p className="mt-6 text-2xl text-white/70">We film our family on the road. The systems onboard clients and run delivery. We check in from a beach or a mountain when we want.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-5 mt-14 max-w-5xl mx-auto text-left">
+          <div className="card p-10">
+            <div className="text-7xl mb-5">🏔️</div>
+            <div className="text-3xl font-semibold mb-3 tracking-tight">While agents handle proposals…</div>
+            <p className="text-lg text-white/75">We’re hiking the Alps with our kids. Or road-tripping Patagonia. Or eating tacos on a beach in Baja. The Ops Leader + specialists close, onboard, and deliver. We get notified on our phones when something needs our eyes.</p>
+          </div>
+          <div className="card p-10">
+            <div className="text-7xl mb-5">🎥</div>
+            <div className="text-3xl font-semibold mb-3 tracking-tight">Raw. Funny. Zero corporate.</div>
+            <p className="text-lg text-white/75">Holderness family style vlogs but for the AI freedom life. “The AI just closed and onboarded a client while we were off-grid in Costa Rica.” Honest chaos + real wins. The people who want the same thing find us.</p>
+            <div className="mt-4 text-sm text-[#C6FF3A]">YouTube • IG • TikTok — coming live from wherever the family is.</div>
+          </div>
+        </div>
+
+        <div className="mt-9">
+          <a href="#wizard" className="btn-primary text-base px-9">Start your freedom engine →</a>
+        </div>
+      </section>
+
+      {/* HOW IT ACTUALLY WORKS — Super tight Tesla-simple */}
+      <section id="how-it-works" className="border-y border-white/10 bg-[#121217] py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-10">
+            <div className="text-[#C6FF3A] text-xs tracking-[3px]">THE FLOW</div>
+            <h3 className="text-4xl md:text-5xl font-bold tracking-[-1.5px] mt-2">Configure. Pay. Activated.</h3>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 text-center">
+            {[
+              { step: "01", title: "Configure in 2 minutes", desc: "The wizard on this site is the planner. It asks smart questions and builds your initial plan." },
+              { step: "02", title: "One-click order", desc: "Pay via Stripe. Contract (MSA + SOW) auto-delivered. No back-and-forth." },
+              { step: "03", title: "Portal = command center", desc: "Instant login with work Google or Microsoft 365. See projects, sign, pay, track — Tesla app for your AI systems." },
+            ].map((s, i) => (
+              <div key={i} className="card p-8">
+                <div className="font-mono text-[#C6FF3A] text-sm mb-2">{s.step}</div>
+                <div className="text-2xl font-semibold mb-2 tracking-tight">{s.title}</div>
+                <p className="text-white/70">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm mt-8 text-white/50">For bigger projects we jump on a short call. Roadmap is fully self-serve on purpose.</p>
+        </div>
+      </section>
+
+      {/* THE WEDDING TRUTH (condensed, punchy) */}
+      <section className="section max-w-4xl mx-auto px-6 py-20">
         <div className="text-center">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-3">THE BRIDGE</div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-[-1.8px]">Three ways we take you from overwhelmed → handled.</h2>
-          <p className="mt-4 text-xl text-white/70">Wherever you are, there&apos;s a step across the bridge.</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">“Just tell me the solution.”</h2>
+          <p className="mt-4 text-xl text-white/75 max-w-2xl mx-auto">We hear you. But you can’t plan a wedding without the bride, the date, and the budget. AI works the same.</p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {/* Planning */}
-          <div className="card p-8 flex flex-col">
-            <div className="text-[#C6FF3A] text-sm font-semibold tracking-widest">01 — START HERE</div>
-            <h3 className="mt-3 text-2xl font-semibold">AI Planning<br />“Just tell me what to do.”</h3>
-            <p className="mt-4 text-white/80 flex-1">
-              For businesses that know AI matters but have no idea where to start. We audit your operations, marketing, and tools, then hand you a <span className="text-white">prioritized roadmap</span> of the highest-ROI AI opportunities — ranked by effort vs. payoff. You get a clear plan you can run with us or on your own.
-            </p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 w-full justify-center">
-              Get your AI roadmap →
-            </a>
-          </div>
-
-          {/* Projects */}
-          <div className="card p-8 flex flex-col border-[#C6FF3A]/40">
-            <div className="text-[#C6FF3A] text-sm font-semibold tracking-widest">02 — BUILD IT</div>
-            <h3 className="mt-3 text-2xl font-semibold">AI Projects<br />“Now build it for me.”</h3>
-            <p className="mt-4 text-white/80 flex-1">
-              For businesses ready to implement. Done-for-you builds: AI-powered lead funnels, workflow &amp; ops automation, custom internal tools, chatbots &amp; agents, and integrations. We build it, make it work, and hand it off — a real system that saves hours or books more clients.
-            </p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 w-full justify-center">
-              Scope a project →
-            </a>
-            <div className="mt-2 text-center text-xs text-white/50">Most popular entry point for teams ready to ship</div>
-          </div>
-
-          {/* Consulting */}
-          <div className="card p-8 flex flex-col">
-            <div className="text-[#C6FF3A] text-sm font-semibold tracking-widest">03 — STAY AHEAD</div>
-            <h3 className="mt-3 text-2xl font-semibold">AI Consulting<br />“Keep me ahead.”</h3>
-            <p className="mt-4 text-white/80 flex-1">
-              For businesses that want a partner as AI keeps evolving. Monthly advisory, hands-on optimization, and team training — a guide who keeps you ahead instead of scrambling to catch up. A toolset that compounds in value every month.
-            </p>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 w-full justify-center">
-              Become a partner →
-            </a>
-          </div>
+        <div className="mt-10 card p-9 text-[15px] max-w-3xl mx-auto">
+          <p className="text-white/80">Our website + agent system does the heavy lifting of the skilled planner. It asks the smart questions upfront. That’s why the Roadmap wizard lives right here. We get the context we need to build something that actually fits <span className="text-white">your</span> business — not a generic template.</p>
+          <div className="mt-4 text-[#C6FF3A] text-sm">Result: No wasted money. No “AI for the sake of AI.” Just clear ROI.</div>
         </div>
       </section>
 
-      {/* PRICING & SELF-SERVE PATHS — Strategic Core of Growth Plan */}
-      <section id="pricing" className="section mx-auto max-w-6xl px-6 py-16 md:py-20 border-t border-white/10">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">PRODUCTIZED LADDER. SCALES WITH YOU.</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Clear offers designed for 4-year growth to $100M.</h2>
-          <p className="mt-4 text-xl text-white/70">
-            We productize the "how" so you get results fast now — and the system compounds as your business grows. Roadmap is the self-serve entry. Everything evolves from there.
-          </p>
-        </div>
+      {/* PORTAL TEASER — Make the promise real */}
+      <section className="bg-[#121217] border-t border-white/10 py-16">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="text-[#C6FF3A] text-xs tracking-widest mb-2">YOUR PRIVATE AI HQ</div>
+          <h2 className="text-5xl font-bold tracking-[-2px]">After you pay, you log in and it’s already there.</h2>
+          <p className="mt-4 text-xl text-white/70">Google or Microsoft 365 single sign-on. Your projects, invoices, signed contracts, and status — all live. Exactly like the Tesla app for your business systems.</p>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {offers.map((offer) => (
-            <div 
-              key={offer.id} 
-              className={`card p-8 flex flex-col ${offer.highlight ? 'border-2 border-[#C6FF3A]' : ''} ${offer.stage === 'future' ? 'opacity-75' : ''}`}
-            >
-              <div className="uppercase text-xs tracking-[2px] text-[#C6FF3A]">{offer.tier}</div>
-              <h3 className="mt-4 text-2xl font-semibold">{offer.title}</h3>
-              <div className="mt-2 text-4xl font-bold">{offer.price}</div>
-              {offer.period && <div className="text-sm text-white/60">{offer.period}</div>}
-
-              <p className="mt-4 text-white/80 text-sm flex-1">{offer.description}</p>
-
-              <ul className="mt-4 space-y-2 text-sm text-white/85">
-                {offer.features.map((f, i) => (
-                  <li key={i}>• {f}</li>
-                ))}
-              </ul>
-
-              <a 
-                href={offer.ctaLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn-primary mt-8 w-full justify-center text-center"
-              >
-                {offer.cta}
-              </a>
-              {offer.stage === 'future' && (
-                <p className="mt-3 text-center text-[10px] text-white/50">Part of the 2028+ platform layer in our growth plan.</p>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 text-center text-sm text-white/60 max-w-md mx-auto">
-          All engagements include a clear written agreement (see our <Link href="/terms" className="underline">Master Services Agreement</Link> and sample SOW). 
-          Payment is handled securely online via Stripe. The site + our agent systems are built as the core of how we scale to $100M — no constant redesigns needed.
+          <div className="mt-8">
+            <Link href="/portal" className="btn-primary text-lg px-10">Open the demo portal →</Link>
+          </div>
+          <p className="mt-3 text-xs text-white/40">Demo flow: finish the wizard above → click Order → you’ll land logged in with your new project.</p>
         </div>
       </section>
 
-      {/* OUR SYSTEMS — The Core Differentiator (strategic hub for $100M scale) */}
-      <section className="section mx-auto max-w-5xl px-6 py-16 md:py-24 border-t border-white/10 bg-[#121217]">
-        <div className="text-center">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">BUILT TO SCALE</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">We don&apos;t just advise. We run on the same systems we deliver.</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-white/70">
-            The website is the front door. Behind it is an agent-powered operating system (Ops Leader + specialists for growth, recruiting, delivery, finance) + living playbook. This is how we productize at scale and hit $100M without chaos.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Ops Leader + Agent Team</h3>
-            <p className="mt-3 text-white/80">Natural language delegation to specialists for coding, client work, scheduling, proposals, growth, and recruiting. Grok handles execution and deploys.</p>
-            <Link href="/resources" className="text-[#C6FF3A] mt-4 inline-block text-sm">Explore the system →</Link>
-          </div>
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Living Playbook &amp; Templates</h3>
-            <p className="mt-3 text-white/80">Full operating manual: growth plan to $100M, checklists, proposal templates, onboarding flows. Everything versioned and improved continuously.</p>
-            <Link href="/resources" className="text-[#C6FF3A] mt-4 inline-block text-sm">See the playbook →</Link>
-          </div>
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Productized Delivery</h3>
-            <p className="mt-3 text-white/80">Standardized playbooks + pods mean high leverage. Same quality at 10x volume. Roadmap today, Platform + Academy tomorrow.</p>
-            <Link href="#pricing" className="text-[#C6FF3A] mt-4 inline-block text-sm">See the ladder →</Link>
-          </div>
-        </div>
-
-        <p className="mt-8 text-center text-sm text-white/60 max-w-lg mx-auto">
-          This isn&apos;t a consulting firm that happens to use AI. It&apos;s a scaled system that happens to consult on AI. The site is the enduring core — we evolve offers and content here without starting over.
-        </p>
-      </section>
-
-      {/* AS SIMPLE AS ORDERING A TESLA */}
-      <section className="section mx-auto max-w-6xl px-6 py-12 text-center bg-[#121217]">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">TESLA-SIMPLE EXPERIENCE</div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-[-1px]">Configure → Order → Activated. Done.</h2>
-          <p className="mt-3 text-white/70">Like buying a Tesla. No sales calls for the Roadmap. No paperwork hell. No chasing invoices. Answer a few questions, see your plan, pay once, and everything appears in your private portal.</p>
-        </div>
-      </section>
-
-      {/* AUTOMATED CLIENT ACQUISITION — Marketing + Signup + Contract + Pay (fully automated) */}
-      <section className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <div className="text-center">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">80%+ AUTOMATED FUNNEL</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Marketing that attracts quality clients. Signup, contract, and pay — automated.</h2>
-          <p className="mt-4 max-w-3xl mx-auto text-xl text-white/70">
-            No high-pressure sales. Content and systems qualify serious buyers. Roadmap is the self-serve filter. Everything from discovery to payment runs on autopilot (agent-orchestrated + Stripe + forms).
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-4">
-          <div className="card p-8">
-            <div className="text-[#C6FF3A] text-sm font-mono mb-2">01 — ATTRACT</div>
-            <h3 className="text-xl font-semibold">Automated Marketing Engine</h3>
-            <p className="mt-3 text-sm text-white/80">Weekly content (site, LinkedIn, YouTube) via GrowthAgent. SEO + partnerships (MSPs). Lead magnets like free AI Audit Checklist auto-deliver + book call.</p>
-            <p className="mt-4 text-xs text-[#C6FF3A]">Quality filter: Targets operators ready for real AI work ($2M+ revenue, overwhelmed by hype).</p>
-            <div className="mt-4 p-3 bg-white/5 rounded text-xs">
-              <strong>Free Lead Magnet:</strong> Get the AI Audit Checklist (auto email + book call). <a href="#" className="text-[#C6FF3A] underline">Claim it now →</a> (Tally form → Resend)
-            </div>
-          </div>
-          <div className="card p-8">
-            <div className="text-[#C6FF3A] text-sm font-mono mb-2">02 — QUALIFY &amp; SIGNUP</div>
-            <h3 className="text-xl font-semibold">Easy Self-Serve Entry</h3>
-            <p className="mt-3 text-sm text-white/80">Roadmap as lead magnet + product. Buy in 2 clicks (Stripe). Intake form auto-triggers. After, access your private portal (SSO with work Google/Microsoft 365) for projects, invoices, and signed docs.</p>
-            <a href="#pricing" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">Start with Roadmap →</a>
-          </div>
-          <div className="card p-8">
-            <div className="text-[#C6FF3A] text-sm font-mono mb-2">03 — CONTRACT</div>
-            <h3 className="text-xl font-semibold">Proper Agreements, Auto</h3>
-            <p className="mt-3 text-sm text-white/80">MSA + SOW ready at purchase. E-sign via HelloSign/PandaDoc link auto-sent. After payment, client logs into personalized portal with Google/Microsoft 365 to view everything.</p>
-            <Link href="/resources" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">See contracts →</Link>
-          </div>
-          <div className="card p-8">
-            <div className="text-[#C6FF3A] text-sm font-mono mb-2">04 — PAY</div>
-            <h3 className="text-xl font-semibold">Automated Payments</h3>
-            <p className="mt-3 text-sm text-white/80">Stripe Checkout for one-time (Roadmap) or recurring (retainers). Invoices auto-generated. AccountingAgent tracks everything.</p>
-            <p className="mt-4 text-xs">Larger deals: Form → auto proposal + payment link.</p>
-          </div>
-        </div>
-
-        <div className="mt-10 text-center">
-          <p className="text-sm text-white/70 max-w-md mx-auto">The entire funnel runs on our agent system + tools (Tally for forms, Resend for emails, Stripe for pay, e-sign for contracts). Ops Leader orchestrates. You get qualified, contracted, paying clients with almost zero manual sales.</p>
-          
-          <div className="mt-6 text-xs text-white/50">1. Configure with the planner → 2. Order in one click → 3. Instantly live in your portal. Tesla-simple.</div>
-          <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">Book a call to see the automation live →</a>
-        </div>
-      </section>
-
-      {/* THE PLANNING SYSTEM — Website as the Skilled Wedding Planner */}
-      <section className="section mx-auto max-w-6xl px-6 py-16 md:py-24 border-t border-white/10 bg-[#121217]">
+      {/* SHORT ABOUT + FAQ COMBINED */}
+      <section id="about" className="section mx-auto max-w-3xl px-6 py-16 md:py-20">
         <div className="text-center mb-12">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">LIKE PLANNING A WEDDING</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">AI projects need a skilled planner.<br />The website + our system is that planner.</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-white/70">
-            You bring the vision (the bride, the date, the budget). Our system asks the right questions, surfaces options, discusses trade-offs, and hands you a clear plan — starting right here on the site. For bigger work, it escalates to the full team + agents who already know your details.
-          </p>
+          <div className="text-[#C6FF3A] text-xs tracking-[3px]">THE HUMANS + THE SYSTEM</div>
+          <h3 className="text-4xl font-bold tracking-[-1px] mt-2">Led by Michael. Powered by a ridiculous amount of automation.</h3>
         </div>
 
-        {/* Interactive Planning Starter — the website does a lot of the skilled planning and discussion */}
-        <div className="max-w-4xl mx-auto">
-          <PlanningWizard />
+        <div className="space-y-3 text-white/75 text-lg">
+          <p>Michael Moore is the face and the brain that sits with you. He understands the business. The rest — proposals, onboarding, delivery, even a lot of growth content — is handled by the Ops Leader agent team + living playbook you see on this site.</p>
+          <p>We are building this to run while we’re traveling with our family. The website is the core engine. That’s why it’s simple, self-serve, and designed to scale to $100M without us living on calls.</p>
         </div>
 
-        <p className="mt-8 text-center text-sm text-white/60 max-w-lg mx-auto">
-          This is the system in action. Complete the questions and it generates your initial plan with discussion points — exactly like a skilled planner would. Real Roadmap includes your full data + live follow-up.
-        </p>
-      </section>
-
-      {/* LIFESTYLE — The Real Goal (Holderness Family Vibe) */}
-      <section id="lifestyle" className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <div className="text-center">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">THE FREEDOM LIFESTYLE</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">AI runs the business.<br />We run around the world.</h2>
-          <p className="mt-4 max-w-3xl mx-auto text-xl text-white/70">
-            This isn't about building another desk job. It's about building systems (the website, the agent team, automated marketing, self-serve Roadmap) so we can be out there living — family adventures, travel, real life — while the AI does the heavy lifting.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Family First, Systems Second</h3>
-            <p className="mt-3 text-white/80">Picture the Holderness family vibe: hilarious travel vlogs, kids' adventures, spontaneous moments, but with a business that actually scales without me glued to a laptop. The Ops Leader + specialists handle client work, proposals, follow-ups, and growth while we're exploring.</p>
-          </div>
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Content That Shows the Dream</h3>
-            <p className="mt-3 text-white/80">YouTube, Instagram, TikTok: raw family travel, behind-the-scenes of AI doing the work (e.g., "The agent just booked 3 clients while we were on a beach in Thailand"), honest takes on freedom vs. the old 9-5. Funny parodies, real wins, zero corporate speak.</p>
-            <p className="mt-4 text-sm text-[#C6FF3A]">The website is the engine. Socials are the megaphone showing what’s possible.</p>
-          </div>
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">Proof It Works</h3>
-            <p className="mt-3 text-white/80">Clients see the lifestyle and think: "If they can do this with AI systems, so can I." It attracts the exact quality people who value time and results over hustle porn. Automated funnels + agent team = we live it, they join it.</p>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-white/70">Follow the journey: YouTube / Instagram coming soon (filmed on the road). The site and agents make it sustainable.</p>
-          <a href="#pricing" className="btn-primary mt-6 inline-flex">Start Your Own Freedom Roadmap →</a>
-        </div>
-      </section>
-
-      {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
-      <section className="border-y border-white/10 bg-[#121217] py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-center text-4xl md:text-5xl font-bold tracking-[-1px]">
-            “Just tell me the solution.”
-          </h2>
-          <div className="mx-auto mt-6 max-w-3xl text-lg text-white/80">
-            We hear it all the time — and we get it. You want the answer, not homework. But here&apos;s the truth:
-            <span className="text-white font-medium"> nobody can plan a wedding without the bride, the date, the budget, and a hundred small choices.</span> Hand a planner none of that and you don&apos;t get a wedding — you get a guess. AI is exactly the same.
-          </div>
-
-          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-white/10 bg-white/5 text-xs font-mono tracking-widest text-white/60">
-                  <th className="p-5 font-normal">The wedding needs…</th>
-                  <th className="p-5 font-normal">…your AI plan needs</th>
-                </tr>
-              </thead>
-              <tbody className="text-base divide-y divide-white/10">
-                <tr>
-                  <td className="p-5">🤵👰 The couple</td>
-                  <td className="p-5 text-white">Your business, your goals, what success actually looks like</td>
-                </tr>
-                <tr>
-                  <td className="p-5">📅 The date</td>
-                  <td className="p-5 text-white">Your timeline — what&apos;s urgent vs. what can wait</td>
-                </tr>
-                <tr>
-                  <td className="p-5">💰 The budget</td>
-                  <td className="p-5 text-white">What you&apos;re ready to invest, so we right-size the solution</td>
-                </tr>
-                <tr>
-                  <td className="p-5">✅ The choices</td>
-                  <td className="p-5 text-white">The calls only you can make — priorities, tools, brand voice, trade-offs</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="mt-8 text-center text-lg text-white/80">
-            That&apos;s exactly what <span className="text-white font-semibold">AI Planning</span> is for — and our website + agent system does a huge amount of the skilled planning and discussion upfront. We do the heavy lifting and ask the right questions first, so what we build fits <span className="text-[#C6FF3A]">your</span> business instead of a generic template. No wasted spend, no guessing, no “AI for the sake of AI.”
-          </p>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section id="how-it-works" className="section mx-auto max-w-5xl px-6 py-16 md:py-24">
-        <div className="text-center">
-          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">THE PROCESS</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">How it works (no homework, we promise).</h2>
-        </div>
-
-        <div className="mt-12 grid gap-px bg-white/10 md:grid-cols-4">
-          {[
-            { num: "01", title: "Discovery call", body: "A free, hype-free conversation about your business and where you&apos;re stuck." },
-            { num: "02", title: "The plan", body: "We map the highest-impact AI opportunities and what each is worth." },
-            { num: "03", title: "We build", body: "Our team + agent systems plan and deliver every detail at scale. You set direction; we handle the rest." },
-            { num: "04", title: "We keep you ahead", body: "Optimize, train, evolve, and scale as AI and your business do." },
-          ].map((step, idx) => (
-            <div key={idx} className="bg-[#0B0B0F] p-8">
-              <div className="font-mono text-sm text-[#C6FF3A]">{step.num}</div>
-              <div className="mt-3 text-2xl font-semibold">{step.title}</div>
-              <p className="mt-3 text-white/75 leading-relaxed">{step.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ABOUT — LED BY VISION, DELIVERED BY A TEAM */}
-      <section id="about" className="section border-t border-white/10 bg-[#121217] py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.2px]">Led by vision. Delivered by a team.</h2>
-          <div className="mt-6 mx-auto max-w-2xl text-xl text-white/80">
-            Most AI “experts” are one person juggling a dozen clients. We work differently.
-          </div>
-
-          <div className="mt-10 mx-auto max-w-3xl text-lg leading-relaxed text-white/80 text-left md:text-center">
-            <strong className="text-white">Michael Moore</strong> leads betterwithai as the visionary — the one who sits with you, understands your business, and maps where AI actually moves the needle. That&apos;s the relationship you keep. (You&apos;ll mostly see me and the family on the road in our socials — AI + the agent team handle the desk work.)
-            <br /><br />
-            Behind that vision is a <strong className="text-white">growing team + agent-powered operating system</strong> (visible right here on this site) that plans and executes at scale — like a wedding planner and crew. The website is the core strategic asset: it productizes our approach, houses the playbook, and powers client journeys to $100M without constant redesigns. You set the direction; we handle the rest.
-          </div>
-
-          <div className="mt-9 inline-block rounded-full bg-white/5 px-5 py-2 text-sm border border-white/10">
-            You bring the vision. We plan and deliver the whole thing.
-          </div>
-
-          {/* Calm mascot at bottom of about */}
-          <div className="mt-12 flex justify-center">
-            <BrainMascot state="calm" size={180} />
+        <div id="faq" className="mt-16 pt-8 border-t border-white/10">
+          <div className="text-center mb-8 text-sm tracking-[2px] text-[#C6FF3A]">FAQ</div>
+          <div className="space-y-7 text-[15px]">
+            {[
+              ["How much for the Roadmap?", "Exactly $2,497. One time. Pay via Stripe. Done."],
+              ["Will this work for my business?", "The wizard + planning step will tell you fast. If it won’t move the needle, we’ll say so."],
+              ["Do I have to be technical?", "Nope. You bring the vision and the answers. We (humans + agents) do everything else."],
+              ["What happens after I buy?", "You get login access to the portal immediately. Your project appears. Agents start moving. You get a kickoff email."],
+            ].map(([q, a], i) => (
+              <div key={i}>
+                <div className="font-semibold mb-1">{q}</div>
+                <div className="text-white/70">{a}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="section mx-auto max-w-3xl px-6 py-16 md:py-20">
-        <div className="text-center mb-10">
-          <div className="text-[#C6FF3A] uppercase tracking-[3px] text-xs mb-2 font-mono">QUESTIONS</div>
-          <h2 className="text-4xl font-bold tracking-tight">Frequently asked questions</h2>
-        </div>
+      {/* FINAL CTA — Big and clean */}
+      <section className="border-t border-white/10 bg-[#121217] py-20 text-center">
+        <div className="mx-auto max-w-md px-6">
+          <div className="mx-auto mb-5 flex justify-center"><BrainMascot state="calm" size={130} /></div>
+          <h2 className="text-5xl tracking-[-1.5px] font-bold">Stop guessing.<br />Start the freedom.</h2>
+          <p className="mt-3 text-white/70">2-minute configurator. Real plan. Instant portal access.</p>
 
-        <div className="space-y-6">
-          {[
-            ["How much does this cost?", "Planning starts small and productized; Projects are scoped to what you need; Consulting is a monthly partnership. We&apos;ll give you real numbers on the discovery call — no mystery, no pressure."],
-            ["Will this actually work for my business?", "That&apos;s literally what the Planning step answers. If AI isn&apos;t worth it for you, we&apos;ll tell you — we&apos;d rather lose a sale than sell you hype."],
-            ["Do I need to be technical?", "No. That&apos;s the entire point. You bring the vision; we handle the tech."],
-            ["How long until I see results?", "Planning is fast (days to a couple of weeks). Projects depend on scope, but we move quick and you&apos;ll know the timeline up front."],
-            ["Is this just ChatGPT stuff I could do myself?", "You *could* — the same way you *could* plan your own wedding. Our website + agent system does a lot of the skilled planning and discussion for you. Most people would rather hand it to a system (starting right here) + team that does it every day and gets it right."],
-          ].map(([q, a], i) => (
-            <div key={i} className="border-b border-white/10 pb-6">
-              <div className="font-semibold text-lg">{q}</div>
-              <div className="mt-2 text-white/75">{a}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CLOSING CTA */}
-      <section className="border-t border-white/10 bg-[#121217] py-16 md:py-20 text-center">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="flex justify-center mb-6">
-            <BrainMascot state="calm" size={140} />
+          <a href="#wizard" className="btn-primary mt-8 inline-flex text-lg px-12">Configure your Roadmap now →</a>
+          <div className="mt-4">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-[#C6FF3A] hover:underline">Or book a 30-min call (free)</a>
           </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Stop guessing. Start using the superpower.</h2>
-          <p className="mt-4 text-xl text-white/80">One free call. We&apos;ll tell you exactly where AI fits your business — no buzzwords, no homework.</p>
-
-          <a 
-            href={BOOKING_URL} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-primary mt-8 inline-flex text-lg"
-          >
-            Book a Discovery Call <ArrowRight className="ml-2" />
-          </a>
-          <p className="mt-3 text-xs text-white/50">Free 30-minute call • No pressure</p>
         </div>
       </section>
 
@@ -573,26 +356,24 @@ export default function BetterWithAI() {
           <div className="flex items-center gap-2">
             <span>betterwithai</span>
             <span className="text-white/30">•</span>
-            <span>Serious about your results. Not serious about ourselves.</span>
+            <span>Serious about results. Not serious about ourselves.</span>
           </div>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-1">
-            <button onClick={() => scrollTo("#solutions")} className="hover:text-white">Solutions</button>
+          <div className="flex flex-wrap gap-x-6">
+            <button onClick={() => scrollTo("#pricing")} className="hover:text-white">Pricing</button>
             <button onClick={() => scrollTo("#how-it-works")} className="hover:text-white">How it works</button>
-            <Link href="/resources" className="hover:text-white">Resources</Link>
-            <button onClick={() => scrollTo("#about")} className="hover:text-white">About</button>
-            <button onClick={() => scrollTo("#faq")} className="hover:text-white">FAQ</button>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">Book a call</a>
+            <Link href="/resources" className="hover:text-white">Resources &amp; Playbook</Link>
+            <Link href="/portal" className="hover:text-white">Portal</Link>
+            <a href={BOOKING_URL} target="_blank" className="hover:text-white">Book a call</a>
           </div>
 
           <div className="flex flex-wrap gap-x-4 text-xs">
             <Link href="/terms" className="hover:text-white">Terms</Link>
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
-            <Link href="/resources" className="hover:text-white">Resources</Link>
             <a href="mailto:hello@betterwithai.io" className="hover:text-white">hello@betterwithai.io</a>
           </div>
 
-          <div>© {new Date().getFullYear()} Better With AI, LLC. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Better With AI, LLC</div>
         </div>
       </footer>
     </div>

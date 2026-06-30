@@ -77,8 +77,10 @@ export default function ClientPortal() {
   const [userEmail, setUserEmail] = useState("");
   const [activeTab, setActiveTab] = useState<'projects' | 'invoices' | 'contracts'>('projects');
   const [clientData, setClientData] = useState(defaultClientData);
+  const [showWelcome, setShowWelcome] = useState(false);
 
-  // Demo: handle ?demoLogin=acme&newProject=true from wizard for seamless Tesla-simple flow
+  // Clean single handler: Tesla-simple handoff from wizard
+  // ?demoLogin=acme&newProject=true lands you authenticated + adds project
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
@@ -89,75 +91,35 @@ export default function ClientPortal() {
       const email = login === 'acme' ? 'client@acme.com' : 'ops@acme-corp.com';
       setUserEmail(email);
       setIsAuthenticated(true);
-    }
 
-    if (newProj === 'true') {
-      setClientData(prev => ({
-        ...prev,
-        projects: [
-          ...prev.projects,
-          {
-            id: `proj-${Date.now()}`,
-            title: "AI Project from Website Wizard",
-            status: "In Progress",
-            progress: 15,
-            nextMilestone: "Kickoff scheduled via agent system",
-            documents: ["Wizard Plan.pdf"]
-          }
-        ]
-      }));
-      setActiveTab('projects');
-    }
-  }, []);
-
-  // Demo: support wizard "Order Now" flow for Tesla-simple experience
-  // e.g. coming from /portal?demoLogin=acme&newProject=true
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    const login = params.get('demoLogin');
-    const newProj = params.get('newProject');
-
-    if (login) {
-      const email = login === 'acme' ? 'client@acme.com' : 'ops@acme-corp.com';
-      setUserEmail(email);
-      setIsAuthenticated(true);
-    }
-
-    if (newProj === 'true') {
-      setClientData(prev => ({
-        ...prev,
-        projects: [
-          ...prev.projects,
-          {
-            id: `proj-${Date.now()}`,
-            title: "AI Project from Website Wizard",
-            status: "In Progress",
-            progress: 15,
-            nextMilestone: "Kickoff scheduled via agent system",
-            documents: ["Wizard Plan.pdf"]
-          }
-        ]
-      }));
-      setActiveTab('projects');
+      if (newProj === 'true') {
+        const newProject = {
+          id: `proj-${Date.now()}`,
+          title: "AI Project from Website Wizard",
+          status: "In Progress",
+          progress: 18,
+          nextMilestone: "Kickoff scheduled by Ops Leader • Check back in portal",
+          documents: ["Wizard Plan.pdf"]
+        };
+        setClientData(prev => ({
+          ...prev,
+          projects: [...prev.projects, newProject]
+        }));
+        setActiveTab('projects');
+        setShowWelcome(true);
+        // Auto-hide the welcome banner after a bit
+        setTimeout(() => setShowWelcome(false), 6200);
+      }
     }
   }, []);
 
-  // Real implementation:
-  // - Use @supabase/ssr or Auth.js (next-auth) with Google and Microsoft Entra ID providers.
-  // - After Stripe webhook or signup, create/link user in Supabase.
-  // - Fetch personalized data (projects, invoices, contract status) filtered by auth user email/org_id.
-  // - For e-sign: Integrate HelloSign/DocuSign API. Status updates via webhook into DB.
-  // - Deploy as full Next.js on Vercel (dynamic, not pure static export).
-  // This page is a working demo of the personalized experience.
+  // Real implementation later:
+  // Supabase + Google/Microsoft Entra SSO. Stripe webhooks update projects/invoices/contracts.
   const handleSSOLogin = (provider: 'google' | 'microsoft') => {
-    // Simulate login - in production: redirect to OAuth
     const mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     setUserEmail(mockEmail);
     setIsAuthenticated(true);
-    // After real login, fetch personalized data from DB based on email
-    // For demo, we use the default data but could load different clients
-    alert(`Logged in via ${provider} as ${mockEmail}. In production this would use real SSO and load your data.`);
+    // No jarring alert — premium silent login like Tesla app
   };
 
   const handleSignContract = (contractId: string) => {
@@ -169,7 +131,6 @@ export default function ClientPortal() {
           : c
       )
     }));
-    // In real: Call e-sign API, then webhook updates DB and UI
   };
 
   const handlePayInvoice = (invoiceId: string) => {
@@ -181,36 +142,35 @@ export default function ClientPortal() {
           : i
       )
     }));
-    // In real: Redirect to Stripe, webhook on success updates status + triggers agent
-    alert('Payment successful (simulated). In real flow this would redirect to Stripe Checkout.');
   };
 
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-[#0B0B0F] text-white flex items-center justify-center p-6">
-        <div className="max-w-md w-full card p-8 text-center">
-          <h1 className="text-3xl font-bold mb-2">Client Portal</h1>
-          <p className="text-white/70 mb-8">Sign in with your work account to access your personalized projects, contracts, and payments.</p>
+        <div className="max-w-md w-full card p-9 text-center">
+          <div className="mx-auto mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#C6FF3A] text-[#0B0B0F] text-3xl">🧠</div>
+          <h1 className="text-4xl font-bold tracking-[-1px] mb-3">Client Portal</h1>
+          <p className="text-xl text-white/70 mb-9">Your AI command center.<br />Sign in with work to see everything live.</p>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             <button 
               onClick={() => handleSSOLogin('google')}
-              className="w-full btn-primary flex items-center justify-center gap-2"
+              className="w-full btn-primary flex items-center justify-center gap-3 py-4 text-base"
             >
-              <span>🔵</span> Sign in with Google
+              Sign in with Google
             </button>
             <button 
               onClick={() => handleSSOLogin('microsoft')}
-              className="w-full btn-secondary flex items-center justify-center gap-2"
+              className="w-full btn-secondary flex items-center justify-center gap-3 py-4 text-base"
             >
-              <span>🪟</span> Sign in with Microsoft 365
+              Sign in with Microsoft 365
             </button>
           </div>
 
-          <p className="mt-8 text-xs text-white/50">
-            Sign in with the same Google or Microsoft account you use for work. Your private AI command center — as seamless as the Tesla app.
+          <p className="mt-9 text-sm text-white/50 leading-snug">
+            Same login you use for work. Projects, contracts, invoices, status — all in one place. Tesla-simple.
           </p>
-          <Link href="/" className="text-[#C6FF3A] text-sm mt-4 inline-block">← Back to public site</Link>
+          <Link href="/" className="block mt-5 text-sm text-[#C6FF3A] hover:underline">← Back to betterwithai.io</Link>
         </div>
       </div>
     );
@@ -234,18 +194,29 @@ export default function ClientPortal() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Premium Tesla-like welcome + handoff banner */}
+        {showWelcome && (
+          <div className="mb-6 rounded-2xl border border-[#C6FF3A]/60 bg-[#C6FF3A]/10 px-6 py-4 text-[#C6FF3A] flex items-start gap-3">
+            <span className="text-xl mt-0.5">🚀</span>
+            <div>
+              <div className="font-semibold text-white">Welcome! Your new project from the wizard is live.</div>
+              <div className="text-sm text-white/80">Ops Leader has already queued kickoff. Everything here updates automatically as agents move.</div>
+            </div>
+          </div>
+        )}
+
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
             <h1 className="text-3xl font-bold">Welcome back, {client.name}</h1>
             <span className="px-3 py-1 bg-[#C6FF3A] text-[#0B0B0F] text-xs font-bold rounded">AI SYSTEMS ACTIVE</span>
           </div>
-          <p className="text-white/70">Your AI is running the work. Track everything here — exactly like the Tesla app, but for your business.</p>
+          <p className="text-white/70 max-w-xl">Your AI is running the work. Track projects, sign contracts, pay invoices. No email chains. No desk required.</p>
           
           {/* Tesla-style live status */}
-          <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
-            <div className="text-sm text-[#C6FF3A] mb-1">LIVE STATUS</div>
-            <div className="font-semibold">Roadmap delivered • 2 projects running • Agents handling daily ops</div>
-            <div className="text-xs text-white/60 mt-1">No desk required. Everything automated via the website + agent team.</div>
+          <div className="mt-4 p-5 bg-white/5 rounded-2xl border border-white/10 text-sm">
+            <div className="uppercase tracking-[2px] text-[#C6FF3A] text-xs mb-1">LIVE FROM THE AGENT SYSTEM</div>
+            <div className="font-semibold text-lg text-white">Roadmap delivered • New wizard project queued • Agents handling delivery</div>
+            <div className="mt-1 text-white/60">Check in whenever. We&apos;ll ping you only when you&apos;re needed.</div>
           </div>
         </div>
 
