@@ -32,6 +32,8 @@ class Integrations:
         self.vercel_token = os.getenv("VERCEL_TOKEN")  # if needed
         self.calendly_token = os.getenv("CALENDLY_TOKEN")
         self.resend_key = os.getenv("RESEND_API_KEY")
+        self.telegram_token = os.getenv("TELEGRAM_BOT_TOKEN")
+        self.telegram_chat_id = os.getenv("TELEGRAM_CHAT_ID")
         # Add more as needed: Google Calendar, Tally, etc.
 
     # GitHub - for code deploys. When repo exists, Grok can use MCP push_files directly.
@@ -82,6 +84,25 @@ class Integrations:
     def book_calendar_event(self, details: dict):
         print("[Integrations] Booking via Calendly/Google API")
         return {"event_url": "https://calendly.com/..."}
+
+    # Telegram - bidirectional updates with you while away
+    def send_telegram_update(self, message: str):
+        """Post progress / decisions / big moves to your Telegram."""
+        try:
+            from agents.telegram import send_update
+            return send_update(message)
+        except Exception as e:
+            print(f"[Integrations] Telegram send failed: {e}")
+            return {"sent": False, "error": str(e)}
+
+    def telegram_decision(self, question: str):
+        """Ping you for input after deep autonomous work."""
+        try:
+            from agents.telegram import send_decision_request
+            return send_decision_request(question)
+        except Exception as e:
+            print(f"[Integrations] Telegram decision ping failed: {e}")
+            return {"sent": False}
 
     # Central: One method the Ops Leader calls for "link systems"
     def automate_client_flow(self, client_data: dict):

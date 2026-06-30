@@ -38,6 +38,25 @@ Create a payment link for the $2497 Roadmap
 - Create a `.env` file with keys (GITHUB_TOKEN, STRIPE_SECRET_KEY, RESEND_API_KEY, etc.)
 - `agents/integrations.py` is the central hub.
 - For GitHub commits and Vercel deploys: Once the repo exists, tell me (Grok) and I handle directly via connected tools. No manual logins or pushes needed from you.
+
+**Telegram Ops Bot (NEW - critical for async 3h+ sessions)**
+
+First time setup:
+1. Message @BotFather in Telegram, create new bot, copy token.
+2. Chat with your new bot once (send /start).
+3. Add to .env:
+   TELEGRAM_BOT_TOKEN=...
+   TELEGRAM_CHAT_ID=...   (your chat id — run `python agents/run_telegram_bot.py` once after token and it will capture it, or use @userinfobot)
+
+Run the listener (recommended while away):
+    python agents/run_telegram_bot.py
+
+From any agent code:
+    from agents.telegram import send_update, send_decision_request
+    send_update("Big move: launched Revenue Engine v1 + 4 new agents. Decision: pricing tier?")
+    send_decision_request("After research, should we lead with $1,497 Roadmap or $2,997 with portal access?")
+
+Your replies come back into agents/telegram_inbox.jsonl and are consumed on next Master cycle. Full bidirectional.
 - The Ops Leader can call integrations.automate_client_flow(...) etc.
 - One-time setup for accounts; after that, mostly automated or via chat with me.
 ```

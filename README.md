@@ -31,10 +31,53 @@ npm run build
 
 ## Deployment
 
-- GitHub: mdmoore1379-rgb/betterwithai
-- Vercel: Imported and connected (as of 2026-06-30)
-- Full Tesla-simple self-serve flow live: Wizard → simulated checkout → portal demo
-- Reauthorized connectors for seamless updates.
+- GitHub: mdmoore1379-rgb/betterwithai (main branch triggers deploys)
+- Vercel: Project "betterwithai" (auto-deploys from GitHub)
+- Production domain: betterwithai.io (add in Vercel Domains + Cloudflare DNS)
+- Full self-serve flow: Wizard/configurator → buy → live in portal (Google/Microsoft SSO)
+- Light, modern, premium design (no black theme, clean logo, high contrast everywhere)
+- Latest code pushed; redeploy in Vercel after DNS for live https://betterwithai.io
+
+## Adding Custom Domain (betterwithai.io from Cloudflare)
+
+You are currently inside **Settings > General**. Custom domains are added from the main project view (not inside Settings).
+
+### Exact steps (one at a time)
+
+1. On the page you are viewing (Settings > General), click the project name "**betterwithai**" at the top of the left sidebar (or use the back arrow). This exits Settings and takes you to the main project dashboard.
+
+2. On the main project dashboard, the left sidebar will show items such as:
+   - Overview
+   - Deployments
+   - **Domains**   ← click this
+   - Logs
+   - etc.
+   (Settings is listed lower down)
+
+3. Click **Domains**.
+
+4. You will see an "Add Domain" input box. Type `betterwithai.io` and click Add. Also add `www.betterwithai.io`.
+
+5. Also add `www.betterwithai.io` (recommended).
+
+6. Vercel will now show you the exact DNS records you need to create in Cloudflare (usually one A record for the root domain and a CNAME for www). **Copy those instructions exactly**.
+
+7. Go to Cloudflare:
+   - Open your domain betterwithai.io
+   - Go to DNS → Records
+   - Add the records Vercel just gave you.
+   - For the root domain (betterwithai.io) use an **A** record pointing to Vercel’s IP (typically 76.76.21.21).
+   - Set the proxy status to **DNS only** (grey cloud) for now.
+
+8. Wait a few minutes for DNS to propagate, then go back to Vercel Domains page. It should say the domain is valid and SSL is being issued.
+
+9. Once valid, visit https://betterwithai.io in your browser. It should load your site.
+
+10. (Recommended) In the Domains list in Vercel, click the three dots next to betterwithai.io and set it as the **Production Domain**.
+
+After this, every push to the main branch on GitHub will automatically deploy to https://betterwithai.io.
+
+If you don’t see a “Domains” item after step 1, tell me exactly what you see in the left sidebar on the project page and I’ll give the next precise click.
 
 ## Deploy workflow (the important part)
 

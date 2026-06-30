@@ -21,9 +21,9 @@ export const offers: Offer[] = [
     id: 'roadmap',
     tier: '01 — ENTRY PRODUCT',
     title: 'AI Roadmap',
-    price: '$2,497',
+    price: '$1,497',
     period: 'one-time',
-    description: 'The modern way to start. Get a full audit + prioritized plan. Buy once. Your AI systems go live in the portal immediately.',
+    description: 'The modern way to start. Full strategic audit + prioritized 90-day roadmap with ROI math. 3 concrete moves guaranteed or full refund. Self-serve, instant portal access.',
     features: [
       'Full business + AI audit',
       'Prioritized roadmap with clear ROI',

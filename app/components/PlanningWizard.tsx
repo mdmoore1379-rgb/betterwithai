@@ -107,12 +107,44 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
         </div>
 
         <div className="text-center">
-          <a 
-            href={`/portal?demoLogin=acme&newProject=true${checkoutEmail ? `&email=${encodeURIComponent(checkoutEmail)}` : ''}`}
-            className="btn-primary inline-flex text-lg px-12 py-4"
-          >
-            Buy the full Roadmap — $2,497
-          </a>
+          <div className="space-y-3">
+            <input
+              type="email"
+              placeholder="your@company.com (for instant portal access)"
+              value={checkoutEmail}
+              onChange={(e) => setCheckoutEmail(e.target.value)}
+              className="w-full border border-[#E5E5E3] p-4 rounded-2xl text-base"
+            />
+
+            <button
+              onClick={() => {
+                const emailParam = checkoutEmail ? `?prefilled_email=${encodeURIComponent(checkoutEmail)}` : '';
+                // REAL: Replace this with your live Stripe payment link or call /api/checkout
+                // Example test link (create a price in Stripe dashboard and paste here)
+                const stripeTestLink = `https://buy.stripe.com/test_14k8wN2iL5iQ9cQ000${emailParam}`;
+                window.open(stripeTestLink, '_blank');
+                
+                // After payment success, user will be redirected or we email them portal access
+                setTimeout(() => {
+                  setCheckoutStep('success');
+                }, 800);
+              }}
+              className="btn-primary w-full text-lg py-4"
+            >
+              Complete purchase — $1,497 (AI Roadmap)
+            </button>
+
+            <div className="text-[11px] text-[#666] text-center">
+              Self-serve. Instant portal access after payment. Money-back if we don't deliver 3+ concrete moves.
+            </div>
+
+            <a 
+              href={`/portal?demoLogin=acme&newProject=true${checkoutEmail ? `&email=${encodeURIComponent(checkoutEmail)}` : ''}`}
+              className="block text-xs underline text-[#888] hover:text-[#0A66C2]"
+            >
+              Or view the demo portal now (no charge)
+            </a>
+          </div>
           <div className="mt-3 text-xs text-[#666]">One click. Live in the portal immediately.</div>
 
           <button onClick={reset} className="mt-4 text-sm text-[#888] hover:text-black">Start over</button>

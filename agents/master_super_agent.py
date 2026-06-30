@@ -20,13 +20,43 @@ import uuid
 from datetime import datetime
 import os
 
+# Telegram for async updates while user is away
+try:
+    from agents.telegram import send_update, send_decision_request
+except Exception:
+    def send_update(msg): print("[Telegram stub]", msg[:100])
+    def send_decision_request(q): print("[Telegram DECISION stub]", q)
+
 # We will dynamically import or create specialists
 from agents.specialists.growth_agent import GrowthAgent
 from agents.specialists.coding_agent import CodingAgent
 
-# Future: these will be auto-generated
-# from agents.specialists.marketing_systems_agent import MarketingSystemsAgent
-# etc.
+# Newly invented / expanded super agents (full 100M stack)
+try:
+    from agents.specialists.revenue_engine_super_agent import RevenueEngineSuperAgent
+except:
+    RevenueEngineSuperAgent = None
+
+try:
+    from agents.specialists.content_machine_super_agent import ContentMachineSuperAgent
+except:
+    ContentMachineSuperAgent = None
+
+try:
+    from agents.specialists.acquisition_flywheel_agent import AcquisitionFlywheelAgent
+except:
+    AcquisitionFlywheelAgent = None
+
+# Also keep the older ones that were auto-spawned
+try:
+    from agents.specialists.automatedleadgenerationengineagent import AutomatedLeadGenerationEngineAgent
+except:
+    AutomatedLeadGenerationEngineAgent = None
+
+try:
+    from agents.specialists.viralsocialcontentsystemsagent import ViralSocialContentsystemsagent
+except:
+    ViralSocialContentsystemsagent = None
 
 class MasterSuperAgent:
     name = "MasterSuperAgent"
@@ -37,8 +67,17 @@ class MasterSuperAgent:
             "OpsLeader": None,  # Will be populated
             "GrowthAgent": GrowthAgent(),
             "CodingAgent": CodingAgent(),
-            # Dynamically added agents go here
+            # Newly invented super agents for the full 100M machine
+            "RevenueEngineSuperAgent": RevenueEngineSuperAgent() if RevenueEngineSuperAgent else None,
+            "ContentMachineSuperAgent": ContentMachineSuperAgent() if ContentMachineSuperAgent else None,
+            "AcquisitionFlywheelAgent": AcquisitionFlywheelAgent() if AcquisitionFlywheelAgent else None,
         }
+        # Register any legacy spawned agents if they loaded
+        if AutomatedLeadGenerationEngineAgent:
+            self.agents["AutomatedLeadGenerationEngineAgent"] = AutomatedLeadGenerationEngineAgent()
+        if ViralSocialContentsystemsagent:
+            self.agents["ViralSocialContentSystemsAgent"] = ViralSocialContentsystemsagent()
+
         self.coding_team: List[Any] = []  # Will hold specialized coding superagents
         self.roadmap_100m = self._load_100m_roadmap()
         self.build_log = []
@@ -196,6 +235,13 @@ class {agent_name}(BaseAgent):
 
         # 5. Execute key builds (in this environment, we trigger actual code changes)
         self._execute_priority_builds(needs)
+
+        # 6. Push big update to Telegram (your phone) so you stay in the loop without babysitting
+        try:
+            summary = f"Master cycle done. Active agents: {len([k for k,v in self.agents.items() if v])}. New builds logged. Gaps attacked: {gaps[:3]}"
+            send_update(summary)
+        except Exception as e:
+            print(f"[Master] Telegram update skipped: {e}")
 
         print("\n[MasterSuperAgent] Cycle complete. Ready for next iteration.")
         return {"status": "cycle_complete", "new_agents": len([a for a in self.agents if a]), "builds_triggered": len(self.coding_team)}
