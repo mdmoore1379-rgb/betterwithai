@@ -211,7 +211,7 @@ export default function ClientPortal() {
         )}
 
         {actionMessage && (
-          <div className="mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm text-[#C6FF3A]">
+          <div className="mb-4 rounded-xl bg-[#F0F0EE] border border-[#E5E5E3] px-5 py-3 text-sm text-[#0A66C2]">
             {actionMessage}
           </div>
         )}
@@ -254,7 +254,7 @@ export default function ClientPortal() {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="font-semibold text-lg">{project.title}</h3>
-                      <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded ${project.status === 'Completed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
+                      <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded font-medium ${project.status === 'Completed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                         {project.status}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export default function ClientPortal() {
                     </div>
                   </div>
                   
-                  <div className="h-2 bg-white/10 rounded mb-4">
+                  <div className="h-2 bg-[#E5E5E3] rounded mb-4">
                     <div className="h-2 bg-[#C6FF3A] rounded" style={{width: `${project.progress}%`}}></div>
                   </div>
 
@@ -275,13 +275,13 @@ export default function ClientPortal() {
                       {project.documents.map((doc, i) => (
                         <li key={i} className="flex items-center gap-2">
                           <span>📄</span> 
-                          <a href="#" className="hover:text-[#C6FF3A]">{doc}</a>
+                          <a href="#" className="hover:text-[#0A66C2]">{doc}</a>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <button className="mt-6 w-full btn-secondary text-sm">View Full Project Details</button>
+                  <button className="mt-6 w-full border border-[#111] text-[#111] hover:bg-[#F8F8F6] text-sm py-2 rounded-full">View Full Project Details</button>
                 </div>
               ))}
             </div>
@@ -291,7 +291,7 @@ export default function ClientPortal() {
               <p className="text-sm text-[#555] mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
               <div className="flex gap-3">
                 <Link href="/#wizard" className="btn-primary flex-1 justify-center">Configure new Roadmap</Link>
-                <Link href="/#wizard" className="btn-secondary flex-1 justify-center">Start another Roadmap</Link>
+                <Link href="/#wizard" className="border border-[#111] hover:bg-[#F8F8F6] text-[#111] flex-1 justify-center text-sm py-3 rounded-full">Start another Roadmap</Link>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function ClientPortal() {
                     <div className="text-sm text-[#666]">Due {invoice.due} • ${invoice.amount.toLocaleString()}</div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className={`px-3 py-1 text-xs rounded ${invoice.status === 'Paid' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                    <span className={`px-3 py-1 text-xs rounded font-medium ${invoice.status === 'Paid' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                       {invoice.status}
                     </span>
                     {invoice.status !== 'Paid' && (
@@ -320,7 +320,7 @@ export default function ClientPortal() {
                         Pay Now
                       </button>
                     )}
-                    <a href={invoice.link} className="text-sm text-[#C6FF3A] hover:underline">View payment details →</a>
+                    <a href={invoice.link} className="text-sm text-[#0A66C2] hover:underline">View payment details →</a>
                   </div>
                 </div>
               ))}
@@ -343,7 +343,7 @@ export default function ClientPortal() {
                         {contract.status === 'Signed' ? `Signed on ${contract.signedDate}` : 'Pending your signature'}
                       </div>
                     </div>
-                    <span className={`px-3 py-1 text-xs rounded ${contract.status === 'Signed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
+                    <span className={`px-3 py-1 text-xs rounded font-medium ${contract.status === 'Signed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                       {contract.status}
                     </span>
                   </div>

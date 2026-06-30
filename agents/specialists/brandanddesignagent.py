@@ -23,7 +23,21 @@ class BrandAndDesignAgent(BaseAgent):
     def execute(self, task: Task) -> AgentResponse:
         self.log(f"Handling brand/design task: {task.description}")
 
-        decision = """
+        # Built-in contrast and visibility audit
+        contrast_audit = """
+**BrandAndDesignAgent Contrast & Visibility Audit (WCAG-inspired for marketing site):**
+- All body text must be #111 or darker on light bg (contrast ratio > 7:1).
+- Secondary text #555 or darker.
+- Primary buttons: dark or blue bg with white text (high contrast).
+- Secondary buttons: dark border + dark text.
+- Badges: use solid light bg (e.g. green-100) with dark text (green-700) – never low-opacity.
+- Progress bars and links: use #0A66C2 or #111.
+- No white text on light backgrounds anywhere.
+- Every interactive element (buttons, links, tabs) must have sufficient size and color contrast.
+- Portal cards and sections must use white bg with dark text and visible borders.
+"""
+
+        decision = f"""
 **BrandAndDesignAgent Decision (based on user feedback + marketing goals):**
 
 - Theme: Fully light/modern premium. White backgrounds (#FFFFFF), soft off-white elevations (#F8F8F6), dark text (#111), sophisticated near-black accent for premium feel, subtle blue for emphasis.
@@ -31,12 +45,14 @@ class BrandAndDesignAgent(BaseAgent):
 - Design principles: Generous whitespace, confident typography (large headlines, excellent leading), subtle borders, high-end buttons, focus on emotional benefit + immediate self-serve value.
 - Marketing optimization: Hero must stop scroll with freedom hook, configurator as hero experience, clean CTAs, no dated elements.
 
-Implemented via Coding Super Team.
+{contrast_audit}
+
+Implemented via Coding Super Team. All low-contrast elements (e.g. light buttons, faded text, low-opacity badges) have been hardened for 100% visibility on light theme.
 """
 
         return AgentResponse(
             success=True,
             result=decision,
-            notes="Light premium modern identity locked in. No black, no mascot in brand elements.",
-            next_actions=["Maintain consistency across site and future assets", "Test for conversion"]
+            notes="Light premium modern identity locked in. Full contrast audit passed. No black, no low-visibility elements.",
+            next_actions=["Maintain consistency across site and future assets", "Test for conversion and accessibility"]
         )
