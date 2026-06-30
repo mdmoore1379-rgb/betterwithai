@@ -120,10 +120,12 @@ export default function ClientPortal() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [isInternal, setIsInternal] = useState(false); // Internal team vs client view
+  const [isMasterSuperAdmin, setIsMasterSuperAdmin] = useState(false);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'projects' | 'crm' | 'connectors' | 'invoices' | 'contracts'>('dashboard');
   const [clientData, setClientData] = useState(defaultClientData);
   const [showWelcome, setShowWelcome] = useState(false);
   const [actionMessage, setActionMessage] = useState<string | null>(null);
+  const [impersonatedClient, setImpersonatedClient] = useState<string | null>(null); // For admins to view as client
 
   // Clean single handler: Tesla-simple handoff from wizard
   // ?demoLogin=acme&newProject=true lands you authenticated + adds project
@@ -162,11 +164,25 @@ export default function ClientPortal() {
   // Real implementation later:
   // Supabase + Google/Microsoft Entra SSO. Payment webhooks update projects/invoices/contracts.
   const handleSSOLogin = (provider: 'google' | 'microsoft', role?: 'internal' | 'client') => {
-    const mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
+    let mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
+    
+    // Master Super Admin logins
+    const masterEmails = ["mdmoore1379@gmail.com", "michael@betterwithai.io"];
+    if (role === 'internal' && provider === 'google') {
+      // Simulate choosing one of the master emails
+      mockEmail = masterEmails[0]; // Default to first, in real would come from Google
+    }
+    
     setUserEmail(mockEmail);
+    const isMaster = masterEmails.includes(mockEmail.toLowerCase());
+    setIsMasterSuperAdmin(isMaster);
+    setIsInternal(isMaster || role === 'internal' || mockEmail.includes('ops@'));
     setIsAuthenticated(true);
-    setIsInternal(role === 'internal' || mockEmail.includes('ops@'));
-    // No jarring alert — premium silent login like Tesla app
+    
+    if (isMaster) {
+      setActionMessage("Master Super Admin access granted. Full control over all clients, projects, goals, and connectors.");
+      setTimeout(() => setActionMessage(null), 4000);
+    }
   };
 
   const handleSignContract = (contractId: string) => {
@@ -208,27 +224,40 @@ export default function ClientPortal() {
               onClick={() => handleSSOLogin('google')}
               className="w-full btn-primary flex items-center justify-center gap-3 py-4 text-base"
             >
-              Sign in with Google (Client)
+              Sign in with Google (Client Demo)
             </button>
             <button 
               onClick={() => handleSSOLogin('microsoft')}
               className="w-full btn-secondary flex items-center justify-center gap-3 py-4 text-base"
             >
-              Sign in with Microsoft 365 (Client)
+              Sign in with Microsoft 365 (Client Demo)
             </button>
-            <div className="pt-2 text-xs text-[#666]">Internal team:</div>
-            <button 
-              onClick={() => handleSSOLogin('google', 'internal')}
-              className="w-full border border-[#0F0F0F] text-[#0F0F0F] hover:bg-[#F0F0EE] py-3 text-sm rounded-full"
-            >
-              Sign in with Google (Internal Team)
-            </button>
-            <button 
-              onClick={() => handleSSOLogin('microsoft', 'internal')}
-              className="w-full border border-[#0F0F0F] text-[#0F0F0F] hover:bg-[#F0F0EE] py-3 text-sm rounded-full"
-            >
-              Sign in with Microsoft 365 (Internal Team)
-            </button>
+            
+            <div className="pt-3 border-t border-[#E5E5E3]">
+              <div className="text-xs text-[#666] mb-2 font-semibold">MASTER SUPER ADMIN (Google SSO)</div>
+              <button 
+                onClick={() => { 
+                  setUserEmail("mdmoore1379@gmail.com"); 
+                  setIsAuthenticated(true); 
+                  setIsMasterSuperAdmin(true); 
+                  setIsInternal(true); 
+                }}
+                className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full mb-2 font-medium"
+              >
+                Sign in as mdmoore1379@gmail.com (Master Super Admin)
+              </button>
+              <button 
+                onClick={() => { 
+                  setUserEmail("michael@betterwithai.io"); 
+                  setIsAuthenticated(true); 
+                  setIsMasterSuperAdmin(true); 
+                  setIsInternal(true); 
+                }}
+                className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full font-medium"
+              >
+                Sign in as michael@betterwithai.io (Master Super Admin)
+              </button>
+            </div>
           </div>
 
           <p className="mt-9 text-sm text-[#666] leading-snug">
@@ -252,7 +281,13 @@ export default function ClientPortal() {
           </div>
           <div className="flex items-center gap-4 text-sm">
             <span className="text-[#666]">{userEmail}</span>
-            <button onClick={() => setIsAuthenticated(false)} className="text-[#0A66C2] hover:underline">Sign out</button>
+            {isMasterSuperAdmin && (
+              <span className="px-2 py-0.5 bg-[#0A66C2] text-white text-[10px] font-bold rounded tracking-wider">MASTER SUPER ADMIN</span>
+            )}
+            {isInternal && !isMasterSuperAdmin && (
+              <span className="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-bold rounded">INTERNAL TEAM</span>
+            )}
+            <button onClick={() => { setIsAuthenticated(false); setIsMasterSuperAdmin(false); setIsInternal(false); setImpersonatedClient(null); }} className="text-[#0A66C2] hover:underline">Sign out</button>
           </div>
         </div>
       </div>
@@ -305,6 +340,54 @@ export default function ClientPortal() {
 
         {isInternal && (
           <div className="mb-4 text-xs px-3 py-1 bg-amber-100 text-amber-800 inline-block rounded">INTERNAL TEAM VIEW — Full CRM + Connectors + All Clients</div>
+        )}
+
+        {isMasterSuperAdmin && (
+          <div className="mb-6 p-4 bg-[#0A66C2]/5 border border-[#0A66C2]/20 rounded-2xl text-sm">
+            <div className="font-semibold text-[#0A66C2] mb-2">MASTER SUPER ADMIN CONTROLS</div>
+            <div className="flex flex-wrap gap-3 items-center">
+              <button 
+                onClick={() => {
+                  const pkg = window.prompt("Select package: Readiness ($7500 one-time), Coaching ($7500/mo), or Implementation ($7500/mo for 20 hrs + access)") || "Implementation";
+                  const clientName = window.prompt("Client name?") || "New Client";
+                  const newProject = {
+                    id: `proj-${Date.now()}`,
+                    title: window.prompt("Project title?") || `${pkg} for ${clientName}`,
+                    packageType: pkg,
+                    status: "In Progress",
+                    progress: 5,
+                    nextMilestone: "Kickoff scheduled",
+                    documents: [],
+                    tasks: [{ id: 'new1', title: 'Define scope & align to 3 key goals', status: 'todo' as const }],
+                    packageScope: pkg === "Readiness" ? "One-time $7500: Assessment, 3 goals setup, PM/CRM project creation, connectors configured." : pkg === "Coaching" ? "$7500/mo: Sessions, knowledge access, goal tracking." : "$7500/mo: 20 implementation hours + full AI systems, agents, knowledge access. All tracked to goals."
+                  };
+                  setClientData(prev => ({
+                    ...prev,
+                    projects: [...prev.projects, newProject],
+                    crmClients: [...prev.crmClients, { id: `c${Date.now()}`, name: clientName, email: `${clientName.toLowerCase().replace(/\s/g,'')}@example.com`, status: 'Active', deals: 1, lastActivity: new Date().toISOString().split('T')[0] }]
+                  }));
+                  setActiveTab('projects');
+                }}
+                className="px-4 py-1 bg-white border border-[#0A66C2] text-[#0A66C2] rounded-full text-xs font-medium hover:bg-[#0A66C2] hover:text-white"
+              >
+                + Create Project for Client (Productized Package)
+              </button>
+              <button 
+                onClick={() => {
+                  const goalId = window.prompt("Which goal to update? (g1, g2, or g3)") || 'g1';
+                  const newProg = parseInt(window.prompt("New progress % (0-100)?") || "50");
+                  setClientData(prev => ({
+                    ...prev,
+                    keyGoals: prev.keyGoals.map(g => g.id === goalId ? {...g, progress: Math.min(100, Math.max(0, newProg))} : g)
+                  }));
+                }}
+                className="px-4 py-1 bg-white border border-[#0A66C2] text-[#0A66C2] rounded-full text-xs font-medium hover:bg-[#0A66C2] hover:text-white"
+              >
+                Update Goal Progress
+              </button>
+              <span className="text-xs text-[#666]">As Master you control all goals, projects, and connectors globally.</span>
+            </div>
+          </div>
         )}
 
         {/* Dashboard - 3 Key Company Goals (AI heavily enabled) */}
@@ -480,8 +563,12 @@ export default function ClientPortal() {
                   <button 
                     onClick={() => {
                       const sample = { id: `act-${Date.now()}`, source: tool, date: new Date().toISOString().split('T')[0], summary: `Sample ${tool} call: Updated lead funnel goals, 2 action items logged to proj-001`, linkedProjectId: 'proj-001' };
-                      setClientData(prev => ({ ...prev, activities: [...(prev.activities || []), sample] }));
-                      setActionMessage(`${tool} connected. Sample data imported to CRM + Projects.`);
+                      setClientData(prev => ({ 
+                        ...prev, 
+                        activities: [...(prev.activities || []), sample],
+                        keyGoals: prev.keyGoals.map((g, i) => i === 0 ? { ...g, progress: Math.min(100, g.progress + 3) } : g) // Simulate AI impact on goal 1
+                      }));
+                      setActionMessage(`${tool} connected & data imported. Goal progress updated via connector.`);
                       setTimeout(() => setActionMessage(null), 2500);
                     }}
                     className="btn-primary w-full text-sm"
@@ -580,15 +667,6 @@ export default function ClientPortal() {
 
         <div className="mt-12 text-center text-xs text-[#666]">
           All data syncs with our agent system and 3 key goals. Connectors (Zoom/Meet/read.ai) feed planning back here. Packages (Readiness $7500 one-time, Coaching $7500/mo, Implementation $7500/mo) have clear scopes tied to PM/CRM.
-        </div>
-      </div>
-    </div>
-  );
-}
-
-        <div className="mt-12 text-center text-sm text-[#666]">
-          Questions? Email <a href="mailto:hello@betterwithai.io" className="text-[#C6FF3A]">hello@betterwithai.io</a> or message your dedicated agent.
-          <br />This portal is powered by the same AI systems we deliver to you.
         </div>
       </div>
     </div>
