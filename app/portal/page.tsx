@@ -155,7 +155,7 @@ export default function ClientPortal() {
         <div className="max-w-md w-full card p-9 text-center">
           <div className="mx-auto mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#C6FF3A] text-[#0B0B0F] text-3xl">🧠</div>
           <h1 className="text-4xl font-bold tracking-[-1px] mb-3">Client Portal</h1>
-          <p className="text-xl text-white/70 mb-9">Your AI command center.<br />Sign in with work to see everything live.</p>
+          <p className="text-xl text-[#555] mb-9">Your AI command center.<br />Sign in with work to see everything live.</p>
 
           <div className="space-y-3">
             <button 
@@ -172,7 +172,7 @@ export default function ClientPortal() {
             </button>
           </div>
 
-          <p className="mt-9 text-sm text-white/50 leading-snug">
+          <p className="mt-9 text-sm text-[#666] leading-snug">
             Same login you use for work. Projects, contracts, invoices, status — all in one place. Tesla-simple.
           </p>
           <Link href="/" className="block mt-5 text-sm text-[#C6FF3A] hover:underline">← Back to betterwithai.io</Link>
@@ -189,11 +189,11 @@ export default function ClientPortal() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <span className="font-semibold">betterwithai</span>
-            <span className="text-white/50 ml-2">Portal</span>
+            <span className="text-[#666] ml-2">Portal</span>
           </div>
           <div className="flex items-center gap-4 text-sm">
-            <span className="text-white/70">{userEmail}</span>
-            <button onClick={() => setIsAuthenticated(false)} className="text-[#C6FF3A] hover:underline">Sign out</button>
+            <span className="text-[#666]">{userEmail}</span>
+            <button onClick={() => setIsAuthenticated(false)} className="text-[#0A66C2] hover:underline">Sign out</button>
           </div>
         </div>
       </div>
@@ -204,8 +204,8 @@ export default function ClientPortal() {
           <div className="mb-6 rounded-2xl border border-[#C6FF3A]/60 bg-[#C6FF3A]/10 px-6 py-4 text-[#C6FF3A] flex items-start gap-3">
             <span className="text-xl mt-0.5">🚀</span>
             <div>
-              <div className="font-semibold text-white">Welcome! Your new project from the wizard is live.</div>
-              <div className="text-sm text-white/80">Ops Leader has already queued kickoff. Everything here updates automatically as agents move.</div>
+              <div className="font-semibold text-[#111]">Welcome! Your new project from the wizard is live.</div>
+              <div className="text-sm text-[#555]">Ops Leader has already queued kickoff. Everything here updates automatically as agents move.</div>
             </div>
           </div>
         )}
@@ -221,13 +221,13 @@ export default function ClientPortal() {
             <h1 className="text-3xl font-bold">Welcome back, {client.name}</h1>
             <span className="px-3 py-1 bg-[#C6FF3A] text-[#0B0B0F] text-xs font-bold rounded">AI SYSTEMS ACTIVE</span>
           </div>
-          <p className="text-white/70 max-w-xl">Your AI is running the work. Track projects, sign contracts, pay invoices. No email chains. No desk required.</p>
+          <p className="text-[#555] max-w-xl">Your AI is running the work. Track projects, sign contracts, pay invoices. No email chains. No desk required.</p>
           
           {/* Tesla-style live status */}
           <div className="mt-4 p-5 bg-white/5 rounded-2xl border border-white/10 text-sm">
             <div className="uppercase tracking-[2px] text-[#C6FF3A] text-xs mb-1">LIVE FROM THE AGENT SYSTEM</div>
-            <div className="font-semibold text-lg text-white">Roadmap delivered • New wizard project queued • Agents handling delivery</div>
-            <div className="mt-1 text-white/60">Check in whenever. We&apos;ll ping you only when you&apos;re needed.</div>
+            <div className="font-semibold text-lg text-[#111]">Roadmap delivered • New wizard project queued • Agents handling delivery</div>
+            <div className="mt-1 text-[#666]">Check in whenever. We&apos;ll ping you only when you&apos;re needed.</div>
           </div>
         </div>
 
@@ -237,7 +237,7 @@ export default function ClientPortal() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-[#C6FF3A] text-[#C6FF3A]' : 'border-transparent text-white/70 hover:text-white'}`}
+              className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-[#0A66C2] text-[#0A66C2]' : 'border-transparent text-[#666] hover:text-[#111]'}`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
@@ -267,10 +267,10 @@ export default function ClientPortal() {
                     <div className="h-2 bg-[#C6FF3A] rounded" style={{width: `${project.progress}%`}}></div>
                   </div>
 
-                  <p className="text-sm text-white/80 mb-4">{project.nextMilestone}</p>
+                  <p className="text-sm text-[#555] mb-4">{project.nextMilestone}</p>
 
                   <div>
-                    <div className="text-xs text-white/60 mb-2">Documents</div>
+                    <div className="text-xs text-[#666] mb-2">Documents</div>
                     <ul className="space-y-1 text-sm">
                       {project.documents.map((doc, i) => (
                         <li key={i} className="flex items-center gap-2">
@@ -288,7 +288,7 @@ export default function ClientPortal() {
 
             <div className="mt-8 card p-6">
               <h3 className="font-semibold mb-2">Start a new project</h3>
-              <p className="text-sm text-white/70 mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
+              <p className="text-sm text-[#555] mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
               <div className="flex gap-3">
                 <Link href="/#wizard" className="btn-primary flex-1 justify-center">Configure new Roadmap</Link>
                 <Link href="/#wizard" className="btn-secondary flex-1 justify-center">Start another Roadmap</Link>
@@ -306,7 +306,7 @@ export default function ClientPortal() {
                 <div key={invoice.id} className="card p-6 flex items-center justify-between">
                   <div>
                     <div className="font-medium">{invoice.description}</div>
-                    <div className="text-sm text-white/60">Due {invoice.due} • ${invoice.amount.toLocaleString()}</div>
+                    <div className="text-sm text-[#666]">Due {invoice.due} • ${invoice.amount.toLocaleString()}</div>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className={`px-3 py-1 text-xs rounded ${invoice.status === 'Paid' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
@@ -325,7 +325,7 @@ export default function ClientPortal() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-xs text-white/50">Payments processed securely. Receipts and history available in your account.</p>
+            <p className="mt-6 text-xs text-[#666]">Payments processed securely. Receipts and history available in your account.</p>
           </div>
         )}
 
@@ -339,7 +339,7 @@ export default function ClientPortal() {
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="font-medium text-lg">{contract.title}</div>
-                      <div className="text-sm text-white/60">
+                      <div className="text-sm text-[#666]">
                         {contract.status === 'Signed' ? `Signed on ${contract.signedDate}` : 'Pending your signature'}
                       </div>
                     </div>
@@ -364,11 +364,11 @@ export default function ClientPortal() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-xs text-white/50">Contracts powered by HelloSign / DocuSign. All signed documents stored securely and available here.</p>
+            <p className="mt-6 text-xs text-[#666]">Contracts powered by HelloSign / DocuSign. All signed documents stored securely and available here.</p>
           </div>
         )}
 
-        <div className="mt-12 text-center text-sm text-white/60">
+        <div className="mt-12 text-center text-sm text-[#666]">
           Questions? Email <a href="mailto:hello@betterwithai.io" className="text-[#C6FF3A]">hello@betterwithai.io</a> or message your dedicated agent.
           <br />This portal is powered by the same AI systems we deliver to you.
         </div>

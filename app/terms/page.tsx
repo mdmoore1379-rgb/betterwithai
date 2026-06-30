@@ -7,9 +7,9 @@ export default function TermsOfService() {
         <Link href="/" className="text-[#C6FF3A] hover:underline text-sm">← Back to betterwithai</Link>
 
         <h1 className="mt-8 text-4xl font-bold tracking-tight">Terms of Service</h1>
-        <p className="mt-2 text-white/60">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p className="mt-2 text-[#666]">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
-        <div className="prose prose-invert mt-10 max-w-none text-white/90">
+        <div className="prose mt-10 max-w-none text-[#333]">
           <p>
             These Terms of Service (“Terms”) govern your use of the website betterwithai.io and the AI consulting services provided by Better With AI, LLC (“betterwithai”, “we”, “us”, or “our”).
           </p>
@@ -75,7 +75,7 @@ export default function TermsOfService() {
           </p>
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-6 text-xs text-white/50">
+        <div className="mt-16 border-t border-[#E5E5E3] pt-6 text-xs text-[#666]">
           This is a template. Have a qualified attorney review all legal documents for your specific situation and jurisdiction.
         </div>
       </div>
