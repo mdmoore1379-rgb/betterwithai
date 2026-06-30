@@ -191,8 +191,9 @@ export default function ClientPortal() {
     }
   }, []);
 
-  // NOTE: No real admin emails are ever exposed in the UI or client code.
-  // Dev master testing is done via ?devmaster=1 (does not render any privileged emails).
+  // SECURITY NOTE: No real privileged account emails (e.g. mdmoore1379@gmail.com) are ever
+  // exposed in the client UI or committed to the bundle. Master/dev access is gated behind
+  // a non-obvious query flag and uses only placeholder values.
   const handleSSOLogin = (provider: 'google' | 'microsoft') => {
     let mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
     
@@ -200,7 +201,7 @@ export default function ClientPortal() {
     const isDevMaster = urlParams?.get('devmaster') === '1';
     
     if (isDevMaster) {
-      mockEmail = 'dev-master@localhost'; // completely fake, never a real address
+      mockEmail = 'dev-master@localhost'; // fake placeholder only
     }
     
     setUserEmail(mockEmail);
@@ -217,7 +218,7 @@ export default function ClientPortal() {
     }
     
     if (isDevMaster) {
-      setActionMessage("Dev master mode active (via ?devmaster=1 only). This is not exposed publicly.");
+      setActionMessage("Dev master mode active (via ?devmaster=1 only). Not exposed publicly.");
       setTimeout(() => setActionMessage(null), 4000);
     }
   };
@@ -332,10 +333,9 @@ export default function ClientPortal() {
             </button>
             
             {/* 
-              DEV ACCESS ONLY
-              To test as master, append ?devmaster=1 to the URL.
-              This does NOT display any real email addresses.
-              Never ship with visible master login buttons containing real privileged accounts.
+              DEV ACCESS ONLY (hidden from normal traffic)
+              Append ?devmaster=1 to URL to enable test master mode.
+              This path never renders real admin emails.
             */}
           </div>
 
