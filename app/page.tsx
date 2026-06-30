@@ -31,7 +31,6 @@ export default function BetterWithAI() {
     { label: "Lifestyle", href: "#lifestyle" },
     { label: "Pricing", href: "#pricing" },
     { label: "Resources", href: "/resources" },
-    { label: "Portal", href: "/portal" },
   ];
 
   const scrollTo = (id: string) => {
@@ -70,15 +69,15 @@ export default function BetterWithAI() {
           <div className="hidden items-center gap-3 md:flex">
             <a
               href="#wizard"
-              className="btn-secondary text-sm"
+              className="btn-primary text-sm"
             >
-              Configure Roadmap
+              Configure your Roadmap
             </a>
             <a
               href="/portal"
-              className="btn-primary text-sm"
+              className="btn-secondary text-sm"
             >
-              Open portal
+              Client portal
             </a>
           </div>
 
@@ -105,122 +104,125 @@ export default function BetterWithAI() {
                   {item.label}
                 </button>
               ))}
-              <a href="#wizard" className="btn-secondary mt-1 w-full justify-center">Configure Roadmap</a>
+              <a href="#wizard" className="btn-primary mt-1 w-full justify-center">Configure your Roadmap</a>
               <a
                 href="/portal"
-                className="btn-primary mt-2 w-full justify-center"
+                className="btn-secondary mt-2 w-full justify-center"
               >
-                Open portal
+                Client portal
               </a>
             </div>
           </div>
         )}
       </nav>
 
-      {/* HERO — Minimal, powerful, confident */}
-      <section className="relative min-h-[88vh] flex items-center pt-20">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <div className="mb-10 flex justify-center">
-            <BrainMascot state={mascotHeroState} size={200} />
+      {/* HERO — Premium, confident, minimalist */}
+      <section className="relative min-h-[92vh] flex items-center pt-20 border-b border-[#222225]">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <div className="mb-8 flex justify-center">
+            <BrainMascot state={mascotHeroState} size={180} />
           </div>
 
-          <h1 className="text-7xl md:text-[84px] font-semibold tracking-[-4.2px] leading-[0.88] mb-8 text-balance">
+          <h1 className="text-[64px] md:text-[80px] font-semibold tracking-[-4.5px] leading-[0.88] mb-6 text-balance">
             AI runs the business.<br />
-            We live the life.
+            <span className="text-[#C6FF3A]">We run the world.</span>
           </h1>
 
-          <p className="max-w-xl mx-auto text-2xl text-[#A1A1AA] mb-12 leading-tight">
-            The systems handle the work. We handle the adventure.
+          <p className="max-w-md mx-auto text-2xl text-[#A1A1AA] mb-10 leading-tight">
+            The systems handle the work.<br />We live the life.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#wizard" className="btn-primary text-base px-9 py-4">
-              Configure &amp; Buy Roadmap
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#wizard" className="btn-primary text-lg px-10 py-4">
+              Configure your Roadmap
             </a>
-            <a href="/portal" className="btn-secondary text-base px-8 py-4">
-              View portal
+            <a href="/portal" className="btn-secondary text-lg px-8 py-4">
+              View the portal
             </a>
           </div>
 
-          <div className="mt-8 text-xs text-[#5A5A5F] tracking-[1.5px]">
-            2 MINUTES • PAY SECURELY • INSTANT PORTAL ACCESS • NO CALL NEEDED
+          <div className="mt-6 text-[10px] text-[#5A5A5F] tracking-[2px]">
+            2 MINUTES TO CONFIGURE • ONE CLICK TO BUY • INSTANT IN YOUR PORTAL
           </div>
         </div>
       </section>
 
-      {/* THE WIZARD — The heart of the experience. Clean and focused. */}
-      <section id="wizard" className="section border-t border-[#222225] py-20">
-        <div className="mx-auto max-w-2xl px-6">
-          <div className="text-center mb-12">
-            <div className="text-xs tracking-[2px] text-[#C6FF3A] mb-3">FULLY SELF-SERVE — LIKE BUYING A TESLA</div>
-            <h2 className="text-5xl md:text-6xl font-semibold tracking-[-2.8px] leading-none mb-5">
-              Configure. Pay. Activated.<br />No call required.
+      {/* THE CONFIGURATOR — The heart of the experience. High-end, self-serve. */}
+      <section id="wizard" className="section border-t border-[#222225] py-24 bg-[#0A0A0C]">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1 text-xs tracking-[2px] text-[#C6FF3A] mb-4">
+              THE CONFIGURATOR
+            </div>
+            <h2 className="text-6xl md:text-7xl font-semibold tracking-[-3.2px] leading-none mb-6">
+              Build your plan.<br />Buy in minutes.
             </h2>
-            <p className="text-xl text-[#A1A1AA]">
-              Four questions. Tailored plan. One click to buy.<br />Project live in the portal instantly. Tesla-simple.
+            <p className="text-2xl text-[#A1A1AA] max-w-lg mx-auto">
+              No forms. No calls. No back-and-forth.<br />Just a clear path to results.
             </p>
           </div>
 
-          <PlanningWizard />
+          <div className="mt-8">
+            <PlanningWizard />
+          </div>
         </div>
       </section>
 
-      {/* PRICING — Extremely clean and spacious */}
+      {/* PRICING — Clean, confident, premium */}
       <section id="pricing" className="section border-t border-[#222225] py-24">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="text-center mb-16">
-            <div className="text-xs tracking-[2px] text-[#C6FF3A] mb-4">ROADMAP IS 100% SELF-SERVE</div>
-            <h2 className="text-6xl font-semibold tracking-[-2.6px]">Buy it like a Tesla.<br />No call required.</h2>
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-5xl font-semibold tracking-[-2px] mb-3">Choose your level of freedom.</h2>
+            <p className="text-[#A1A1AA] text-xl">Start with the Roadmap. Everything else builds from there.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
             {offers.filter(o => o.stage !== 'future').map((offer, idx) => (
-              <div key={offer.id} className={`card p-8 ${idx === 0 ? 'ring-1 ring-[#C6FF3A]/30' : ''}`}>
-                <div className="uppercase text-[10px] tracking-[2px] text-[#C6FF3A] mb-3">{offer.tier}</div>
-                <div className="text-[28px] font-semibold tracking-tight mb-1">{offer.title}</div>
-                <div className="text-5xl font-semibold tracking-[-1.5px] mb-6 tabular-nums">{offer.price}</div>
+              <div key={offer.id} className={`card p-9 ${idx === 0 ? 'ring-1 ring-[#C6FF3A]/40' : ''}`}>
+                <div className="text-xs tracking-[2px] text-[#C6FF3A] mb-2">{offer.tier}</div>
+                <div className="text-3xl font-semibold tracking-[-0.5px] mb-1">{offer.title}</div>
+                <div className="text-6xl font-semibold tracking-[-2px] mb-8 tabular-nums">{offer.price}</div>
                 
-                <p className="text-[#A1A1AA] mb-8 text-[15px] leading-relaxed">{offer.description}</p>
+                <p className="text-[#A1A1AA] mb-8 leading-relaxed text-[15px]">{offer.description}</p>
 
-                <a href={offer.ctaLink} target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center text-sm">
+                <a href={offer.ctaLink} target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center">
                   {offer.cta}
                 </a>
               </div>
             ))}
           </div>
-
-          <p className="text-center text-xs text-[#5A5A5F] mt-10 tracking-wide">
-            ROADMAP IS 100% SELF-SERVE • PAY SECURELY • INSTANT PORTAL ACCESS
-          </p>
         </div>
       </section>
 
-      {/* LIFESTYLE — Powerful and quiet */}
+      {/* LIFESTYLE — The real reason */}
       <section id="lifestyle" className="section border-t border-[#222225] py-24 bg-[#0A0A0C]">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <div className="text-xs tracking-[2px] text-[#C6FF3A] mb-4">THE POINT</div>
-          <h2 className="text-7xl md:text-[76px] font-semibold tracking-[-3.8px] leading-[0.9] mb-10">
-            The systems do the work.<br />We do the living.
+          <div className="text-xs tracking-[2px] text-[#C6FF3A] mb-4">THE REASON WE EXIST</div>
+          <h2 className="text-6xl md:text-[68px] font-semibold tracking-[-3px] leading-none mb-8">
+            The systems do the work.<br />We live the life we want.
           </h2>
-          <p className="text-2xl text-[#A1A1AA] max-w-lg mx-auto">
-            We film our family from beaches, mountains, and cities while the agents close deals and deliver.
+          <p className="text-xl text-[#A1A1AA]">
+            We film our family from Patagonia, the Alps, and beaches while the agents close deals, deliver projects, and keep everything running.
           </p>
         </div>
       </section>
 
-      {/* THE FLOW — Minimal steps */}
+      {/* HOW IT WORKS — Simple, confident */}
       <section id="how-it-works" className="section py-20 border-t border-[#222225]">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="grid md:grid-cols-3 gap-x-12 gap-y-14 text-sm">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-semibold tracking-[-1px]">Three steps. No friction.</h3>
+          </div>
+          <div className="grid md:grid-cols-3 gap-x-10 gap-y-12">
             {[
-              { num: "01", title: "Configure", text: "Four questions in the wizard. Tailored plan generated instantly." },
-              { num: "02", title: "Buy", text: "Pay securely. Contract auto-generated. No call, no back-and-forth." },
-              { num: "03", title: "Portal", text: "Google/Microsoft SSO. Project live immediately. Tesla-simple." },
+              { num: "01", title: "Configure", text: "Answer four questions. The configurator generates your initial plan in minutes." },
+              { num: "02", title: "Buy", text: "Pay securely. Your contract is generated and the project is created instantly." },
+              { num: "03", title: "Portal", text: "Log in with Google or Microsoft 365. Your command center is ready." },
             ].map((item) => (
-              <div key={item.num}>
-                <div className="font-mono text-xs text-[#C6FF3A] mb-4 tracking-[1px]">{item.num}</div>
-                <div className="text-xl font-semibold tracking-tight mb-3">{item.title}</div>
-                <p className="text-[#A1A1AA] leading-relaxed">{item.text}</p>
+              <div key={item.num} className="border-l-2 border-[#C6FF3A]/40 pl-6">
+                <div className="font-mono text-xs text-[#C6FF3A] mb-2 tracking-[1px]">{item.num}</div>
+                <div className="text-2xl font-semibold tracking-tight mb-2">{item.title}</div>
+                <p className="text-[#A1A1AA]">{item.text}</p>
               </div>
             ))}
           </div>
@@ -239,7 +241,7 @@ export default function BetterWithAI() {
           </p>
 
           <Link href="/portal" className="btn-primary">Open the portal</Link>
-          <p className="mt-4 text-xs text-[#5A5A5F]">Finish the wizard → Buy → You land logged in with your new project. Zero calls.</p>
+          <p className="mt-4 text-xs text-[#5A5A5F]">Configure → Buy → Your project is live immediately.</p>
         </div>
       </section>
 
