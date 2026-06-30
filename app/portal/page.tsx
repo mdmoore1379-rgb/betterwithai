@@ -69,8 +69,13 @@ export default function ClientPortal() {
   const [userEmail, setUserEmail] = useState("");
   const [activeTab, setActiveTab] = useState<'projects' | 'invoices' | 'contracts'>('projects');
 
-  // In real app: Use Supabase Auth or NextAuth with Google/Microsoft providers
-  // This is a demo that simulates SSO login
+  // Real implementation:
+  // - Use @supabase/ssr or Auth.js (next-auth) with Google and Microsoft Entra ID providers.
+  // - After Stripe webhook or signup, create/link user in Supabase.
+  // - Fetch personalized data (projects, invoices, contract status) filtered by auth user email/org_id.
+  // - For e-sign: Integrate HelloSign/DocuSign API. Status updates via webhook into DB.
+  // - Deploy as full Next.js on Vercel (dynamic, not pure static export).
+  // This page is a working demo of the personalized experience.
   const handleSSOLogin = (provider: 'google' | 'microsoft') => {
     // Simulate login - in production: redirect to OAuth
     const mockEmail = provider === 'google' ? "client@acme.com" : "ops@acme-corp.com";
@@ -113,7 +118,7 @@ export default function ClientPortal() {
           </div>
 
           <p className="mt-8 text-xs text-white/50">
-            Powered by the same systems that run our business. Your data is private to your organization.
+            Sign in with the same Google or Microsoft account you use for work. Your private AI command center — as seamless as the Tesla app.
           </p>
           <Link href="/" className="text-[#C6FF3A] text-sm mt-4 inline-block">← Back to public site</Link>
         </div>
@@ -140,8 +145,18 @@ export default function ClientPortal() {
 
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">Welcome back, {client.name}</h1>
-          <p className="text-white/70">Your AI projects and everything related — all in one place. Powered by the same agent systems we use internally.</p>
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-3xl font-bold">Welcome back, {client.name}</h1>
+            <span className="px-3 py-1 bg-[#C6FF3A] text-[#0B0B0F] text-xs font-bold rounded">AI SYSTEMS ACTIVE</span>
+          </div>
+          <p className="text-white/70">Your AI is running the work. Track everything here — exactly like the Tesla app, but for your business.</p>
+          
+          {/* Tesla-style live status */}
+          <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
+            <div className="text-sm text-[#C6FF3A] mb-1">LIVE STATUS</div>
+            <div className="font-semibold">Roadmap delivered • 2 projects running • Agents handling daily ops</div>
+            <div className="text-xs text-white/60 mt-1">No desk required. Everything automated via the website + agent team.</div>
+          </div>
         </div>
 
         {/* Tabs */}

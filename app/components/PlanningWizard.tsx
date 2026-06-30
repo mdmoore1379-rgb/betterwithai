@@ -101,10 +101,19 @@ Or let the system escalate: We'll auto-generate a scoped proposal.
         <pre className="whitespace-pre-wrap text-sm bg-black/30 p-6 rounded-lg text-white/90 font-mono leading-relaxed">{generatedPlan}</pre>
         
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          <a href="https://buy.stripe.com/test_YOUR_PLANNING_LINK" target="_blank" className="btn-primary flex-1 justify-center">Buy the Full Roadmap (Automated)</a>
-          <button onClick={reset} className="btn-secondary flex-1 justify-center">Start Over or Adjust</button>
+          <a 
+            href="https://buy.stripe.com/test_YOUR_PLANNING_LINK" 
+            target="_blank" 
+            className="btn-primary flex-1 justify-center text-lg py-4"
+            onClick={() => alert('Tesla mode: Stripe opens with your exact plan pre-filled + terms accepted. One tap and you\'re done.')}
+          >
+            Order Now — $2,497
+          </a>
+          <button onClick={reset} className="btn-secondary flex-1 justify-center">Adjust</button>
         </div>
-        <p className="mt-4 text-xs text-center text-white/50">The system captured your inputs and generated this. Real version includes deep audit + live discussion.</p>
+        <p className="mt-4 text-xs text-center text-white/50">
+          Configure here → Pay once → Your AI is live in the portal instantly.<br />No sales calls. No paperwork. No waiting.
+        </p>
       </div>
     );
   }

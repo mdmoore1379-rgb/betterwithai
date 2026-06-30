@@ -319,6 +319,15 @@ export default function BetterWithAI() {
         </p>
       </section>
 
+      {/* AS SIMPLE AS ORDERING A TESLA */}
+      <section className="section mx-auto max-w-6xl px-6 py-12 text-center bg-[#121217]">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">TESLA-SIMPLE EXPERIENCE</div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-[-1px]">Configure → Order → Activated. Done.</h2>
+          <p className="mt-3 text-white/70">Like buying a Tesla. No sales calls for the Roadmap. No paperwork hell. No chasing invoices. Answer a few questions, see your plan, pay once, and everything appears in your private portal.</p>
+        </div>
+      </section>
+
       {/* AUTOMATED CLIENT ACQUISITION — Marketing + Signup + Contract + Pay (fully automated) */}
       <section className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="text-center">
@@ -361,6 +370,8 @@ export default function BetterWithAI() {
 
         <div className="mt-10 text-center">
           <p className="text-sm text-white/70 max-w-md mx-auto">The entire funnel runs on our agent system + tools (Tally for forms, Resend for emails, Stripe for pay, e-sign for contracts). Ops Leader orchestrates. You get qualified, contracted, paying clients with almost zero manual sales.</p>
+          
+          <div className="mt-6 text-xs text-white/50">1. Configure with the planner → 2. Order in one click → 3. Instantly live in your portal. Tesla-simple.</div>
           <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">Book a call to see the automation live →</a>
         </div>
       </section>

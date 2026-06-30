@@ -32,11 +32,12 @@ Core Goal: 80%+ automated marketing that attracts **quality** clients (serious o
 **Socials Vibe: Holderness Family Style (YouTube-first family adventures)**
 - Raw, funny, relatable family travel vlogs mixed with "AI did the work while we were gone" moments.
 - Parodies, sing-alongs about escaping the desk, spontaneous adventures, kids reacting to "the AI just closed another client."
-- Authentic: Show the real freedom (beach calls, mountain planning sessions, family chaos) while the website + agent system (Ops Leader, GrowthAgent, etc.) runs client acquisition, proposals, delivery.
+- Key hook: "As simple as ordering my Tesla. Answer 4 questions on the site → one click to pay → my AI is live in the portal. The agents handle everything while we're traveling."
+- Authentic: Show the real freedom (beach calls, mountain planning sessions, family chaos) while the website + agent system runs client acquisition, proposals, delivery.
 - Platforms: YouTube (long-form vlogs + shorts), Instagram Reels/TikTok (quick wins + travel), LinkedIn (case studies with personality).
 - Content pillars:
   - Family travel + "the system worked while we played"
-  - Behind-the-scenes AI/agent magic (no desk required)
+  - Behind-the-scenes AI/agent magic (Tesla-simple, no desk required)
   - Client wins shown in fun ways
   - Honest "how we built freedom" stories
 - Automation: GrowthAgent generates scripts, captions, thumbnail ideas, posting schedule. You film on the road. Grok helps edit/deploy to site or schedule.
