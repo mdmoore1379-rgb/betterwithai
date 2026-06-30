@@ -25,16 +25,17 @@ class BrandAndDesignAgent(BaseAgent):
 
         # Built-in contrast and visibility audit
         contrast_audit = """
-**BrandAndDesignAgent Contrast & Visibility Audit (WCAG-inspired for marketing site):**
-- All body text must be #111 or darker on light bg (contrast ratio > 7:1).
-- Secondary text #555 or darker.
-- Primary buttons: dark or blue bg with white text (high contrast).
-- Secondary buttons: dark border + dark text.
-- Badges: use solid light bg (e.g. green-100) with dark text (green-700) – never low-opacity.
-- Progress bars and links: use #0A66C2 or #111.
-- No white text on light backgrounds anywhere.
-- Every interactive element (buttons, links, tabs) must have sufficient size and color contrast.
-- Portal cards and sections must use white bg with dark text and visible borders.
+**BrandAndDesignAgent Contrast & Visibility Audit (WCAG-inspired for marketing site - must be 100% readable):**
+- All body text #111 or darker on light bg (contrast >7:1).
+- Secondary #555+.
+- Primary buttons: blue or dark bg + pure white text.
+- Secondary: dark border + dark text (#111), never light gray.
+- Badges: solid light bg (e.g. green-100) + dark text (green-700). No /20 opacity.
+- Progress bar track: #E5E5E3 or similar visible.
+- Links: #0A66C2.
+- No white or light text on light/white backgrounds.
+- Every button, link, tab, card must be clearly legible and tappable/clickable.
+- Portal must look professional and useful, not washed out.
 """
 
         decision = f"""

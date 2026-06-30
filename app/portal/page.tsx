@@ -254,7 +254,7 @@ export default function ClientPortal() {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="font-semibold text-lg">{project.title}</h3>
-                      <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded font-medium ${project.status === 'Completed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+                      <span className={`inline-block mt-1 px-2 py-0.5 text-xs rounded font-medium ${project.status === 'Completed' ? 'bg-green-200 text-green-800' : 'bg-amber-200 text-amber-800'}`}>
                         {project.status}
                       </span>
                     </div>
@@ -264,7 +264,7 @@ export default function ClientPortal() {
                   </div>
                   
                   <div className="h-2 bg-[#E5E5E3] rounded mb-4">
-                    <div className="h-2 bg-[#C6FF3A] rounded" style={{width: `${project.progress}%`}}></div>
+                    <div className="h-2 bg-[#0A66C2] rounded" style={{width: `${project.progress}%`}}></div>
                   </div>
 
                   <p className="text-sm text-[#555] mb-4">{project.nextMilestone}</p>
@@ -281,7 +281,7 @@ export default function ClientPortal() {
                     </ul>
                   </div>
 
-                  <button className="mt-6 w-full border border-[#111] text-[#111] hover:bg-[#F8F8F6] text-sm py-2 rounded-full">View Full Project Details</button>
+                  <button className="mt-6 w-full border border-[#0F0F0F] text-[#0F0F0F] hover:bg-[#F0F0EE] hover:border-[#0F0F0F] text-sm py-2.5 rounded-full font-medium">View Full Project Details</button>
                 </div>
               ))}
             </div>
@@ -291,7 +291,7 @@ export default function ClientPortal() {
               <p className="text-sm text-[#555] mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
               <div className="flex gap-3">
                 <Link href="/#wizard" className="btn-primary flex-1 justify-center">Configure new Roadmap</Link>
-                <Link href="/#wizard" className="border border-[#111] hover:bg-[#F8F8F6] text-[#111] flex-1 justify-center text-sm py-3 rounded-full">Start another Roadmap</Link>
+                <Link href="/#wizard" className="border border-[#0F0F0F] hover:bg-[#F0F0EE] text-[#0F0F0F] flex-1 justify-center text-sm py-3 rounded-full font-medium">Start another Roadmap</Link>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function ClientPortal() {
                     <div className="text-sm text-[#666]">Due {invoice.due} • ${invoice.amount.toLocaleString()}</div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className={`px-3 py-1 text-xs rounded font-medium ${invoice.status === 'Paid' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    <span className={`px-3 py-1 text-xs rounded font-medium ${invoice.status === 'Paid' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
                       {invoice.status}
                     </span>
                     {invoice.status !== 'Paid' && (
@@ -343,7 +343,7 @@ export default function ClientPortal() {
                         {contract.status === 'Signed' ? `Signed on ${contract.signedDate}` : 'Pending your signature'}
                       </div>
                     </div>
-                    <span className={`px-3 py-1 text-xs rounded font-medium ${contract.status === 'Signed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+                    <span className={`px-3 py-1 text-xs rounded font-medium ${contract.status === 'Signed' ? 'bg-green-200 text-green-800' : 'bg-amber-200 text-amber-800'}`}>
                       {contract.status}
                     </span>
                   </div>

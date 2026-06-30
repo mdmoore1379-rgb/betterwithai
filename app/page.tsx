@@ -42,13 +42,13 @@ export default function BetterWithAI() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#111] selection:bg-black selection:text-white">
-      {/* Sticky Nav - Premium, minimal */}
+    <div className="min-h-screen bg-white text-[#0F0F0F] selection:bg-[#0A66C2] selection:text-white">
+      {/* Sticky Nav - Premium, minimal, modern */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#E5E5E3] bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#" className="flex items-center gap-2.5 text-xl font-semibold tracking-[-0.6px]">
-            <span className="inline-block w-6 h-[1px] bg-[#111] relative">
-              <span className="absolute -top-[3px] left-1/2 w-[5px] h-[5px] -translate-x-1/2 bg-[#111] rounded-full"></span>
+            <span className="inline-block w-6 h-[1px] bg-[#0F0F0F] relative">
+              <span className="absolute -top-[3px] left-1/2 w-[5px] h-[5px] -translate-x-1/2 bg-[#0F0F0F] rounded-full"></span>
             </span>
             betterwithai
           </a>
@@ -59,7 +59,7 @@ export default function BetterWithAI() {
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.href)}
-                className="nav-link text-[#555] hover:text-[#111]"
+                className="nav-link text-[#555] hover:text-[#0F0F0F]"
               >
                 {item.label}
               </button>
@@ -75,7 +75,7 @@ export default function BetterWithAI() {
             </a>
             <a
               href="/portal"
-              className="text-sm text-[#555555] hover:text-black"
+              className="text-sm text-[#555] hover:text-[#0F0F0F]"
             >
               Client portal
             </a>
@@ -84,7 +84,7 @@ export default function BetterWithAI() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden rounded-lg p-2 text-white/80 hover:bg-white/5"
+            className="md:hidden rounded-lg p-2 text-[#555] hover:bg-[#F8F8F6]"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -99,12 +99,12 @@ export default function BetterWithAI() {
                 <button
                   key={item.label}
                   onClick={() => scrollTo(item.href)}
-                  className="text-left py-1 text-[#555] active:text-[#111]"
+                  className="text-left py-1 text-[#555] active:text-[#0F0F0F]"
                 >
                   {item.label}
                 </button>
               ))}
-              <a href="#wizard" className="btn-primary mt-1 w-full justify-center">Configure your Roadmap</a>
+              <a href="#wizard" className="btn-primary mt-1 w-full justify-center">Start the configurator</a>
               <a
                 href="/portal"
                 className="btn-secondary mt-2 w-full justify-center"
@@ -137,6 +137,8 @@ export default function BetterWithAI() {
               See the portal
             </a>
           </div>
+
+          <p className="mt-6 text-sm text-[#666]">Join 40+ operators running their businesses while they live.</p>
         </div>
       </section>
 
