@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import BrainMascot from "./components/BrainMascot";
 
@@ -9,6 +9,19 @@ const BOOKING_URL = "https://calendly.com/michaeldmoore/30-virtual-call?back=1";
 export default function BetterWithAI() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mascotHeroState, setMascotHeroState] = useState<"frazzled" | "calm">("frazzled");
+
+  // Calm the hero mascot on scroll (as specified in brief)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 180) {
+        setMascotHeroState("calm");
+      } else {
+        setMascotHeroState("frazzled");
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { label: "Solutions", href: "#solutions" },

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface BrainMascotProps {
   state?: "frazzled" | "calm";
@@ -15,6 +15,16 @@ export default function BrainMascot({
   className = "" 
 }: BrainMascotProps) {
   const isFrazzled = state === "frazzled";
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return (
     <div className={`relative inline-block ${className}`} style={{ width: size, height: size * 0.9 }}>
@@ -35,14 +45,14 @@ export default function BrainMascot({
 
         {/* Main brain body - squishy cartoon style */}
         <motion.g
-          animate={isFrazzled ? {
+          animate={reducedMotion ? undefined : (isFrazzled ? {
             rotate: [0, -3, 3, -2, 2, 0],
             x: [0, -2, 2, -1, 1, 0],
           } : {
             rotate: [0, 1, -1, 0],
             y: [0, -1, 0],
-          }}
-          transition={{
+          })}
+          transition={reducedMotion ? undefined : {
             duration: isFrazzled ? 0.6 : 2.2,
             repeat: Infinity,
             repeatType: "loop",
@@ -86,30 +96,30 @@ export default function BrainMascot({
               <motion.circle 
                 cx="80" cy="96" r="6" 
                 fill="#C6FF3A"
-                animate={{ cx: [80, 82, 78, 80], cy: [96, 94, 98, 96] }}
-                transition={{ duration: 0.4, repeat: Infinity }}
+                animate={reducedMotion ? undefined : { cx: [80, 82, 78, 80], cy: [96, 94, 98, 96] }}
+                transition={reducedMotion ? undefined : { duration: 0.4, repeat: Infinity }}
               />
               <motion.circle 
                 cx="140" cy="96" r="6" 
                 fill="#C6FF3A"
-                animate={{ cx: [140, 138, 142, 140], cy: [96, 98, 94, 96] }}
-                transition={{ duration: 0.45, repeat: Infinity }}
+                animate={reducedMotion ? undefined : { cx: [140, 138, 142, 140], cy: [96, 98, 94, 96] }}
+                transition={reducedMotion ? undefined : { duration: 0.45, repeat: Infinity }}
               />
               {/* Sweat drops */}
               <motion.circle 
                 cx="62" cy="78" r="3.5" fill="#67E8F9" opacity="0.9"
-                animate={{ y: [0, 6, 0], opacity: [0.9, 0.4, 0.9] }}
-                transition={{ duration: 0.9, repeat: Infinity, delay: 0.1 }}
+                animate={reducedMotion ? undefined : { y: [0, 6, 0], opacity: [0.9, 0.4, 0.9] }}
+                transition={reducedMotion ? undefined : { duration: 0.9, repeat: Infinity, delay: 0.1 }}
               />
               <motion.circle 
                 cx="155" cy="74" r="2.8" fill="#67E8F9" opacity="0.85"
-                animate={{ y: [0, 7, 0], opacity: [0.85, 0.3, 0.85] }}
-                transition={{ duration: 1.1, repeat: Infinity, delay: 0.35 }}
+                animate={reducedMotion ? undefined : { y: [0, 7, 0], opacity: [0.85, 0.3, 0.85] }}
+                transition={reducedMotion ? undefined : { duration: 1.1, repeat: Infinity, delay: 0.35 }}
               />
               <motion.circle 
                 cx="70" cy="72" r="2.2" fill="#67E8F9" opacity="0.7"
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 0.7, repeat: Infinity, delay: 0.5 }}
+                animate={reducedMotion ? undefined : { y: [0, 5, 0] }}
+                transition={reducedMotion ? undefined : { duration: 0.7, repeat: Infinity, delay: 0.5 }}
               />
             </>
           ) : (
@@ -135,8 +145,8 @@ export default function BrainMascot({
             stroke="#0B0B0F" 
             strokeWidth="4.5" 
             strokeLinecap="round"
-            animate={{ d: ["M95 125 Q110 132 125 124", "M95 128 Q110 125 125 128", "M95 125 Q110 132 125 124"] }}
-            transition={{ duration: 1.4, repeat: Infinity }}
+            animate={reducedMotion ? undefined : { d: ["M95 125 Q110 132 125 124", "M95 128 Q110 125 125 128", "M95 125 Q110 132 125 124"] }}
+            transition={reducedMotion ? undefined : { duration: 1.4, repeat: Infinity }}
           />
         ) : (
           /* Calm slight smile */
@@ -151,8 +161,8 @@ export default function BrainMascot({
             strokeWidth="2" 
             strokeOpacity="0.15"
             fill="none"
-            animate={{ scale: [1, 1.06, 1], opacity: [0.15, 0.05, 0.15] }}
-            transition={{ duration: 3, repeat: Infinity }}
+            animate={reducedMotion ? undefined : { scale: [1, 1.06, 1], opacity: [0.15, 0.05, 0.15] }}
+            transition={reducedMotion ? undefined : { duration: 3, repeat: Infinity }}
           />
         )}
       </svg>
