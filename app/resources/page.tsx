@@ -32,7 +32,7 @@ export default function Resources() {
                 Expect a welcome email + form within 24h of purchase.
               </li>
             </ul>
-            <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" className="btn-primary mt-8 inline-block">Book a Discovery Call</a>
+            <Link href="/#wizard" className="btn-primary mt-8 inline-block">Buy Roadmap (self-serve)</Link>
           </div>
 
           {/* Strategic Hub — Core to $100M Strategy */}

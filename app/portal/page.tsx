@@ -291,7 +291,7 @@ export default function ClientPortal() {
               <p className="text-sm text-white/70 mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
               <div className="flex gap-3">
                 <Link href="/#wizard" className="btn-primary flex-1 justify-center">Configure new Roadmap</Link>
-                <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" className="btn-secondary flex-1 justify-center">Scope bigger project</a>
+                <Link href="/#wizard" className="btn-secondary flex-1 justify-center">Start another Roadmap</Link>
               </div>
             </div>
           </div>

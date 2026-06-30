@@ -115,11 +115,11 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
                   onClick={() => setCheckoutStep('checkout')}
                   className="btn-primary text-lg py-[21px] justify-center tracking-[-0.2px]"
                 >
-                  Buy full Roadmap — $2,497 →
+                  Buy now — $2,497 (like ordering a Tesla) →
                 </button>
                 <button onClick={reset} className="btn-secondary text-lg py-5">Change answers</button>
               </div>
-              <p className="mt-4 text-center text-sm text-white/70">One click. Stripe. Contract auto-created. Instantly in your portal.</p>
+              <p className="mt-4 text-center text-sm text-white/70">One click. Stripe. Contract auto-created. Live in your portal immediately. <span className="text-[#C6FF3A]">No call required.</span></p>
             </motion.div>
           )}
 
@@ -134,7 +134,7 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
               <div className="flex items-baseline justify-between mb-6">
                 <div>
                   <div className="font-semibold text-xl">AI Roadmap — Full Deliverable</div>
-                  <div className="text-white/60 text-sm">One-time • Includes review call</div>
+                  <div className="text-white/60 text-sm">One-time • Fully self-serve. Zero calls.</div>
                 </div>
                 <div className="text-4xl font-bold tracking-[-1px]">$2,497</div>
               </div>
@@ -178,13 +178,13 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
             >
               <div className="text-4xl mb-2">✅</div>
               <div className="text-2xl font-semibold tracking-tight mb-1">Payment successful</div>
-              <p className="text-white/70">Contract generated. Your project is live in the portal.</p>
+              <p className="text-white/70">Contract generated. Your project is live in the portal. No call required.</p>
 
               <a 
                 href={`/portal?demoLogin=acme&newProject=true${checkoutEmail ? `&email=${encodeURIComponent(checkoutEmail)}` : ''}`} 
                 className="btn-primary mt-6 inline-flex text-lg px-10 py-4"
               >
-                Open My Portal →
+                Go to my portal now →
               </a>
 
               <button onClick={reset} className="block mx-auto mt-4 text-sm text-white/50 hover:text-white">Start another plan</button>
