@@ -241,10 +241,12 @@ export default function ClientPortal() {
                   setIsAuthenticated(true); 
                   setIsMasterSuperAdmin(true); 
                   setIsInternal(true); 
+                  setActionMessage("Welcome, Master Super Admin (mdmoore1379@gmail.com). Full system access enabled.");
+                  setTimeout(() => setActionMessage(null), 3000);
                 }}
                 className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full mb-2 font-medium"
               >
-                Sign in as mdmoore1379@gmail.com (Master Super Admin)
+                Sign in as mdmoore1379@gmail.com (Google)
               </button>
               <button 
                 onClick={() => { 
@@ -252,11 +254,14 @@ export default function ClientPortal() {
                   setIsAuthenticated(true); 
                   setIsMasterSuperAdmin(true); 
                   setIsInternal(true); 
+                  setActionMessage("Welcome, Master Super Admin (michael@betterwithai.io). Full system access enabled.");
+                  setTimeout(() => setActionMessage(null), 3000);
                 }}
                 className="w-full border-2 border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white py-3 text-sm rounded-full font-medium"
               >
-                Sign in as michael@betterwithai.io (Master Super Admin)
+                Sign in as michael@betterwithai.io (Google)
               </button>
+              <p className="text-[10px] text-[#888] mt-1">In production these will trigger real Google OAuth with your accounts.</p>
             </div>
           </div>
 
