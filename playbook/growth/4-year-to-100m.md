@@ -24,10 +24,19 @@
   Mix: 30% services, 50% product/platform/recurring, 20% ecosystem (training, partners, IP).
 
 **Key Levers to $100M (not headcount linear):**
-- Productization: Fixed offers, templates, software.
-- Leverage: Agents + team delivery (1:10 ratio).
-- Channels: Content, partnerships, self-serve.
-- Retention: 120%+ net revenue retention via expanders.
+- Productization: Fixed offers, templates, software (Roadmap as entry, retainers as expansion).
+- Leverage: Agents + lean team (RevenueEngine + ContentMachine + AcquisitionFlywheel doing 80%).
+- Hybrid motion: Strong self-serve wizard for volume + warm outbound + light sales for bigger ACV (per research: self-serve hard in pure B2B, layer sales fast).
+- Content flywheel: Personal brands + EGC + video + lead magnets (non-negotiable).
+- 48h onboarding as core retention moat.
+- Pricing tests early and often. Revenue first, margins later.
+- Warm outbound on engaged leads (site visitors, content engagers, partial wizards).
+
+**New 2026-2027 focus (from research + agent cycles):**
+- Nail $1,497 self-serve Roadmap as the hero productized entry.
+- 48-hour activation system in portal.
+- LaunchOperator running phased public launch with content + warm outbound.
+- Financial model live for cash and hiring triggers.
 - Pricing power + volume.
 
 ## Strategic Pillars
