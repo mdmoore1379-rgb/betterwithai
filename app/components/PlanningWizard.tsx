@@ -98,11 +98,11 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
     return (
       <div className="max-w-[720px] mx-auto">
         <div className="mb-6">
-          <div className="text-[#C6FF3A] text-xs tracking-[2px] mb-1">YOUR PLAN</div>
-          <h3 className="text-3xl font-semibold tracking-tight">The configurator built this for you.</h3>
+          <div className="text-[#0A66C2] text-xs tracking-[2px] mb-1">YOUR PLAN</div>
+          <h3 className="text-3xl font-semibold tracking-tight text-[#111]">The configurator built this for you.</h3>
         </div>
 
-        <div className="bg-[#0A0A0C] border border-white/10 p-8 rounded-3xl text-[14px] leading-relaxed text-[#D1D1D6] font-mono whitespace-pre-wrap mb-8">
+        <div className="bg-white border border-[#E5E5E3] p-8 rounded-3xl text-[14px] leading-relaxed text-[#333] font-mono whitespace-pre-wrap mb-8">
 {generatedPlan}
         </div>
 
@@ -111,11 +111,11 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
             href={`/portal?demoLogin=acme&newProject=true${checkoutEmail ? `&email=${encodeURIComponent(checkoutEmail)}` : ''}`}
             className="btn-primary inline-flex text-lg px-12 py-4"
           >
-            Buy the Roadmap — $2,497
+            Buy the full Roadmap — $2,497
           </a>
-          <div className="mt-3 text-xs text-[#5A5A5F]">One click. Live in the portal immediately.</div>
+          <div className="mt-3 text-xs text-[#666]">One click. Live in the portal immediately.</div>
 
-          <button onClick={reset} className="mt-4 text-sm text-[#5A5A5F] hover:text-white">Start over</button>
+          <button onClick={reset} className="mt-4 text-sm text-[#888] hover:text-black">Start over</button>
         </div>
       </div>
     );
@@ -127,17 +127,17 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
     : !!currentAnswer;
 
   return (
-    <div className="max-w-[620px] mx-auto card p-8">
+    <div className="max-w-[620px] mx-auto bg-white border border-[#E5E5E3] p-8 rounded-3xl">
       <div className="mb-8">
-        <div className="text-[#C6FF3A] text-xs tracking-[2px] mb-1">STEP {currentStep} OF {steps.length}</div>
-        <h3 className="text-3xl font-semibold tracking-tight">{current.question}</h3>
+        <div className="text-[#0A66C2] text-xs tracking-[2px] mb-1">STEP {currentStep} OF {steps.length}</div>
+        <h3 className="text-3xl font-semibold tracking-tight text-[#111]">{current.question}</h3>
       </div>
 
-      <div className="space-y-2 mb-8">
+      <div className="space-y-3 mb-8">
         {current.type === 'text' && (
           <input 
             type="text" 
-            className="w-full bg-[#0A0A0C] border border-white/10 p-5 rounded-2xl text-lg placeholder:text-white/40 focus:outline-none focus:border-[#C6FF3A]"
+            className="w-full bg-[#FAFAF8] border border-[#E5E5E3] p-5 rounded-2xl text-lg placeholder:text-[#888] focus:outline-none focus:border-[#0A66C2]"
             placeholder="Type your answer..."
             value={(currentAnswer as string) || ''}
             onChange={(e) => handleAnswer(e.target.value)}
@@ -155,8 +155,8 @@ This site + Ops Leader just did the heavy planning lift. The paid Roadmap goes m
               key={option}
               onClick={() => handleAnswer(option)}
               className={`w-full text-left p-5 rounded-2xl border text-lg transition-all ${isSelected 
-                ? 'border-[#C6FF3A] bg-[#C6FF3A]/5 text-white' 
-                : 'border-white/10 hover:border-white/20 bg-white/5'}`}
+                ? 'border-[#0A66C2] bg-[#F0F7FF] text-[#111]' 
+                : 'border-[#E5E5E3] hover:border-[#CCC] bg-white'}`}
             >
               {option}
               {current.type === 'multi' && isSelected && ' ✓'}

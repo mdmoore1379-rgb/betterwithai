@@ -5,17 +5,17 @@
   --font-display: var(--font-space-grotesk), var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Sophisticated minimalist palette */
-  --bg: #0A0A0C;
-  --bg-elev: #111113;
-  --text: #F5F5F7;
-  --text-muted: #8A8A8F;
-  --text-subtle: #5A5A5F;
-  --accent: #C6FF3A;
-  --accent-dark: #A3E020;
-  --card: #111113;
-  --border: #222225;
-  --border-subtle: #1A1A1D;
+  /* Modern premium light aesthetic (clean, light, sophisticated) */
+  --bg: #FAFAF8;
+  --bg-elev: #FFFFFF;
+  --text: #111111;
+  --text-muted: #555555;
+  --text-subtle: #888888;
+  --accent: #0A66C2;  /* Sophisticated deep blue - modern & trustworthy */
+  --accent-dark: #084C8C;
+  --card: #FFFFFF;
+  --border: #E5E5E3;
+  --border-subtle: #F0F0EE;
 }
 
 @theme inline {
@@ -28,6 +28,8 @@
 body {
   font-family: var(--font-geist-sans);
   font-feature-settings: "tnum", "tnum";
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* Refined Typography */
@@ -60,7 +62,7 @@ h2, h3 {
   align-items: center;
   justify-content: center;
   background: var(--accent);
-  color: #0A0A0C;
+  color: white;
   font-weight: 600;
   font-size: 0.95rem;
   padding: 14px 32px;
@@ -90,22 +92,22 @@ h2, h3 {
 }
 
 .btn-secondary:hover {
-  background: var(--bg-elev);
-  border-color: var(--accent);
+  background: #F8F8F6;
+  border-color: var(--text);
 }
 
 /* Minimalist Cards */
 .card {
   background: var(--card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  transition: border-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), 
-              box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.2s cubic-bezier(0.23, 1.0, 0.32, 1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 
 .card:hover {
   border-color: var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.08);
 }
 
 /* Clean Navigation */
