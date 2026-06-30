@@ -28,6 +28,7 @@ export default function BetterWithAI() {
     { label: "Solutions", href: "#solutions" },
     { label: "Pricing", href: "#pricing" },
     { label: "How it works", href: "#how-it-works" },
+    { label: "Resources", href: "/resources" },
     { label: "About", href: "#about" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -480,6 +481,7 @@ export default function BetterWithAI() {
           <div className="flex flex-wrap gap-x-6 gap-y-1">
             <button onClick={() => scrollTo("#solutions")} className="hover:text-white">Solutions</button>
             <button onClick={() => scrollTo("#how-it-works")} className="hover:text-white">How it works</button>
+            <Link href="/resources" className="hover:text-white">Resources</Link>
             <button onClick={() => scrollTo("#about")} className="hover:text-white">About</button>
             <button onClick={() => scrollTo("#faq")} className="hover:text-white">FAQ</button>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">Book a call</a>
@@ -488,6 +490,7 @@ export default function BetterWithAI() {
           <div className="flex flex-wrap gap-x-4 text-xs">
             <Link href="/terms" className="hover:text-white">Terms</Link>
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
+            <Link href="/resources" className="hover:text-white">Resources</Link>
             <a href="mailto:hello@betterwithai.io" className="hover:text-white">hello@betterwithai.io</a>
           </div>
 

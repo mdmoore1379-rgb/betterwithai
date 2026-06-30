@@ -17,11 +17,13 @@ from agents.base_agent import BaseAgent, Task, AgentResponse
 import uuid
 from datetime import datetime
 
-# Import specialists (will be created)
+# Import specialists
 from agents.specialists.coding_agent import CodingAgent
 from agents.specialists.calendar_agent import CalendarAgent
 from agents.specialists.accounting_agent import AccountingAgent
 from agents.specialists.client_agent import ClientAgent
+from agents.specialists.proposal_agent import ProposalAgent
+from agents.specialists.onboarding_agent import OnboardingAgent
 
 
 class OpsLeader:
@@ -40,7 +42,9 @@ class OpsLeader:
             CalendarAgent(),
             AccountingAgent(),
             ClientAgent(),
-            # More can be added: MarketingAgent, ResearchAgent, ProposalAgent, etc.
+            ProposalAgent(),
+            OnboardingAgent(),
+            # More coming: MarketingAgent, ResearchAgent, DeliveryAgent, FinanceAgent
         ]
         self.task_history = []
 
