@@ -46,10 +46,7 @@ export default function BetterWithAI() {
       {/* Sticky Nav - Premium, minimal */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0B0B0F]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="flex items-center gap-3 text-xl font-semibold tracking-[-0.5px]">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#C6FF3A] text-[#0B0B0F]">
-              🧠
-            </span>
+          <a href="#" className="flex items-center gap-2 text-xl font-semibold tracking-[-0.5px]">
             betterwithai
           </a>
 
@@ -116,111 +113,96 @@ export default function BetterWithAI() {
         )}
       </nav>
 
-      {/* HERO — Modern. Aspirational. Immediate value. */}
-      <section className="min-h-[92vh] flex items-center pt-12 border-b border-[#E5E5E3]">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="mb-4 text-sm tracking-[3px] text-[#0A66C2]">THE SELF-SERVE AI OPERATING SYSTEM</div>
+      {/* HERO — Modern. Clean. Magnetic. */}
+      <section className="min-h-[90vh] flex items-center pt-8 border-b border-[#E5E5E3]">
+        <div className="mx-auto max-w-[860px] px-6 text-center">
+          <div className="mb-3 text-sm tracking-[3px] text-[#0A66C2] font-medium">AI THAT ACTUALLY BUYS YOU FREEDOM</div>
 
-          <h1 className="text-[56px] md:text-[72px] font-semibold tracking-[-3.5px] leading-[0.95] mb-6 text-balance">
-            Buy back your time.<br />Run the life you actually want.
+          <h1 className="text-6xl md:text-[76px] font-semibold tracking-[-3.8px] leading-[.92] mb-6">
+            The systems do the work.<br />You live the life.
           </h1>
 
-          <p className="max-w-xl mx-auto text-2xl text-[#444444] mb-10 leading-tight">
-            While your AI handles clients, proposals, and delivery — you&apos;re with your family on the road, on the beach, or in the mountains.
+          <p className="max-w-lg mx-auto text-2xl text-[#333333] mb-10">
+            A modern self-serve AI operating system. Get your custom Roadmap in minutes. Pay once. Everything runs while you&apos;re actually living.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-            <a href="#wizard" className="btn-primary text-lg px-8 py-4">
-              Build your Roadmap in 2 minutes
+          <div className="flex items-center justify-center gap-4">
+            <a href="#wizard" className="btn-primary text-lg px-9 py-4">
+              Start the configurator
             </a>
-            <a href="#how-it-works" className="btn-secondary text-lg px-8 py-4">
-              See how it works
+            <a href="/portal" className="btn-secondary text-lg px-8 py-4">
+              See the portal
             </a>
           </div>
-
-          <p className="text-xs tracking-[2px] text-[#888888]">
-            NO CALLS. ONE CLICK TO BUY. INSTANT ACCESS IN THE PORTAL.
-          </p>
         </div>
       </section>
 
-      {/* THE CONFIGURATOR — This is the product */}
-      <section id="wizard" className="section py-16 bg-white border-b border-[#E5E5E3]">
-        <div className="mx-auto max-w-4xl px-6">
+      {/* THE CONFIGURATOR — This is the actual product */}
+      <section id="wizard" className="section py-20 bg-white border-b border-[#E5E5E3]">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center mb-8">
+            <div className="text-[#0A66C2] text-xs tracking-[3px] mb-2">THE PRODUCT</div>
+            <h2 className="text-5xl font-semibold tracking-[-2px] mb-4">Build your AI Roadmap.<br />Buy it in minutes.</h2>
+            <p className="text-xl text-[#444444]">Four questions. One click. Your systems go live instantly in the portal.</p>
+          </div>
+
+          <PlanningWizard />
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="section py-20 bg-white border-b border-[#E5E5E3]">
+        <div className="mx-auto max-w-3xl px-6">
           <div className="text-center mb-10">
-            <div className="text-xs tracking-[2px] text-[#0A66C2] mb-3">THE PRODUCT</div>
-            <h2 className="text-5xl md:text-6xl font-semibold tracking-[-2.2px] mb-4">Build your AI Roadmap.<br />Buy it in minutes.</h2>
-            <p className="text-xl text-[#444444] max-w-md mx-auto">Four questions. Clear plan. One click. Your systems go live instantly.</p>
+            <h2 className="text-4xl font-semibold tracking-tight mb-2">Start here. Everything else is easier after.</h2>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <PlanningWizard />
-          </div>
-        </div>
-      </section>
-
-      {/* PRICING — Simple. Premium. No bullshit. */}
-      <section id="pricing" className="section py-20 bg-[#FAFAF8] border-b border-[#E5E5E3]">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-semibold tracking-[-1.5px]">One product to start.<br />Real results, real fast.</h2>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-md mx-auto">
             {offers.filter(o => o.stage !== 'future').slice(0,1).map((offer) => (
-              <div key={offer.id} className="card p-10 border-2 border-[#0A66C2]">
-                <div className="flex items-baseline justify-between mb-6">
+              <div key={offer.id} className="border border-[#111] p-8 rounded-2xl">
+                <div className="flex justify-between items-start mb-6">
                   <div>
-                    <div className="text-sm tracking-[2px] text-[#0A66C2] mb-1">{offer.tier}</div>
-                    <div className="text-4xl font-semibold tracking-tight">{offer.title}</div>
+                    <div className="uppercase text-xs tracking-[2px] text-[#0A66C2] mb-1">{offer.tier}</div>
+                    <div className="text-3xl font-semibold tracking-tight">{offer.title}</div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-5xl font-semibold tracking-[-1px]">{offer.price}</div>
-                    {offer.period && <div className="text-sm text-[#555]">{offer.period}</div>}
-                  </div>
+                  <div className="text-right text-4xl font-semibold tracking-[-1px]">{offer.price}</div>
                 </div>
 
-                <p className="text-lg text-[#333] mb-8 leading-relaxed">{offer.description}</p>
+                <p className="text-[#333] mb-8 text-[15px] leading-relaxed">{offer.description}</p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 text-sm">
-                  {offer.features.map((f,i) => (
-                    <div key={i} className="flex items-start gap-2">→ {f}</div>
-                  ))}
-                </div>
-
-                <a href={offer.ctaLink} target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center text-lg py-4">
+                <a href={offer.ctaLink} target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center mb-6">
                   {offer.cta}
                 </a>
+
+                <div className="text-xs text-[#666] space-y-1">
+                  {offer.features.slice(0,3).map((f,i) => <div key={i}>• {f}</div>)}
+                </div>
               </div>
             ))}
           </div>
-
-          <p className="text-center text-sm text-[#666] mt-8">Larger projects and retainers available after you start with the Roadmap.</p>
         </div>
       </section>
 
       {/* THE FREEDOM */}
-      <section id="lifestyle" className="section py-20 border-b border-[#E5E5E3]">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <div className="text-sm tracking-[2px] text-[#0A66C2] mb-4">WHAT THIS ACTUALLY BUYS YOU</div>
-          <h2 className="text-5xl font-semibold tracking-[-1.5px] mb-6">The systems run the business.<br />You run your life.</h2>
-          <p className="text-xl text-[#444444]">
-            This is the engine that lets us travel with our kids while qualified clients get onboarded, projects get delivered, and revenue keeps coming in.
+      <section id="lifestyle" className="section py-16 border-b border-[#E5E5E3]">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h2 className="text-4xl font-semibold tracking-tight mb-4">This is what the system actually buys.</h2>
+          <p className="text-xl text-[#333]">
+            Time with your family. Real adventures. The ability to check your phone from a beach instead of a desk.
           </p>
-          <div className="mt-8 text-sm text-[#0A66C2]">Real operators. Real freedom. Real results.</div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how-it-works" className="section py-16">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-semibold tracking-tight">It really is this simple.</h3>
+      <section id="how-it-works" className="section py-16 bg-[#FAFAF8]">
+        <div className="mx-auto max-w-2xl px-6">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-semibold tracking-tight">Three steps. No theater.</h3>
           </div>
-          <div className="space-y-6 text-lg">
-            <div className="flex gap-4"><span className="font-mono text-[#0A66C2] w-8">01</span> Answer four questions in the configurator.</div>
-            <div className="flex gap-4"><span className="font-mono text-[#0A66C2] w-8">02</span> Pay once. Your full Roadmap and project go live instantly.</div>
-            <div className="flex gap-4"><span className="font-mono text-[#0A66C2] w-8">03</span> Log into the portal with Google or Microsoft 365. Everything is there.</div>
+          <div className="space-y-5 text-lg text-[#333]">
+            <div>1. Answer four questions.</div>
+            <div>2. Pay once.</div>
+            <div>3. Your AI is live in the portal. Log in with the account you already use for work.</div>
           </div>
         </div>
       </section>
@@ -229,22 +211,21 @@ export default function BetterWithAI() {
 
       {/* THE PORTAL */}
       <section className="border-t border-[#E5E5E3] py-16 bg-white">
-        <div className="mx-auto max-w-xl px-6 text-center">
-          <h3 className="text-4xl font-semibold tracking-tight mb-4">Everything in one calm place.</h3>
-          <p className="text-xl text-[#444444] mb-8">Log in with the account you already use for work. Your projects, contracts, and status — all there.</p>
+        <div className="mx-auto max-w-md px-6 text-center">
+          <h3 className="text-3xl font-semibold tracking-tight mb-4">Your AI, in one place.</h3>
+          <p className="text-[#444] mb-6">Google or Microsoft 365 login. Projects, contracts, status. No email chains.</p>
           <Link href="/portal" className="btn-primary">Open the portal</Link>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-[#E5E5E3] py-12 text-sm text-[#666]">
-        <div className="mx-auto max-w-5xl px-6 flex flex-col md:flex-row justify-between gap-y-3 text-xs tracking-wider">
+      <footer className="border-t border-[#E5E5E3] py-10 text-xs text-[#666]">
+        <div className="mx-auto max-w-5xl px-6 flex justify-between">
           <div>betterwithai</div>
-          <div className="flex gap-x-6">
+          <div className="flex gap-x-5">
             <Link href="/resources">Resources</Link>
             <Link href="/terms">Terms</Link>
             <Link href="/privacy">Privacy</Link>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Bigger projects</a>
           </div>
           <div>© {new Date().getFullYear()}</div>
         </div>

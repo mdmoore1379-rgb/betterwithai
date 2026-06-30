@@ -5,17 +5,17 @@
   --font-display: var(--font-space-grotesk), var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Modern premium light aesthetic (clean, light, sophisticated) */
-  --bg: #FAFAF8;
-  --bg-elev: #FFFFFF;
-  --text: #111111;
-  --text-muted: #555555;
-  --text-subtle: #888888;
-  --accent: #0A66C2;  /* Sophisticated deep blue - modern & trustworthy */
-  --accent-dark: #084C8C;
+  /* Premium modern light design system - clean, confident, high-end */
+  --bg: #FFFFFF;
+  --bg-elev: #F8F8F6;
+  --text: #0F0F0F;
+  --text-muted: #4A4A4A;
+  --text-subtle: #737373;
+  --accent: #111111;           /* Sophisticated near-black for premium feel */
+  --accent-emphasis: #3B82F6;  /* Modern blue for CTAs */
   --card: #FFFFFF;
   --border: #E5E5E3;
-  --border-subtle: #F0F0EE;
+  --success: #10B981;
 }
 
 @theme inline {
@@ -64,8 +64,8 @@ h2, h3 {
   background: var(--accent);
   color: white;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 14px 32px;
+  font-size: 0.9375rem;
+  padding: 16px 36px;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.15s cubic-bezier(0.23, 1.0, 0.32, 1);
@@ -73,7 +73,7 @@ h2, h3 {
 }
 
 .btn-primary:hover {
-  background: var(--accent-dark);
+  background: #000000;
   transform: translateY(-1px);
 }
 
@@ -84,11 +84,11 @@ h2, h3 {
   border: 1px solid var(--border);
   color: var(--text);
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 14px 28px;
+  font-size: 0.9375rem;
+  padding: 16px 32px;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.15s cubic-bezier(0.23, 1.0, 0.32, 1);
+  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .btn-secondary:hover {
@@ -96,18 +96,18 @@ h2, h3 {
   border-color: var(--text);
 }
 
-/* Minimalist Cards */
+/* Clean Modern Cards */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   transition: all 0.2s cubic-bezier(0.23, 1.0, 0.32, 1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .card:hover {
-  border-color: var(--border);
-  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.08);
+  border-color: #D1D1CF;
+  box-shadow: 0 10px 40px -20px rgba(0,0,0,0.1);
 }
 
 /* Clean Navigation */
