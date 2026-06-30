@@ -17,6 +17,8 @@ from agents.ops_leader import OpsLeader
 def main():
     print("=== betterwithai Operations Leader ===")
     print("Type your request in plain English. Type 'quit' or 'exit' to leave.\n")
+    print("Systems (GitHub, Stripe, email, calendar, etc.) are linked via the integrations layer.")
+    print("Provide keys in .env once. After that, talk here or to me (Grok) for updates/deploys.\n")
 
     leader = OpsLeader()
     print(leader.status_report())

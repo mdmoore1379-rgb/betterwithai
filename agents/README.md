@@ -34,6 +34,14 @@ Book a discovery call with the CEO of Northstar Dermatology for next week
 Create a payment link for the $2497 Roadmap
 ```
 
+**Linking systems (GitHub, Stripe, email, calendar, Vercel, etc.):**
+- Create a `.env` file with keys (GITHUB_TOKEN, STRIPE_SECRET_KEY, RESEND_API_KEY, etc.)
+- `agents/integrations.py` is the central hub.
+- For GitHub commits and Vercel deploys: Once the repo exists, tell me (Grok) and I handle directly via connected tools. No manual logins or pushes needed from you.
+- The Ops Leader can call integrations.automate_client_flow(...) etc.
+- One-time setup for accounts; after that, mostly automated or via chat with me.
+```
+
 ## Future Expansion
 
 We can easily add more agents:

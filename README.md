@@ -87,16 +87,19 @@ The entire site, playbook, and agent system are built to support hyper-growth th
 
 Replace the Stripe test links with real product links once created in the Stripe dashboard.
 
-## Talk to me — I handle the rest
+## Talk to me — I handle the rest (including linked systems)
 
-This is the core workflow you asked for:
+This is the core workflow:
 
-1. You message me in natural language.
-2. I make changes locally.
-3. I commit + push to GitHub using the tools.
-4. Hosting auto-deploys (Vercel or Cloudflare).
+1. You message me (or the Ops Leader agent).
+2. I (or the agent system) make changes.
+3. For GitHub: I push directly via tools (once repo created).
+4. For Vercel: I can deploy directly or set up auto.
+5. For Stripe, email, calendar, etc.: Integrated in `agents/integrations.py`. Provide keys once in `.env`. After that, the system (or me) handles flows automatically.
 
-Once the GitHub repo is connected, I can do almost everything end-to-end.
+**No need to log into a bunch of dashboards** for day-to-day. Create accounts once, configure, then interact via chat or `python agents/run_ops.py`.
+
+See `agents/integrations.py` and `agents/README.md` for setup.
 
 ## Operations Leader + Multi-Agent System
 

@@ -28,6 +28,7 @@ from agents.specialists.accounting_agent import AccountingAgent
 from agents.specialists.client_agent import ClientAgent
 from agents.specialists.proposal_agent import ProposalAgent
 from agents.specialists.onboarding_agent import OnboardingAgent
+from agents.integrations import integrations
 
 
 class OpsLeader:
@@ -37,10 +38,15 @@ class OpsLeader:
     Usage:
         leader = OpsLeader()
         result = leader.handle("Book a discovery call with Acme Corp for next week and send them the AI Roadmap proposal")
+
+    Integrations (GitHub, Stripe, email, etc.) are linked via self.integrations.
+    Once you provide API keys in .env and create the GitHub repo, most operations are automatic.
+    I (Grok) can also directly manage GitHub pushes and Vercel deploys via MCP tools.
     """
 
     def __init__(self):
         self.name = "OpsLeader"
+        self.integrations = integrations  # Central link to GitHub, Stripe, email, etc.
         self.specialists: List[BaseAgent] = [
             CodingAgent(),
             CalendarAgent(),
