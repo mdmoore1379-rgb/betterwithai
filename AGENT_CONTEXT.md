@@ -5,7 +5,7 @@
 **Core Business Model (Self-Serve First):**
 - Hero offer: AI Roadmap at $1,497 (one-time, self-serve via wizard/configurator).
 - User flow: 4-question wizard → instant plan preview → Stripe checkout → authenticated portal (Google/Microsoft 365 SSO) with projects, invoices, contracts.
-- Upsells: Implementation Sprints ($7,500+), Monthly Retainers ($12,500/mo).
+- Upsells: Implementation Sprints ($7,500+), Monthly Retainers ($12,500/mo). Enterprise/Strategic $200k+ custom.
 - No sales calls for core Roadmap. High-ticket via warm outbound/content after value delivered.
 - Goal: High volume self-serve entry, automated delivery via agents/playbooks, expand to retainers. 80%+ margins via agents.
 
@@ -26,7 +26,7 @@ Key: Productization, agent leverage (1 human : 10x output), content flywheel (pe
 - MasterSuperAgent is the brain: talks to team, identifies gaps, spawns specialists via coding team, delegates, runs strategic cycles tied to 100M vision.
 - All agents use BaseAgent (can_handle + execute). Load this CONTEXT file + related playbooks on init for decisions.
 - Spawn new agents as needed (e.g. via spawn_new_agent). Code them to be autonomous.
-- Leverage: Use integrations (Telegram for async, GitHub/Vercel for deploys, Stripe for payments).
+- Leverage: Use integrations (Telegram for async/responsive chat, GitHub/Vercel for deploys, Stripe for payments).
 - Cycles: Diagnose -> build/spawn -> execute (code/site/marketing) -> measure -> report via Telegram if needed.
 - Decision rule: If stuck on user-specific (pricing test winner, first content, major direction), message via Telegram using send_decision_request. Otherwise, decide boldly per vision.
 - No restrictions: Think big, productize everything, maximize self-serve + automation.
@@ -41,24 +41,27 @@ Key: Productization, agent leverage (1 human : 10x output), content flywheel (pe
 - playbook/sequences/launch_sequence.md
 - playbook/content/first_x_threads.md
 - agents/README.md
-- app/data/offers.ts (current offers)
+- app/data/offers.ts (current offers - includes $200k Strategic now)
 - app/components/PlanningWizard.tsx (self-serve core)
 - README.md (deployment, vision)
+- agents/specialists/lawyer_agent.py , recruiting_agent.py
 
 **Autonomous Operations While User Gone:**
 - Run cycles via python agents/run_master_super.py or direct Master.
 - Update site via code edits (Next.js App Router, Tailwind, light theme).
 - Push via Git (use tools/MCP).
-- Message user on Telegram ONLY for questions/decisions.
+- Message user on Telegram ONLY for questions/decisions (now live conversational + responsive).
 - Track in PROGRESS_*.md or similar.
 - Use X research for tactics (viral content, scaling self-serve, lean ops).
 - Maintain high-contrast, premium light design. No black, no mascots in hero.
 
 **Current State Snapshot (as of latest autonomous run):**
-- Telegram bot live for bidirectional updates/questions.
-- SuperAgents active: RevenueEngine, ContentMachine, AcquisitionFlywheel, LaunchOperator, FinancialForecaster, SocialMediaPoster, etc.
-- Site: Light premium, wizard with Stripe, $1,497 Roadmap hero, lead magnet teaser.
-- Self-serve live in portal stub.
+- Telegram bot: improved responsive long-poll + direct agent handoff. Chat with it to drive changes live.
+- LawyerAgent live: checkbox disclosures (MSA, AI Policy, Liability, Privacy) gate portal login (bank style).
+- SuperAgents active: RevenueEngine, ContentMachine, AcquisitionFlywheel, LaunchOperator, FinancialForecaster, SocialMediaPoster, RecruitingAgent, LawyerAgent, etc.
+- Site: Light premium, wizard with Stripe, $1,497 Roadmap + $200k+ Strategic tier, lead magnet teaser. Portal has Lawyer consent + contracts.
+- Self-serve live in portal stub. Larger projects easily scoped via wizard + offers.
+- Recruiting: automated DISC + competence pre-assessments before human queue.
 - Content/sequences drafted.
 - Domain on Cloudflare/Vercel hybrid (aim seamless).
 
