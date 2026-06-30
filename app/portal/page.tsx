@@ -78,6 +78,7 @@ export default function ClientPortal() {
   const [activeTab, setActiveTab] = useState<'projects' | 'invoices' | 'contracts'>('projects');
   const [clientData, setClientData] = useState(defaultClientData);
   const [showWelcome, setShowWelcome] = useState(false);
+  const [actionMessage, setActionMessage] = useState<string | null>(null);
 
   // Clean single handler: Tesla-simple handoff from wizard
   // ?demoLogin=acme&newProject=true lands you authenticated + adds project
@@ -131,6 +132,8 @@ export default function ClientPortal() {
           : c
       )
     }));
+    setActionMessage("Contract signed successfully. Saved to your account.");
+    setTimeout(() => setActionMessage(null), 3200);
   };
 
   const handlePayInvoice = (invoiceId: string) => {
@@ -142,6 +145,8 @@ export default function ClientPortal() {
           : i
       )
     }));
+    setActionMessage("Payment processed. Receipt sent to your email.");
+    setTimeout(() => setActionMessage(null), 3200);
   };
 
   if (!isAuthenticated) {
@@ -202,6 +207,12 @@ export default function ClientPortal() {
               <div className="font-semibold text-white">Welcome! Your new project from the wizard is live.</div>
               <div className="text-sm text-white/80">Ops Leader has already queued kickoff. Everything here updates automatically as agents move.</div>
             </div>
+          </div>
+        )}
+
+        {actionMessage && (
+          <div className="mb-4 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm text-[#C6FF3A]">
+            {actionMessage}
           </div>
         )}
 
@@ -276,9 +287,12 @@ export default function ClientPortal() {
             </div>
 
             <div className="mt-8 card p-6">
-              <h3 className="font-semibold mb-2">Signup for New Project</h3>
-              <p className="text-sm text-white/70 mb-4">Ready for the next phase? Browse available project templates or start a custom one.</p>
-              <Link href="#pricing" className="btn-primary">Explore Projects &amp; Signup</Link>
+              <h3 className="font-semibold mb-2">Start a new project</h3>
+              <p className="text-sm text-white/70 mb-4">Use the website configurator for a new Roadmap or scope a bigger project.</p>
+              <div className="flex gap-3">
+                <Link href="/#wizard" className="btn-primary flex-1 justify-center">Configure new Roadmap</Link>
+                <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" className="btn-secondary flex-1 justify-center">Scope bigger project</a>
+              </div>
             </div>
           </div>
         )}

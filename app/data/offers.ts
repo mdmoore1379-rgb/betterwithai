@@ -31,8 +31,8 @@ export const offers: Offer[] = [
       'Written deliverable ready to execute',
       'Instant signup, auto contract + Stripe payment',
     ],
-    cta: 'Get Your Roadmap Now →',
-    ctaLink: 'https://buy.stripe.com/test_YOUR_PLANNING_LINK', // Replace with real Stripe
+    cta: 'Configure & Buy Roadmap →',
+    ctaLink: '#wizard',
     highlight: true,
     stage: 'core',
   },
@@ -50,7 +50,7 @@ export const offers: Offer[] = [
       '30-day support + optimization',
     ],
     cta: 'Scope a Project →',
-    ctaLink: '#', // Will point to Calendly or form
+    ctaLink: 'https://calendly.com/michaeldmoore/30-virtual-call?back=1',
     stage: 'core',
   },
   {
@@ -67,7 +67,7 @@ export const offers: Offer[] = [
       'Priority support + continuous optimization',
     ],
     cta: 'Become a Partner →',
-    ctaLink: '#',
+    ctaLink: 'https://calendly.com/michaeldmoore/30-virtual-call?back=1',
     stage: 'scale',
   },
   {
@@ -83,7 +83,7 @@ export const offers: Offer[] = [
       'Academy + certification access',
     ],
     cta: 'Join the Waitlist →',
-    ctaLink: '#', // Future form
+    ctaLink: '#wizard',
     stage: 'future',
   },
 ];

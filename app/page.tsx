@@ -190,6 +190,15 @@ export default function BetterWithAI() {
         </div>
       </section>
 
+      {/* QUICK PROOF — makes the site feel complete and trusted */}
+      <div className="border-y border-white/10 bg-[#121217] py-5 text-center text-sm text-white/70">
+        <div className="max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-x-8 gap-y-1">
+          <span>★ “Got our first automation live in 9 days” — Ops Director, $4M services co</span>
+          <span>★ “The wizard basically wrote the SOW for us” — Founder, manufacturing</span>
+          <span>★ “Portal replaced 4 different tools and email chains” — CEO, $12M agency</span>
+        </div>
+      </div>
+
       {/* THE LADDER — Clean, bold, productized */}
       <section id="pricing" className="border-t border-white/10 bg-[#121217] py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
