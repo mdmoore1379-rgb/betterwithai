@@ -316,6 +316,52 @@ export default function BetterWithAI() {
         </p>
       </section>
 
+      {/* AUTOMATED CLIENT ACQUISITION — Marketing + Signup + Contract + Pay (fully automated) */}
+      <section className="section mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="text-center">
+          <div className="text-[#C6FF3A] text-xs font-mono tracking-[3px] mb-2">80%+ AUTOMATED FUNNEL</div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[-1.5px]">Marketing that attracts quality clients. Signup, contract, and pay — automated.</h2>
+          <p className="mt-4 max-w-3xl mx-auto text-xl text-white/70">
+            No high-pressure sales. Content and systems qualify serious buyers. Roadmap is the self-serve filter. Everything from discovery to payment runs on autopilot (agent-orchestrated + Stripe + forms).
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-4">
+          <div className="card p-8">
+            <div className="text-[#C6FF3A] text-sm font-mono mb-2">01 — ATTRACT</div>
+            <h3 className="text-xl font-semibold">Automated Marketing Engine</h3>
+            <p className="mt-3 text-sm text-white/80">Weekly content (site, LinkedIn, YouTube) via GrowthAgent. SEO + partnerships (MSPs). Lead magnets like free AI Audit Checklist auto-deliver + book call.</p>
+            <p className="mt-4 text-xs text-[#C6FF3A]">Quality filter: Targets operators ready for real AI work ($2M+ revenue, overwhelmed by hype).</p>
+            <div className="mt-4 p-3 bg-white/5 rounded text-xs">
+              <strong>Free Lead Magnet:</strong> Get the AI Audit Checklist (auto email + book call). <a href="#" className="text-[#C6FF3A] underline">Claim it now →</a> (Tally form → Resend)
+            </div>
+          </div>
+          <div className="card p-8">
+            <div className="text-[#C6FF3A] text-sm font-mono mb-2">02 — QUALIFY &amp; SIGNUP</div>
+            <h3 className="text-xl font-semibold">Easy Self-Serve Entry</h3>
+            <p className="mt-3 text-sm text-white/80">Roadmap as lead magnet + product. Buy in 2 clicks (Stripe). Intake form auto-triggers (qualifying questions baked in).</p>
+            <a href="#pricing" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">Start with Roadmap →</a>
+          </div>
+          <div className="card p-8">
+            <div className="text-[#C6FF3A] text-sm font-mono mb-2">03 — CONTRACT</div>
+            <h3 className="text-xl font-semibold">Proper Agreements, Auto</h3>
+            <p className="mt-3 text-sm text-white/80">MSA + SOW ready at purchase. E-sign via HelloSign/PandaDoc link auto-sent. No manual back-and-forth for Roadmap tier.</p>
+            <Link href="/resources" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">See contracts →</Link>
+          </div>
+          <div className="card p-8">
+            <div className="text-[#C6FF3A] text-sm font-mono mb-2">04 — PAY</div>
+            <h3 className="text-xl font-semibold">Automated Payments</h3>
+            <p className="mt-3 text-sm text-white/80">Stripe Checkout for one-time (Roadmap) or recurring (retainers). Invoices auto-generated. AccountingAgent tracks everything.</p>
+            <p className="mt-4 text-xs">Larger deals: Form → auto proposal + payment link.</p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <p className="text-sm text-white/70 max-w-md mx-auto">The entire funnel runs on our agent system + tools (Tally for forms, Resend for emails, Stripe for pay, e-sign for contracts). Ops Leader orchestrates. You get qualified, contracted, paying clients with almost zero manual sales.</p>
+          <a href="https://calendly.com/michaeldmoore/30-virtual-call?back=1" target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 inline-flex">Book a call to see the automation live →</a>
+        </div>
+      </section>
+
       {/* THE WEDDING TRUTH — OBJECTION HANDLER */}
       <section className="border-y border-white/10 bg-[#121217] py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6">

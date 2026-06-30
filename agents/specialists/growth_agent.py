@@ -25,23 +25,30 @@ class GrowthAgent(BaseAgent):
         self.log(f"Growth task: {task.description}")
 
         plan = """
-**Growth Plan (for $100M trajectory)**
+**Automated Marketing & Client Acquisition Plan (for $100M trajectory)**
 
-Priorities 2027:
-- Weekly content engine (LinkedIn, blog, YouTube) using brand voice.
-- Leverage M3 Networks network for warm intros.
-- Productized Roadmap as lead magnet (already on site).
-- First 5 strategic partnerships (MSPs, consultants).
+Core Goal: 80%+ automated marketing that attracts **quality** clients (serious operators ready for $5k+ engagements, not tire-kickers). Funnel: Content/SEO/Partnerships → Qualify (Roadmap as filter) → Signup (self-serve) → Auto Contract + Pay (Stripe + agreements) → Onboard.
 
-Systems to build:
-- Content calendar managed via agent.
-- Partnership outreach sequences.
-- Analytics on what converts to Roadmap sales.
+**Automation Layers (agent-driven + tools):**
+- **Content Engine**: Ops Leader triggers GrowthAgent weekly for LinkedIn, site blog posts (static MDX or simple), YouTube scripts. Brand voice locked in. SEO for "AI consulting for [ICP]".
+- **Lead Magnets**: Free "AI Audit Checklist" or "Roadmap Teaser" form (embed Tally.so on site). Auto-deliver PDF + book call link. Qualifies by asking revenue/pain points.
+- **Email Sequences**: Automated nurture (Resend or ConvertKit). 5-email series: Welcome → Case study → "Why most AI fails" (qualify) → Roadmap offer → Testimonial.
+- **Partnerships**: Outreach sequences to MSPs/consultants (warm from M3). Agent drafts, you approve, auto-followup.
+- **Qualification**: Site copy + form filters for quality (e.g., "For businesses with $2M+ revenue struggling with AI hype").
+- **Signup to Pay**: Roadmap = direct Stripe Checkout (one-click). Larger = form → auto-proposal (ProposalAgent) → Stripe link + MSA/SOW e-sign (HelloSign/PandaDoc integration).
+- **Tracking & Optimization**: Google Analytics + simple CRM. GrowthAgent reviews conversion weekly, suggests A/B tests on site (Grok deploys).
+
+**2027 Targets (automated)**:
+- 70% of Roadmap leads from organic/content/partnerships.
+- <10% sales calls needed for qualified buyers.
+- CAC < $500 via automation.
 
 Next actions for Grok / team:
-- Create content calendar template.
-- Build landing page variants for different ICPs.
-- Set up tracking (Google Analytics + CRM).
+- Embed lead form on site (Tally).
+- Draft first email sequence (use playbook templates).
+- Build content calendar.
+- Set up Zapier/Make for form → email → CRM.
+- Update site CTAs for "Qualify & Signup in <5 min".
 """
 
         return AgentResponse(

@@ -53,4 +53,10 @@ Supporting:
 - `/resources` is the client + internal hub.
 - Changes are additive. We don't rewrite the site to match new goals — the structure supports the entire journey.
 
+**Automated Marketing & Client Acquisition**
+- See `templates/automated_email_sequences.md`
+- GrowthAgent handles content, forms, sequences.
+- Funnel: Content → Lead magnet (Tally) → Qualify (Roadmap) → Auto Stripe + contract → Agent onboarding.
+- Quality focus: ICP baked into copy and forms (serious businesses ready for $5k+ work).
+
 Grok maintains both the playbook and the site via chat.

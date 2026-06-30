@@ -47,6 +47,19 @@ export default function Resources() {
               <li>→ Agent-powered everything: Growth, recruiting, delivery, finance</li>
             </ul>
             <p className="mt-6 text-xs text-white/50">One founder + this system + Grok = scalable production to $100M. Talk to me, I update the site and deploy.</p>
+
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <h3 className="font-semibold text-sm mb-2">Automation Stack (Marketing → Signup → Contract → Pay)</h3>
+              <ul className="text-xs space-y-1 text-white/70">
+                <li>• Forms: Tally.so (embed, auto-deliver lead magnets + trigger sequences)</li>
+                <li>• Email Nurture: Resend (auto sequences from GrowthAgent)</li>
+                <li>• Payments &amp; Contracts: Stripe Checkout + HelloSign/PandaDoc (auto links post-purchase)</li>
+                <li>• Orchestration: Ops Leader + Zapier/Make (form → CRM → email → contract)</li>
+                <li>• CRM: Airtable/Supabase (agent-managed, simple at first)</li>
+              </ul>
+              <p className="text-[10px] mt-2 text-[#C6FF3A]">Fully automated funnel for quality clients. Roadmap = 5-min signup, auto contract &amp; pay.</p>
+            </div>
+
             <Link href="/resources" className="btn-primary mt-4 inline-block text-sm">Dive into the full hub →</Link>
           </div>
         </div>

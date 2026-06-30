@@ -23,12 +23,13 @@ export const offers: Offer[] = [
     title: 'AI Roadmap',
     price: '$2,497',
     period: 'one-time',
-    description: 'Self-serve foundation. Audit your business, get a prioritized, ROI-ranked plan you can run or we can deliver.',
+    description: 'Self-serve foundation. Audit your business, get a prioritized, ROI-ranked plan you can run or we can deliver. Signup, agree, and pay in minutes — fully automated.',
     features: [
       'Full operations + tech + marketing audit',
       'Prioritized roadmap with ROI estimates',
       '60-min review + Q&A call',
       'Written deliverable ready to execute',
+      'Instant signup, auto contract + Stripe payment',
     ],
     cta: 'Get Your Roadmap Now →',
     ctaLink: 'https://buy.stripe.com/test_YOUR_PLANNING_LINK', // Replace with real Stripe
