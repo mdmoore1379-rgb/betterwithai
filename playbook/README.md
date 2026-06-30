@@ -47,4 +47,10 @@ See `growth/4-year-to-100m.md` for the full revenue ramp, strategy, and pillars.
 Supporting:
 - `growth/scaling-checklist.md` — quarterly milestones.
 
-Update this playbook as we learn what works. Grok maintains it conversationally.
+**The Website is the Core Strategic Asset**
+- `app/data/offers.ts` — single source of truth for the product ladder.
+- Modular sections (e.g. "Our Systems") showcase the agents + playbook.
+- `/resources` is the client + internal hub.
+- Changes are additive. We don't rewrite the site to match new goals — the structure supports the entire journey.
+
+Grok maintains both the playbook and the site via chat.

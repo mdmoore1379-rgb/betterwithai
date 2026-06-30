@@ -54,11 +54,14 @@ npx wrangler pages deploy out --project-name=betterwithai
 
 Add custom domain `betterwithai.io` in the Cloudflare Pages dashboard.
 
-## Project structure
+## Project structure (website as strategic core)
 
-- `app/page.tsx` — the full landing page
-- `app/components/BrainMascot.tsx` — the animated mascot (swappable for real art later)
+- `app/data/offers.ts` — **Central config** for all offerings (easy evolution for growth plan)
+- `app/page.tsx` — Strategic hub with modular sections (Our Systems, product ladder)
+- `app/resources/page.tsx` — The living hub linking to playbook, agents, $100M plan
+- `app/components/BrainMascot.tsx` — the animated mascot
 - Static export enabled (`output: 'export'`)
+- Designed so we evolve products/systems without constant full redesigns.
 
 ## Next steps / open items (from brief)
 
