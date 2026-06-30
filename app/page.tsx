@@ -32,6 +32,7 @@ export default function BetterWithAI() {
     { label: "How it works", href: "#how-it-works" },
     { label: "Lifestyle", href: "#lifestyle" },
     { label: "Resources", href: "/resources" },
+    { label: "Client Portal", href: "/portal" },
     { label: "About", href: "#about" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -341,13 +342,13 @@ export default function BetterWithAI() {
           <div className="card p-8">
             <div className="text-[#C6FF3A] text-sm font-mono mb-2">02 — QUALIFY &amp; SIGNUP</div>
             <h3 className="text-xl font-semibold">Easy Self-Serve Entry</h3>
-            <p className="mt-3 text-sm text-white/80">Roadmap as lead magnet + product. Buy in 2 clicks (Stripe). Intake form auto-triggers (qualifying questions baked in).</p>
+            <p className="mt-3 text-sm text-white/80">Roadmap as lead magnet + product. Buy in 2 clicks (Stripe). Intake form auto-triggers. After, access your private portal (SSO with work Google/Microsoft 365) for projects, invoices, and signed docs.</p>
             <a href="#pricing" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">Start with Roadmap →</a>
           </div>
           <div className="card p-8">
             <div className="text-[#C6FF3A] text-sm font-mono mb-2">03 — CONTRACT</div>
             <h3 className="text-xl font-semibold">Proper Agreements, Auto</h3>
-            <p className="mt-3 text-sm text-white/80">MSA + SOW ready at purchase. E-sign via HelloSign/PandaDoc link auto-sent. No manual back-and-forth for Roadmap tier.</p>
+            <p className="mt-3 text-sm text-white/80">MSA + SOW ready at purchase. E-sign via HelloSign/PandaDoc link auto-sent. After payment, client logs into personalized portal with Google/Microsoft 365 to view everything.</p>
             <Link href="/resources" className="mt-4 inline-block text-sm text-[#C6FF3A] hover:underline">See contracts →</Link>
           </div>
           <div className="card p-8">

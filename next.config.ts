@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // output: 'export',   // Commented for Client Portal (auth + personalized data).
+  // For full production with SSO, projects, invoices, e-sign: Deploy as full Next.js app on Vercel.
+  // Marketing pages can stay static/fast. Portal at /portal uses server features + Supabase auth.
   images: {
     unoptimized: true,
   },
-  // trailingSlash: true, // optional for Cloudflare, but usually fine without
 };
 
 export default nextConfig;

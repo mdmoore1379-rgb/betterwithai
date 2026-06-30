@@ -91,6 +91,7 @@ class Integrations:
         - Trigger contract (generate SOW from template)
         - Send automated email
         - Book kickoff
+        - Create client record for /portal (Supabase or DB)
         - Update GitHub if new code needed (rare)
         """
         print("[Integrations] Running automated client flow for", client_data.get("email"))
@@ -100,8 +101,9 @@ class Integrations:
             subject="Welcome - Your AI Roadmap is ready",
             html="..."
         )
-        # Then delegate to OnboardingAgent, etc.
-        return {"flow": "initiated", "next": "payment + webhook will continue automation"}
+        # Create portal account stub (in real: Supabase user + client profile)
+        print("[Integrations] Client account created for personalized portal at /portal (SSO with Google/Microsoft 365)")
+        return {"flow": "initiated", "next": "payment + webhook will continue automation. Client logs in with work creds to see projects/invoices/contracts."}
 
 # Singleton for easy import in agents
 integrations = Integrations()

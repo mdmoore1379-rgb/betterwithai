@@ -70,4 +70,10 @@ Supporting:
 - The site (Planning Wizard) + agents do a huge amount of the planning and discussion that traditionally requires a highly skilled person.
 - "You bring the vision. The system asks the questions, discusses options, and delivers the plan."
 
+**Client Portal (Personalized Experience)**
+- Clients authenticate with Microsoft 365 or Google work credentials (SSO).
+- After signup/payment, they get access to /portal showing *their* projects, invoices (Stripe), contracts (e-sign status), documents.
+- No shared logins or email back-and-forth. Everything specific to them.
+- Powered by the same agent system. See `app/portal/page.tsx` for the current implementation.
+
 Grok maintains both the playbook and the site via chat.
